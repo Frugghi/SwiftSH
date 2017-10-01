@@ -1,0 +1,586 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1805B2711CCE6B740009E4C9 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1805B2701CCE6B740009E4C9 /* Functions.swift */; };
+		1805B2731CCE7EC20009E4C9 /* ShellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1805B2721CCE7EC20009E4C9 /* ShellViewController.swift */; };
+		1805B2751CCEE3290009E4C9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1805B2741CCEE3290009E4C9 /* MainViewController.swift */; };
+		1805B2771CCEE69F0009E4C9 /* CommandViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1805B2761CCEE69F0009E4C9 /* CommandViewController.swift */; };
+		180BD2031B4C622D000DB241 /* SwiftSH.h in Headers */ = {isa = PBXBuildFile; fileRef = 180BD2021B4C622D000DB241 /* SwiftSH.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		180BD21A1B4C6910000DB241 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180BD2191B4C6910000DB241 /* Session.swift */; };
+		180BD21C1B4C7367000DB241 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 180BD21B1B4C7367000DB241 /* libz.tbd */; };
+		180BD2251B4C9268000DB241 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180BD2241B4C9268000DB241 /* AppDelegate.swift */; };
+		180BD2271B4C9268000DB241 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180BD2261B4C9268000DB241 /* LoginViewController.swift */; };
+		180BD22A1B4C9268000DB241 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 180BD2281B4C9268000DB241 /* Main.storyboard */; };
+		180BD22C1B4C9268000DB241 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 180BD22B1B4C9268000DB241 /* Assets.xcassets */; };
+		180BD22F1B4C9268000DB241 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 180BD22D1B4C9268000DB241 /* LaunchScreen.storyboard */; };
+		180BD2341B4C926F000DB241 /* SwiftSH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180BD1FF1B4C622D000DB241 /* SwiftSH.framework */; };
+		180BD2361B4C97E3000DB241 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180BD2351B4C97E3000DB241 /* Extensions.swift */; };
+		186694781B5DBD7B004DE8A8 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186694771B5DBD7B004DE8A8 /* Error.swift */; };
+		188EA2571B4D1E19007B7E49 /* Libssh2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188EA2561B4D1E19007B7E49 /* Libssh2.swift */; };
+		188EA2591B4D3B05007B7E49 /* SSHLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188EA2581B4D3B05007B7E49 /* SSHLibrary.swift */; };
+		188EA25D1B4D3C62007B7E49 /* DNS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188EA25C1B4D3C62007B7E49 /* DNS.swift */; };
+		188EA25F1B4D57FB007B7E49 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188EA25E1B4D57FB007B7E49 /* Queue.swift */; };
+		1890C4F01B4EF68B008E89D0 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1890C4EF1B4EF68B008E89D0 /* Logger.swift */; };
+		1890C4F21B4F4687008E89D0 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1890C4F11B4F4687008E89D0 /* Command.swift */; };
+		1890C4F41B4F5024008E89D0 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1890C4F31B4F5024008E89D0 /* Channel.swift */; };
+		18B51C2C1B6D88390057BB2E /* SCP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B51C2B1B6D88380057BB2E /* SCP.swift */; };
+		18B51C2E1B6D88440057BB2E /* SFTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B51C2D1B6D88440057BB2E /* SFTP.swift */; };
+		18EB4C411B4FD6C0003A55BC /* ConsoleLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB4C401B4FD6C0003A55BC /* ConsoleLogger.swift */; };
+		18EB4C431B534BA6003A55BC /* Shell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB4C421B534BA6003A55BC /* Shell.swift */; };
+		7D89F9D11F535D7A00672446 /* Libssh2.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D89F9CF1F535D7A00672446 /* Libssh2.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7D89F9D21F535D7A00672446 /* Libssh2.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D89F9D01F535D7A00672446 /* Libssh2.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1805B2701CCE6B740009E4C9 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
+		1805B2721CCE7EC20009E4C9 /* ShellViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShellViewController.swift; sourceTree = "<group>"; };
+		1805B2741CCEE3290009E4C9 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		1805B2761CCEE69F0009E4C9 /* CommandViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandViewController.swift; sourceTree = "<group>"; };
+		180BD1FF1B4C622D000DB241 /* SwiftSH.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftSH.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		180BD2021B4C622D000DB241 /* SwiftSH.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftSH.h; sourceTree = "<group>"; };
+		180BD2041B4C622D000DB241 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		180BD2191B4C6910000DB241 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		180BD21B1B4C7367000DB241 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		180BD2221B4C9268000DB241 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		180BD2241B4C9268000DB241 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		180BD2261B4C9268000DB241 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		180BD2291B4C9268000DB241 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		180BD22B1B4C9268000DB241 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		180BD22E1B4C9268000DB241 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		180BD2301B4C9268000DB241 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		180BD2351B4C97E3000DB241 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		186694771B5DBD7B004DE8A8 /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		188EA2561B4D1E19007B7E49 /* Libssh2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Libssh2.swift; sourceTree = "<group>"; };
+		188EA2581B4D3B05007B7E49 /* SSHLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSHLibrary.swift; sourceTree = "<group>"; };
+		188EA25C1B4D3C62007B7E49 /* DNS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DNS.swift; sourceTree = "<group>"; };
+		188EA25E1B4D57FB007B7E49 /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
+		1890C4EF1B4EF68B008E89D0 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		1890C4F11B4F4687008E89D0 /* Command.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
+		1890C4F31B4F5024008E89D0 /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
+		18B51C2B1B6D88380057BB2E /* SCP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCP.swift; sourceTree = "<group>"; };
+		18B51C2D1B6D88440057BB2E /* SFTP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SFTP.swift; sourceTree = "<group>"; };
+		18EB4C401B4FD6C0003A55BC /* ConsoleLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsoleLogger.swift; sourceTree = "<group>"; };
+		18EB4C421B534BA6003A55BC /* Shell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shell.swift; sourceTree = "<group>"; };
+		7D89F9CF1F535D7A00672446 /* Libssh2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Libssh2.h; sourceTree = "<group>"; };
+		7D89F9D01F535D7A00672446 /* Libssh2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Libssh2.m; sourceTree = "<group>"; };
+		EB2336731E3F16660016379F /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
+		EB2336751E3F16660016379F /* libssh2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = libssh2.h; sourceTree = "<group>"; };
+		EB2336761E3F16660016379F /* libssh2_publickey.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = libssh2_publickey.h; sourceTree = "<group>"; };
+		EB2336771E3F16660016379F /* libssh2_sftp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = libssh2_sftp.h; sourceTree = "<group>"; };
+		EB2336781E3F16660016379F /* libssh2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libssh2.a; sourceTree = "<group>"; };
+		EB2336791E3F16660016379F /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libssl.a; sourceTree = "<group>"; };
+		EB23367A1E3F16660016379F /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		180BD1FB1B4C622D000DB241 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				180BD21C1B4C7367000DB241 /* libz.tbd in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		180BD21F1B4C9268000DB241 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				180BD2341B4C926F000DB241 /* SwiftSH.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		180BD1F51B4C622D000DB241 = {
+			isa = PBXGroup;
+			children = (
+				180BD21D1B4C745A000DB241 /* Libraries */,
+				180BD2011B4C622D000DB241 /* SwiftSH */,
+				180BD2231B4C9268000DB241 /* Demo */,
+				180BD2001B4C622D000DB241 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		180BD2001B4C622D000DB241 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				180BD1FF1B4C622D000DB241 /* SwiftSH.framework */,
+				180BD2221B4C9268000DB241 /* Demo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		180BD2011B4C622D000DB241 /* SwiftSH */ = {
+			isa = PBXGroup;
+			children = (
+				180BD2021B4C622D000DB241 /* SwiftSH.h */,
+				180BD2191B4C6910000DB241 /* Session.swift */,
+				1890C4F31B4F5024008E89D0 /* Channel.swift */,
+				1890C4F11B4F4687008E89D0 /* Command.swift */,
+				18EB4C421B534BA6003A55BC /* Shell.swift */,
+				18B51C2B1B6D88380057BB2E /* SCP.swift */,
+				18B51C2D1B6D88440057BB2E /* SFTP.swift */,
+				1890C4EF1B4EF68B008E89D0 /* Logger.swift */,
+				186694771B5DBD7B004DE8A8 /* Error.swift */,
+				188EA2581B4D3B05007B7E49 /* SSHLibrary.swift */,
+				188EA25B1B4D3BCF007B7E49 /* Lib Wrapper */,
+				188EA25A1B4D3B94007B7E49 /* Internal */,
+				180BD2041B4C622D000DB241 /* Info.plist */,
+			);
+			path = SwiftSH;
+			sourceTree = "<group>";
+		};
+		180BD21D1B4C745A000DB241 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				EB2336721E3F16660016379F /* libssh2 */,
+				180BD21B1B4C7367000DB241 /* libz.tbd */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		180BD2231B4C9268000DB241 /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				180BD2241B4C9268000DB241 /* AppDelegate.swift */,
+				1805B2741CCEE3290009E4C9 /* MainViewController.swift */,
+				180BD2261B4C9268000DB241 /* LoginViewController.swift */,
+				1805B2721CCE7EC20009E4C9 /* ShellViewController.swift */,
+				1805B2761CCEE69F0009E4C9 /* CommandViewController.swift */,
+				180BD2281B4C9268000DB241 /* Main.storyboard */,
+				180BD22B1B4C9268000DB241 /* Assets.xcassets */,
+				180BD22D1B4C9268000DB241 /* LaunchScreen.storyboard */,
+				180BD2301B4C9268000DB241 /* Info.plist */,
+			);
+			path = Demo;
+			sourceTree = "<group>";
+		};
+		188EA25A1B4D3B94007B7E49 /* Internal */ = {
+			isa = PBXGroup;
+			children = (
+				180BD2351B4C97E3000DB241 /* Extensions.swift */,
+				188EA25C1B4D3C62007B7E49 /* DNS.swift */,
+				188EA25E1B4D57FB007B7E49 /* Queue.swift */,
+				18EB4C401B4FD6C0003A55BC /* ConsoleLogger.swift */,
+				1805B2701CCE6B740009E4C9 /* Functions.swift */,
+			);
+			name = Internal;
+			sourceTree = "<group>";
+		};
+		188EA25B1B4D3BCF007B7E49 /* Lib Wrapper */ = {
+			isa = PBXGroup;
+			children = (
+				188EA2561B4D1E19007B7E49 /* Libssh2.swift */,
+				7D89F9CF1F535D7A00672446 /* Libssh2.h */,
+				7D89F9D01F535D7A00672446 /* Libssh2.m */,
+			);
+			name = "Lib Wrapper";
+			sourceTree = "<group>";
+		};
+		EB2336721E3F16660016379F /* libssh2 */ = {
+			isa = PBXGroup;
+			children = (
+				EB2336731E3F16660016379F /* libcrypto.a */,
+				EB2336741E3F16660016379F /* libssh2 */,
+				EB2336781E3F16660016379F /* libssh2.a */,
+				EB2336791E3F16660016379F /* libssl.a */,
+				EB23367A1E3F16660016379F /* module.modulemap */,
+			);
+			path = libssh2;
+			sourceTree = "<group>";
+		};
+		EB2336741E3F16660016379F /* libssh2 */ = {
+			isa = PBXGroup;
+			children = (
+				EB2336751E3F16660016379F /* libssh2.h */,
+				EB2336761E3F16660016379F /* libssh2_publickey.h */,
+				EB2336771E3F16660016379F /* libssh2_sftp.h */,
+			);
+			path = libssh2;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		180BD1FC1B4C622D000DB241 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7D89F9D11F535D7A00672446 /* Libssh2.h in Headers */,
+				180BD2031B4C622D000DB241 /* SwiftSH.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		180BD1FE1B4C622D000DB241 /* SwiftSH */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 180BD2131B4C622D000DB241 /* Build configuration list for PBXNativeTarget "SwiftSH" */;
+			buildPhases = (
+				180BD1FA1B4C622D000DB241 /* Sources */,
+				180BD1FB1B4C622D000DB241 /* Frameworks */,
+				180BD1FC1B4C622D000DB241 /* Headers */,
+				180BD1FD1B4C622D000DB241 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftSH;
+			productName = SwiftSH;
+			productReference = 180BD1FF1B4C622D000DB241 /* SwiftSH.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		180BD2211B4C9268000DB241 /* Demo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 180BD2311B4C9268000DB241 /* Build configuration list for PBXNativeTarget "Demo" */;
+			buildPhases = (
+				180BD21E1B4C9268000DB241 /* Sources */,
+				180BD21F1B4C9268000DB241 /* Frameworks */,
+				180BD2201B4C9268000DB241 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Demo;
+			productName = Demo;
+			productReference = 180BD2221B4C9268000DB241 /* Demo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		180BD1F61B4C622D000DB241 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = "Tommaso Madonia";
+				TargetAttributes = {
+					180BD1FE1B4C622D000DB241 = {
+						CreatedOnToolsVersion = 7.0;
+						LastSwiftMigration = 0900;
+					};
+					180BD2211B4C9268000DB241 = {
+						CreatedOnToolsVersion = 7.0;
+						LastSwiftMigration = 0900;
+					};
+				};
+			};
+			buildConfigurationList = 180BD1F91B4C622D000DB241 /* Build configuration list for PBXProject "SwiftSH" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 180BD1F51B4C622D000DB241;
+			productRefGroup = 180BD2001B4C622D000DB241 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				180BD1FE1B4C622D000DB241 /* SwiftSH */,
+				180BD2211B4C9268000DB241 /* Demo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		180BD1FD1B4C622D000DB241 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		180BD2201B4C9268000DB241 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				180BD22F1B4C9268000DB241 /* LaunchScreen.storyboard in Resources */,
+				180BD22C1B4C9268000DB241 /* Assets.xcassets in Resources */,
+				180BD22A1B4C9268000DB241 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		180BD1FA1B4C622D000DB241 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				188EA2591B4D3B05007B7E49 /* SSHLibrary.swift in Sources */,
+				188EA25F1B4D57FB007B7E49 /* Queue.swift in Sources */,
+				180BD21A1B4C6910000DB241 /* Session.swift in Sources */,
+				18EB4C411B4FD6C0003A55BC /* ConsoleLogger.swift in Sources */,
+				186694781B5DBD7B004DE8A8 /* Error.swift in Sources */,
+				180BD2361B4C97E3000DB241 /* Extensions.swift in Sources */,
+				18B51C2E1B6D88440057BB2E /* SFTP.swift in Sources */,
+				1890C4F01B4EF68B008E89D0 /* Logger.swift in Sources */,
+				1805B2711CCE6B740009E4C9 /* Functions.swift in Sources */,
+				188EA2571B4D1E19007B7E49 /* Libssh2.swift in Sources */,
+				18EB4C431B534BA6003A55BC /* Shell.swift in Sources */,
+				7D89F9D21F535D7A00672446 /* Libssh2.m in Sources */,
+				18B51C2C1B6D88390057BB2E /* SCP.swift in Sources */,
+				188EA25D1B4D3C62007B7E49 /* DNS.swift in Sources */,
+				1890C4F41B4F5024008E89D0 /* Channel.swift in Sources */,
+				1890C4F21B4F4687008E89D0 /* Command.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		180BD21E1B4C9268000DB241 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1805B2771CCEE69F0009E4C9 /* CommandViewController.swift in Sources */,
+				1805B2731CCE7EC20009E4C9 /* ShellViewController.swift in Sources */,
+				180BD2271B4C9268000DB241 /* LoginViewController.swift in Sources */,
+				180BD2251B4C9268000DB241 /* AppDelegate.swift in Sources */,
+				1805B2751CCEE3290009E4C9 /* MainViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		180BD2281B4C9268000DB241 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				180BD2291B4C9268000DB241 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		180BD22D1B4C9268000DB241 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				180BD22E1B4C9268000DB241 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		180BD2111B4C622D000DB241 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		180BD2121B4C622D000DB241 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		180BD2141B4C622D000DB241 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/libssh2";
+				INFOPLIST_FILE = SwiftSH/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/libssh2";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tommasomadonia.SwiftSH;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_INCLUDE_PATHS = "$(PROJECT_DIR)/libssh2";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				"VALID_ARCHS[sdk=iphonesimulator*]" = x86_64;
+			};
+			name = Debug;
+		};
+		180BD2151B4C622D000DB241 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/libssh2";
+				INFOPLIST_FILE = SwiftSH/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/libssh2";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tommasomadonia.SwiftSH;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_INCLUDE_PATHS = "$(PROJECT_DIR)/libssh2";
+				SWIFT_VERSION = 4.0;
+				"VALID_ARCHS[sdk=iphonesimulator*]" = x86_64;
+			};
+			name = Release;
+		};
+		180BD2321B4C9268000DB241 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Demo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tommasomadonia.Demo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		180BD2331B4C9268000DB241 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Demo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tommasomadonia.Demo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		180BD1F91B4C622D000DB241 /* Build configuration list for PBXProject "SwiftSH" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				180BD2111B4C622D000DB241 /* Debug */,
+				180BD2121B4C622D000DB241 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		180BD2131B4C622D000DB241 /* Build configuration list for PBXNativeTarget "SwiftSH" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				180BD2141B4C622D000DB241 /* Debug */,
+				180BD2151B4C622D000DB241 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		180BD2311B4C9268000DB241 /* Build configuration list for PBXNativeTarget "Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				180BD2321B4C9268000DB241 /* Debug */,
+				180BD2331B4C9268000DB241 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 180BD1F61B4C622D000DB241 /* Project object */;
+}
