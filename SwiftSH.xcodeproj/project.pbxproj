@@ -47,7 +47,7 @@
 		180BD2041B4C622D000DB241 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		180BD2191B4C6910000DB241 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		180BD21B1B4C7367000DB241 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
-		180BD2221B4C9268000DB241 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		180BD2221B4C9268000DB241 /* SwiftSH Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftSH Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		180BD2241B4C9268000DB241 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		180BD2261B4C9268000DB241 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		180BD2291B4C9268000DB241 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -103,7 +103,7 @@
 			children = (
 				180BD21D1B4C745A000DB241 /* Libraries */,
 				180BD2011B4C622D000DB241 /* SwiftSH */,
-				180BD2231B4C9268000DB241 /* Demo */,
+				180BD2231B4C9268000DB241 /* SwiftSH Example */,
 				180BD2001B4C622D000DB241 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -112,7 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				180BD1FF1B4C622D000DB241 /* SwiftSH.framework */,
-				180BD2221B4C9268000DB241 /* Demo.app */,
+				180BD2221B4C9268000DB241 /* SwiftSH Example.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -146,7 +146,7 @@
 			name = Libraries;
 			sourceTree = "<group>";
 		};
-		180BD2231B4C9268000DB241 /* Demo */ = {
+		180BD2231B4C9268000DB241 /* SwiftSH Example */ = {
 			isa = PBXGroup;
 			children = (
 				180BD2241B4C9268000DB241 /* AppDelegate.swift */,
@@ -159,7 +159,7 @@
 				180BD22D1B4C9268000DB241 /* LaunchScreen.storyboard */,
 				180BD2301B4C9268000DB241 /* Info.plist */,
 			);
-			path = Demo;
+			path = "SwiftSH Example";
 			sourceTree = "<group>";
 		};
 		188EA25A1B4D3B94007B7E49 /* Internal */ = {
@@ -239,9 +239,9 @@
 			productReference = 180BD1FF1B4C622D000DB241 /* SwiftSH.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		180BD2211B4C9268000DB241 /* Demo */ = {
+		180BD2211B4C9268000DB241 /* SwiftSH Example */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 180BD2311B4C9268000DB241 /* Build configuration list for PBXNativeTarget "Demo" */;
+			buildConfigurationList = 180BD2311B4C9268000DB241 /* Build configuration list for PBXNativeTarget "SwiftSH Example" */;
 			buildPhases = (
 				180BD21E1B4C9268000DB241 /* Sources */,
 				180BD21F1B4C9268000DB241 /* Frameworks */,
@@ -251,9 +251,9 @@
 			);
 			dependencies = (
 			);
-			name = Demo;
+			name = "SwiftSH Example";
 			productName = Demo;
-			productReference = 180BD2221B4C9268000DB241 /* Demo.app */;
+			productReference = 180BD2221B4C9268000DB241 /* SwiftSH Example.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -290,7 +290,7 @@
 			projectRoot = "";
 			targets = (
 				180BD1FE1B4C622D000DB241 /* SwiftSH */,
-				180BD2211B4C9268000DB241 /* Demo */,
+				180BD2211B4C9268000DB241 /* SwiftSH Example */,
 			);
 		};
 /* End PBXProject section */
@@ -530,9 +530,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = Demo/Info.plist;
+				INFOPLIST_FILE = "SwiftSH Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tommasomadonia.Demo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tommasomadonia.SwiftSHExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 			};
@@ -542,9 +542,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = Demo/Info.plist;
+				INFOPLIST_FILE = "SwiftSH Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tommasomadonia.Demo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tommasomadonia.SwiftSHExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 			};
@@ -571,7 +571,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		180BD2311B4C9268000DB241 /* Build configuration list for PBXNativeTarget "Demo" */ = {
+		180BD2311B4C9268000DB241 /* Build configuration list for PBXNativeTarget "SwiftSH Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				180BD2321B4C9268000DB241 /* Debug */,
