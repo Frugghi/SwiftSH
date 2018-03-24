@@ -169,7 +169,7 @@ open class SSHSession<T: RawLibrary> {
                 }
 
                 // Try to connect to resolved address
-                if CFSocketConnectToAddress(socket, dataAddress as CFData!, Double(self.timeout)/1000) == .success {
+                if CFSocketConnectToAddress(socket, dataAddress as CFData, Double(self.timeout)/1000) == .success {
                     self.log.info("Connection to \(ipAddress) on port \(self.port) successful")
                     self.socket = socket
                     break

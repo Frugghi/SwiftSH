@@ -8,18 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1805B2711CCE6B740009E4C9 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1805B2701CCE6B740009E4C9 /* Functions.swift */; };
-		1805B2731CCE7EC20009E4C9 /* ShellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1805B2721CCE7EC20009E4C9 /* ShellViewController.swift */; };
-		1805B2751CCEE3290009E4C9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1805B2741CCEE3290009E4C9 /* MainViewController.swift */; };
-		1805B2771CCEE69F0009E4C9 /* CommandViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1805B2761CCEE69F0009E4C9 /* CommandViewController.swift */; };
 		180BD2031B4C622D000DB241 /* SwiftSH.h in Headers */ = {isa = PBXBuildFile; fileRef = 180BD2021B4C622D000DB241 /* SwiftSH.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		180BD21A1B4C6910000DB241 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180BD2191B4C6910000DB241 /* Session.swift */; };
 		180BD21C1B4C7367000DB241 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 180BD21B1B4C7367000DB241 /* libz.tbd */; };
-		180BD2251B4C9268000DB241 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180BD2241B4C9268000DB241 /* AppDelegate.swift */; };
-		180BD2271B4C9268000DB241 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180BD2261B4C9268000DB241 /* LoginViewController.swift */; };
-		180BD22A1B4C9268000DB241 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 180BD2281B4C9268000DB241 /* Main.storyboard */; };
-		180BD22C1B4C9268000DB241 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 180BD22B1B4C9268000DB241 /* Assets.xcassets */; };
-		180BD22F1B4C9268000DB241 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 180BD22D1B4C9268000DB241 /* LaunchScreen.storyboard */; };
-		180BD2341B4C926F000DB241 /* SwiftSH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180BD1FF1B4C622D000DB241 /* SwiftSH.framework */; };
 		180BD2361B4C97E3000DB241 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180BD2351B4C97E3000DB241 /* Extensions.swift */; };
 		186694781B5DBD7B004DE8A8 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186694771B5DBD7B004DE8A8 /* Error.swift */; };
 		188EA2571B4D1E19007B7E49 /* Libssh2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188EA2561B4D1E19007B7E49 /* Libssh2.swift */; };
@@ -39,21 +30,11 @@
 
 /* Begin PBXFileReference section */
 		1805B2701CCE6B740009E4C9 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
-		1805B2721CCE7EC20009E4C9 /* ShellViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShellViewController.swift; sourceTree = "<group>"; };
-		1805B2741CCEE3290009E4C9 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		1805B2761CCEE69F0009E4C9 /* CommandViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandViewController.swift; sourceTree = "<group>"; };
 		180BD1FF1B4C622D000DB241 /* SwiftSH.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftSH.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		180BD2021B4C622D000DB241 /* SwiftSH.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftSH.h; sourceTree = "<group>"; };
 		180BD2041B4C622D000DB241 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		180BD2191B4C6910000DB241 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		180BD21B1B4C7367000DB241 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
-		180BD2221B4C9268000DB241 /* SwiftSH Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftSH Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		180BD2241B4C9268000DB241 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		180BD2261B4C9268000DB241 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		180BD2291B4C9268000DB241 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		180BD22B1B4C9268000DB241 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		180BD22E1B4C9268000DB241 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		180BD2301B4C9268000DB241 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		180BD2351B4C97E3000DB241 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		186694771B5DBD7B004DE8A8 /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		188EA2561B4D1E19007B7E49 /* Libssh2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Libssh2.swift; sourceTree = "<group>"; };
@@ -87,14 +68,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		180BD21F1B4C9268000DB241 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				180BD2341B4C926F000DB241 /* SwiftSH.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -103,7 +76,6 @@
 			children = (
 				180BD21D1B4C745A000DB241 /* Libraries */,
 				180BD2011B4C622D000DB241 /* SwiftSH */,
-				180BD2231B4C9268000DB241 /* SwiftSH Example */,
 				180BD2001B4C622D000DB241 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -112,7 +84,6 @@
 			isa = PBXGroup;
 			children = (
 				180BD1FF1B4C622D000DB241 /* SwiftSH.framework */,
-				180BD2221B4C9268000DB241 /* SwiftSH Example.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -144,22 +115,6 @@
 				180BD21B1B4C7367000DB241 /* libz.tbd */,
 			);
 			name = Libraries;
-			sourceTree = "<group>";
-		};
-		180BD2231B4C9268000DB241 /* SwiftSH Example */ = {
-			isa = PBXGroup;
-			children = (
-				180BD2241B4C9268000DB241 /* AppDelegate.swift */,
-				1805B2741CCEE3290009E4C9 /* MainViewController.swift */,
-				180BD2261B4C9268000DB241 /* LoginViewController.swift */,
-				1805B2721CCE7EC20009E4C9 /* ShellViewController.swift */,
-				1805B2761CCEE69F0009E4C9 /* CommandViewController.swift */,
-				180BD2281B4C9268000DB241 /* Main.storyboard */,
-				180BD22B1B4C9268000DB241 /* Assets.xcassets */,
-				180BD22D1B4C9268000DB241 /* LaunchScreen.storyboard */,
-				180BD2301B4C9268000DB241 /* Info.plist */,
-			);
-			path = "SwiftSH Example";
 			sourceTree = "<group>";
 		};
 		188EA25A1B4D3B94007B7E49 /* Internal */ = {
@@ -239,23 +194,6 @@
 			productReference = 180BD1FF1B4C622D000DB241 /* SwiftSH.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		180BD2211B4C9268000DB241 /* SwiftSH Example */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 180BD2311B4C9268000DB241 /* Build configuration list for PBXNativeTarget "SwiftSH Example" */;
-			buildPhases = (
-				180BD21E1B4C9268000DB241 /* Sources */,
-				180BD21F1B4C9268000DB241 /* Frameworks */,
-				180BD2201B4C9268000DB241 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "SwiftSH Example";
-			productName = Demo;
-			productReference = 180BD2221B4C9268000DB241 /* SwiftSH Example.app */;
-			productType = "com.apple.product-type.application";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -263,14 +201,10 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Tommaso Madonia";
 				TargetAttributes = {
 					180BD1FE1B4C622D000DB241 = {
-						CreatedOnToolsVersion = 7.0;
-						LastSwiftMigration = 0900;
-					};
-					180BD2211B4C9268000DB241 = {
 						CreatedOnToolsVersion = 7.0;
 						LastSwiftMigration = 0900;
 					};
@@ -290,7 +224,6 @@
 			projectRoot = "";
 			targets = (
 				180BD1FE1B4C622D000DB241 /* SwiftSH */,
-				180BD2211B4C9268000DB241 /* SwiftSH Example */,
 			);
 		};
 /* End PBXProject section */
@@ -300,16 +233,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		180BD2201B4C9268000DB241 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				180BD22F1B4C9268000DB241 /* LaunchScreen.storyboard in Resources */,
-				180BD22C1B4C9268000DB241 /* Assets.xcassets in Resources */,
-				180BD22A1B4C9268000DB241 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,38 +262,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		180BD21E1B4C9268000DB241 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				1805B2771CCEE69F0009E4C9 /* CommandViewController.swift in Sources */,
-				1805B2731CCE7EC20009E4C9 /* ShellViewController.swift in Sources */,
-				180BD2271B4C9268000DB241 /* LoginViewController.swift in Sources */,
-				180BD2251B4C9268000DB241 /* AppDelegate.swift in Sources */,
-				1805B2751CCEE3290009E4C9 /* MainViewController.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		180BD2281B4C9268000DB241 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				180BD2291B4C9268000DB241 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		180BD22D1B4C9268000DB241 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				180BD22E1B4C9268000DB241 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		180BD2111B4C622D000DB241 /* Debug */ = {
@@ -385,12 +277,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -441,12 +335,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -499,7 +395,6 @@
 				SWIFT_INCLUDE_PATHS = "$(PROJECT_DIR)/libssh2";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
-				"VALID_ARCHS[sdk=iphonesimulator*]" = x86_64;
 			};
 			name = Debug;
 		};
@@ -522,31 +417,6 @@
 				SKIP_INSTALL = YES;
 				SWIFT_INCLUDE_PATHS = "$(PROJECT_DIR)/libssh2";
 				SWIFT_VERSION = 4.0;
-				"VALID_ARCHS[sdk=iphonesimulator*]" = x86_64;
-			};
-			name = Release;
-		};
-		180BD2321B4C9268000DB241 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = "SwiftSH Example/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tommasomadonia.SwiftSHExample;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-			};
-			name = Debug;
-		};
-		180BD2331B4C9268000DB241 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = "SwiftSH Example/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tommasomadonia.SwiftSHExample;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -567,15 +437,6 @@
 			buildConfigurations = (
 				180BD2141B4C622D000DB241 /* Debug */,
 				180BD2151B4C622D000DB241 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		180BD2311B4C9268000DB241 /* Build configuration list for PBXNativeTarget "SwiftSH Example" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				180BD2321B4C9268000DB241 /* Debug */,
-				180BD2331B4C9268000DB241 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
