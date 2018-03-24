@@ -1,0 +1,33 @@
+language: objective-c
+osx_image: xcode9.2
+notifications:
+  email: false
+env:
+  global:
+  - LC_CTYPE=en_US.UTF-8
+  - LANG=en_US.UTF-8
+  - WORKSPACE=SwiftSH.xcworkspace
+  - IOS_FRAMEWORK_SCHEME="SwiftSH"
+  - IOS_SDK=iphonesimulator11.2
+  - EXAMPLE_SCHEME="SwiftSH Example"
+matrix:
+  include:
+    - os: osx
+      env: DESTINATION="OS=11.2,name=iPhone X" SCHEME="$IOS_FRAMEWORK_SCHEME" SDK="$IOS_SDK" RUN_TESTS="YES" BUILD_EXAMPLE="YES" GENERATE_DOC="YES"
+install:
+  - .travis/install-jazzy.sh
+script:
+  - .travis/build.sh debug "$SCHEME"
+  - .travis/build.sh release "$SCHEME"
+  - .travis/build-example.sh debug "$EXAMPLE_SCHEME"
+  - .travis/generate-docs.sh
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  keep-history: false
+  local-dir: docs/
+  on:
+    branch: master
+    target-branch: gh-pages
+    condition: "$GENERATE_DOC = YES"

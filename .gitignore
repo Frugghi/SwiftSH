@@ -1,3 +1,6 @@
+# Jazzy
+docs/
+
 # Xcode
 #
 build/
@@ -39,7 +42,6 @@ Carthage/Build
 
 # Icon must end with two \r
 Icon
-
 
 # Thumbnails
 ._*

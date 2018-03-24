@@ -1,5 +1,4 @@
 # SwiftSH
-[![Pod documentation](https://img.shields.io/cocoapods/metrics/doc-percent/SwiftSH.svg)](http://cocoadocs.org/docsets/SwiftSH/)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Pods](https://img.shields.io/cocoapods/v/SwiftSH.svg)](https://cocoapods.org/pods/SwiftSH)
 [![Pod platforms](https://img.shields.io/cocoapods/p/SwiftSH.svg)](https://cocoapods.org/pods/SwiftSH)
@@ -36,7 +35,7 @@ github "Frugghi/SwiftSH"
 ```
 
 ## :book: Documentation
-The API documentation is available [here](http://cocoadocs.org/docsets/SwiftSH/).
+The API documentation is available [here](https://frugghi.github.io/SwiftSH/).
 
 ## :computer: Usage
 Import the framework:
