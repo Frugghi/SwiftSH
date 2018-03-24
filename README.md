@@ -1,4 +1,5 @@
 # SwiftSH
+[![Build Status](https://travis-ci.org/Frugghi/SwiftSH.svg?branch=master)](https://travis-ci.org/Frugghi/SwiftSH)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Pods](https://img.shields.io/cocoapods/v/SwiftSH.svg)](https://cocoapods.org/pods/SwiftSH)
 [![Pod platforms](https://img.shields.io/cocoapods/p/SwiftSH.svg)](https://cocoapods.org/pods/SwiftSH)
