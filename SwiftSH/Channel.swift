@@ -104,11 +104,14 @@ open class SSHChannel<T: RawLibrary>: SSHSession<T> {
     }
     
     public override func disconnect(_ completion: (() -> ())?) {
-        self.queue.async {
-            self.close()
-            
-            super.disconnect(completion)
+        self.queue.async { [weak self] in
+            self?.close()
+            self?.disconnectThroughSuper(completion: completion)
         }
+    }
+
+    private func disconnectThroughSuper(completion: (() -> ())?) {
+        super.disconnect(completion)
     }
 
     // MARK: - Terminal
@@ -120,8 +123,8 @@ open class SSHChannel<T: RawLibrary>: SSHSession<T> {
     }
 
     public func setTerminalSize(width: UInt, height: UInt, completion: SSHCompletionBlock?) {
-        self.queue.async(completion: completion) {
-            guard let terminal = self.terminal else {
+        self.queue.async(completion: completion) { [weak self] in
+            guard let terminal = self?.terminal else {
                 throw SSHError.badUse
             }
 
@@ -132,10 +135,10 @@ open class SSHChannel<T: RawLibrary>: SSHSession<T> {
                 resizedTerminal.height = height
 
                 // Update the terminal size
-                try self.channel.setPseudoTerminalSize(resizedTerminal)
+                try self?.channel.setPseudoTerminalSize(resizedTerminal)
 
                 // Set the new terminal
-                self.terminal = resizedTerminal
+                self?.terminal = resizedTerminal
             }
         }
     }

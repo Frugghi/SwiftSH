@@ -104,124 +104,128 @@ open class SSHSession<T: RawLibrary> {
     }
 
     public func connect(_ completion: SSHCompletionBlock?) {
-        self.queue.async(completion: completion) {
+        self.queue.async(completion: completion) { [weak self] in
             defer {
-                if !self.connected {
-                    self.disconnect()
+
+                if self?.connected == false {
+                    self?.disconnect()
                 }
             }
 
-            guard !self.connected else {
+            guard self?.connected == false else {
                 throw SSHError.alreadyConnected
             }
 
-            // Resolve the hostname synchronously
-            let addresses: [Data]
-            do {
-                addresses = try DNS(hostname: self.host).lookup(timeout: self.timeout) as [Data]
-                self.log.debug("\(self.host) resolved. \(addresses.count) addresses")
-            } catch {
-                throw SSHError.hostResolutionFailed
-            }
-
-            for address in addresses {
-
-                let ipAddress: String
-                let addressFamily: Int32
-                let dataAddress: Data
-
-                switch address.count {
-                    case MemoryLayout<sockaddr_in>.size:
-                        // IPv4
-                        var socketAddress: sockaddr_in = address.withUnsafeBytes {
-                            UnsafeRawPointer($0).bindMemory(to: sockaddr_in.self, capacity: address.count).pointee
-                        }
-                        socketAddress.sin_port = CFSwapInt16HostToBig(self.port)
-
-                        ipAddress = socketAddress.sin_addr.description!
-                        addressFamily = AF_INET
-                        dataAddress = Data(bytes: &socketAddress, count: MemoryLayout.size(ofValue: socketAddress))
-
-                    case MemoryLayout<sockaddr_in6>.size:
-                        // IPv6
-                        var socketAddress: sockaddr_in6 = address.withUnsafeBytes {
-                            UnsafeRawPointer($0).bindMemory(to: sockaddr_in6.self, capacity: address.count).pointee
-                        }
-                        socketAddress.sin6_port = CFSwapInt16HostToBig(self.port)
-
-                        ipAddress = socketAddress.sin6_addr.description!
-                        addressFamily = AF_INET6
-                        dataAddress = Data(bytes: &socketAddress, count: MemoryLayout.size(ofValue: socketAddress))
-
-                    default:
-                        self.log.warn("Unknown address, it's not IPv4 or IPv6!")
-                        continue
-                }
-
-                // Try to create the socket
-                guard let socket = CFSocketCreate(kCFAllocatorDefault, addressFamily, SOCK_STREAM, IPPROTO_IP, 0, nil, nil) else {
-                    continue
-                }
-
-                // Set NOSIGPIPE
-                guard socket.setSocketOption(1, level: SOL_SOCKET, name: SO_NOSIGPIPE) else {
-                    continue
-                }
-
-                // Try to connect to resolved address
-                if CFSocketConnectToAddress(socket, dataAddress as CFData, Double(self.timeout)/1000) == .success {
-                    self.log.info("Connection to \(ipAddress) on port \(self.port) successful")
-                    self.socket = socket
-                    break
-                } else {
-                    self.log.warn("Connection to \(ipAddress) on port \(self.port) failed")
-                }
-            }
+            try self?.tryToEstablishConnection()
 
             // Check if we are connected to the host
-            guard let socket = self.socket else {
+            guard let socket = self?.socket else {
                 throw SSHError.Socket.invalid
             }
 
             // Set blocking mode
-            self.session.blocking = true
+            self?.session.blocking = true
 
             // Set custom banner
-            if let banner = self.banner {
+            if let banner = self?.banner {
                 do {
-                    try self.session.setBanner(banner)
+                    try self?.session.setBanner(banner)
                 } catch {
-                    self.log.error("Unable to set the banner")
+                    self?.log.error("Unable to set the banner")
                 }
             }
 
             // Start the session
             do {
-                try self.session.handshake(socket)
+                try self?.session.handshake(socket)
             } catch let error {
-                self.log.error("Handshake failed: \(error)")
+                self?.log.error("Handshake failed: \(error)")
                 throw error
             }
 
             // Connection completed successfully
-            self.connected = true
+            self?.connected = true
             
             // Get the remote banner
-            if let remoteBanner = self.remoteBanner {
-                self.log.debug("Remote banner is \(remoteBanner)")
+            if let remoteBanner = self?.remoteBanner {
+                self?.log.debug("Remote banner is \(remoteBanner)")
             }
             
             // Get the host's fingerprint
-            self.log.debug("Fingerprint is \(try! self.fingerprint())")
+            self?.log.debug("Fingerprint is \(try! self?.fingerprint() ?? "")")
+        }
+    }
+
+    private func tryToEstablishConnection() throws { // Resolve the hostname synchronously
+        let addresses: [Data]
+        do {
+            addresses = try DNS(hostname: host).lookup(timeout: timeout) as [Data]
+            log.debug("\(host) resolved. \(addresses.count) addresses")
+        } catch {
+            throw SSHError.hostResolutionFailed
+        }
+
+        for address in addresses {
+
+            let ipAddress: String
+            let addressFamily: Int32
+            let dataAddress: Data
+
+            switch address.count {
+                case MemoryLayout<sockaddr_in>.size:
+                    // IPv4
+                    var socketAddress: sockaddr_in = address.withUnsafeBytes {
+                        UnsafeRawPointer($0).bindMemory(to: sockaddr_in.self, capacity: address.count).pointee
+                    }
+                    socketAddress.sin_port = CFSwapInt16HostToBig(self.port)
+
+                    ipAddress = socketAddress.sin_addr.description!
+                    addressFamily = AF_INET
+                    dataAddress = Data(bytes: &socketAddress, count: MemoryLayout.size(ofValue: socketAddress))
+
+                case MemoryLayout<sockaddr_in6>.size:
+                    // IPv6
+                    var socketAddress: sockaddr_in6 = address.withUnsafeBytes {
+                        UnsafeRawPointer($0).bindMemory(to: sockaddr_in6.self, capacity: address.count).pointee
+                    }
+                    socketAddress.sin6_port = CFSwapInt16HostToBig(self.port)
+
+                    ipAddress = socketAddress.sin6_addr.description!
+                    addressFamily = AF_INET6
+                    dataAddress = Data(bytes: &socketAddress, count: MemoryLayout.size(ofValue: socketAddress))
+
+                default:
+                    log.warn("Unknown address, it's not IPv4 or IPv6!")
+                    continue
+            }
+
+            // Try to create the socket
+            guard let socket = CFSocketCreate(kCFAllocatorDefault, addressFamily, SOCK_STREAM, IPPROTO_IP, 0, nil, nil) else {
+                continue
+            }
+
+            // Set NOSIGPIPE
+            guard socket.setSocketOption(1, level: SOL_SOCKET, name: SO_NOSIGPIPE) else {
+                continue
+            }
+
+            // Try to connect to resolved address
+            if CFSocketConnectToAddress(socket, dataAddress as CFData, Double(self.timeout)/1000) == .success {
+                log.info("Connection to \(ipAddress) on port \(self.port) successful")
+                self.socket = socket
+                break
+            } else {
+                log.warn("Connection to \(ipAddress) on port \(self.port) failed")
+            }
         }
     }
 
     public func disconnect(_ completion: (() -> ())?) {
-        self.queue.async {
-            self.disconnect()
+        self.queue.async { [weak self] in
+            self?.disconnect()
 
             if let completion = completion {
-                self.queue.callbackQueue.async {
+                self?.queue.callbackQueue.async {
                     completion()
                 }
             }
@@ -229,28 +233,28 @@ open class SSHSession<T: RawLibrary> {
     }
 
     fileprivate func disconnect() {
-        self.queue.sync {
-            self.log.info("Bye bye")
+        self.queue.sync { [weak self] in
+            self?.log.info("Bye bye")
 
             // Disconnect the session
-            if self.connected {
+            if self?.connected == true {
                 do {
-                    try self.session.disconnect()
+                    try self?.session.disconnect()
                 } catch {
-                    self.log.error("\(error)")
+                    self?.log.error("\(error)")
                 }
             }
 
             // Invalidate the socket
-            if let socket = self.socket, CFSocketIsValid(socket) {
+            if let socket = self?.socket, CFSocketIsValid(socket) {
                 CFSocketInvalidate(socket)
             }
             
-            self.socket = nil
+            self?.socket = nil
 
-            self.connected = false
+            self?.connected = false
             
-            self.log.debug("Disconnected")
+            self?.log.debug("Disconnected")
         }
     }
 
@@ -258,62 +262,65 @@ open class SSHSession<T: RawLibrary> {
 
     /// A boolean value indicating whether the session has been successfully authenticated.
     public var authenticated: Bool {
-        return self.queue.sync { self.session.authenticated }
+        return queue.sync { [unowned self] in self.session.authenticated }
     }
 
     public func supportedAuthenticationMethods(_ username: String) throws -> [AuthenticationMethod] {
-        return try self.queue.sync {
+        return try self.queue.sync { [unowned self] in
             try self.session.authenticationList(username).map { AuthenticationMethod($0) }
         }
     }
 
     public func authenticate(_ challenge: AuthenticationChallenge?) -> Self {
-        self.authenticate(challenge, completion: nil)
+        authenticate(challenge, completion: nil)
 
         return self
     }
 
     public func authenticate(_ challenge: AuthenticationChallenge?, completion: SSHCompletionBlock?) {
-        self.queue.async(completion: completion) {
-            guard let challenge = challenge, !self.authenticated else {
+        queue.async(completion: completion) { [weak self] in
+            guard let challenge = challenge, self?.authenticated == false else {
                 return
             }
-
-            // Get the list of supported authentication methods
-            let authenticationMethods = try self.supportedAuthenticationMethods(challenge.username)
-            self.log.debug("Supported authentication methods: \(authenticationMethods)")
-
-            // self.authenticated is true if the server supports SSH_USERAUTH_NONE
-            guard !self.authenticated else {
-                return
-            }
-
-            // Check if the required authentication method is available
-            guard authenticationMethods.contains(challenge.requiredAuthenticationMethod) else {
-                throw SSHError.unsupportedAuthenticationMethod
-            }
-
-            self.log.debug("Authenticating by \(challenge.requiredAuthenticationMethod)")
-
-            switch challenge {
-                case .byPassword(let username, let password):
-                    // Password authentication
-                    try self.session.authenticateByPassword(username, password: password)
-
-                case .byKeyboardInteractive(let username, let callback):
-                    // Keyboard Interactive authentication
-                    try self.session.authenticateByKeyboardInteractive(username, callback: callback)
-
-                case .byPublicKey(let username, let password, let publicKey, let privateKey):
-                    // Public Key authentication
-                    let publicKey  = (publicKey as NSString).expandingTildeInPath
-                    let privateKey = (privateKey as NSString).expandingTildeInPath
-
-                    try self.session.authenticateByPublicKey(username, password: password, publicKey: publicKey, privateKey: privateKey)
-            }
+            try self?.authenticateInQueue(challenge: challenge)
         }
     }
-    
+
+    private func authenticateInQueue(challenge: AuthenticationChallenge) throws  {
+        // Get the list of supported authentication methods
+        let authenticationMethods = try supportedAuthenticationMethods(challenge.username)
+        log.debug("Supported authentication methods: \(authenticationMethods)")
+
+        // self.authenticated is true if the server supports SSH_USERAUTH_NONE
+        guard !authenticated else {
+            return
+        }
+
+        // Check if the required authentication method is available
+        guard authenticationMethods.contains(challenge.requiredAuthenticationMethod) else {
+            throw SSHError.unsupportedAuthenticationMethod
+        }
+
+        log.debug("Authenticating by \(challenge.requiredAuthenticationMethod)")
+
+        switch challenge {
+            case .byPassword(let username, let password):
+                // Password authentication
+                try session.authenticateByPassword(username, password: password)
+
+            case .byKeyboardInteractive(let username, let callback):
+                // Keyboard Interactive authentication
+                try session.authenticateByKeyboardInteractive(username, callback: callback)
+
+            case .byPublicKey(let username, let password, let publicKey, let privateKey):
+                // Public Key authentication
+                let publicKey  = (publicKey as NSString).expandingTildeInPath
+                let privateKey = (privateKey as NSString).expandingTildeInPath
+
+                try session.authenticateByPublicKey(username, password: password, publicKey: publicKey, privateKey: privateKey)
+        }
+    }
+
     public func fingerprint(_ hash: Fingerprint = .md5) throws -> String {
         return try self.queue.sync {
             guard self.connected else {
@@ -325,11 +332,9 @@ open class SSHSession<T: RawLibrary> {
     }
     
     public func checkFingerprint(_ hash: Fingerprint = .md5, callback: @escaping (String) -> Bool) -> Self {
-        self.queue.async {
-            let fingerprint: String
-            do {
-                fingerprint = try self.fingerprint(hash)
-            } catch {
+        self.queue.async { [weak self] in
+
+            guard let strongSelf = self, let fingerprint = try? strongSelf.fingerprint(hash) else {
                 return
             }
             var disconnect = false
@@ -340,7 +345,7 @@ open class SSHSession<T: RawLibrary> {
             }
 
             if disconnect {
-                self.disconnect()
+                self?.disconnect()
             }
         }
 
@@ -348,7 +353,7 @@ open class SSHSession<T: RawLibrary> {
     }
 
     public func checkFingerprint(_ hash: Fingerprint = .md5, fingerprints validFingerprints: String...) -> Self {
-        return self.checkFingerprint(hash) { fingerprint in
+        return checkFingerprint(hash) { fingerprint in
             return validFingerprints.contains(fingerprint)
         }
     }

@@ -54,9 +54,13 @@ public class SSHCommand<T: RawLibrary>: SSHChannel<T> {
             socketSource.cancel()
         }
 
-        self.queue.async {
-            super.close()
+        self.queue.async { [weak self] in
+            self?.closeThroughSuper()
         }
+    }
+
+    private func closeThroughSuper() {
+        super.close()
     }
 
     // MARK: - Execute
@@ -92,54 +96,56 @@ public class SSHCommand<T: RawLibrary>: SSHChannel<T> {
                 throw SSHError.allocation
             }
 
-            socketSource.setEventHandler { [unowned self] in
+            socketSource.setEventHandler { [weak self] in
                 // Suspend the timer to prevent calling completion two times
-                self.timeoutSource!.suspend()
+                self?.timeoutSource!.suspend()
                 defer {
-                    self.timeoutSource!.resume()
+                    self?.timeoutSource!.resume()
                 }
 
                 // Set non-blocking mode
-                self.session.blocking = false
+                self?.session.blocking = false
 
                 // Read the result
                 do {
-                    let data = try self.channel.read()
-                    if self.response == nil {
-                        self.response = Data()
+                    let data = try self?.channel.read()
+                    if self?.response == nil {
+                        self?.response = Data()
                     }
 
-                    self.response!.append(data)
+                    if let data = data {
+
+                        self?.response?.append(data)
+                    }
                 } catch let error {
-                    self.log.error("[STD] \(error)")
+                    self?.log.error("[STD] \(error)")
                 }
 
                 // Read the error
                 do {
-                    let data = try self.channel.readError()
-                    if data.count > 0 {
-                        if self.error == nil {
-                            self.error = Data()
+                    if let data = try self?.channel.readError(), data.count > 0 {
+                        if self?.error == nil {
+                            self?.error = Data()
                         }
 
-                        self.error!.append(data)
+                        self?.error!.append(data)
                     }
                 } catch let error {
-                    self.log.error("[ERR] \(error)")
+                    self?.log.error("[ERR] \(error)")
                 }
 
                 // Check if we can return the response
-                if self.channel.receivedEOF || self.channel.exitStatus() != nil {
+                if self?.channel.receivedEOF == true || self?.channel.exitStatus() != nil {
                     defer {
-                        self.timeoutSource!.cancel()
-                        self.socketSource!.cancel()
+                        self?.timeoutSource!.cancel()
+                        self?.socketSource!.cancel()
                     }
 
                     if let completion = completion {
-                        self.queue.callbackQueue.async {
-                            let result = self.response
+                        self?.queue.callbackQueue.async { [weak self] in
+                            let result = self?.response
                             var error: Error?
-                            if let message = self.error {
+                            if let message = self?.error {
                                 error = SSHError.Command.execError(String(data: message, encoding: .utf8), message)
                             }
 
@@ -148,8 +154,8 @@ public class SSHCommand<T: RawLibrary>: SSHChannel<T> {
                     }
                 }
             }
-            socketSource.setCancelHandler { [unowned self] in
-                self.close()
+            socketSource.setCancelHandler { [weak self] in
+                self?.close()
             }
 
             // Create the timeout handler
@@ -158,13 +164,13 @@ public class SSHCommand<T: RawLibrary>: SSHChannel<T> {
                 throw SSHError.allocation
             }
 
-            timeoutSource.setEventHandler { [unowned self] in
-                self.socketSource!.cancel()
-                self.timeoutSource!.cancel()
+            timeoutSource.setEventHandler { [weak self] in
+                self?.socketSource!.cancel()
+                self?.timeoutSource!.cancel()
 
                 if let completion = completion {
-                    self.queue.callbackQueue.async {
-                        completion(command, self.response, SSHError.timeout)
+                    self?.queue.callbackQueue.async { [weak self] in
+                        completion(command, self?.response, SSHError.timeout)
                     }
                 }
             }
