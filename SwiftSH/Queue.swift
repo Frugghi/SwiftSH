@@ -69,17 +69,17 @@ internal class Queue {
                 }
             }
         } else {
-            self.queue.async(execute: {
+            self.queue.async(execute: { [weak self] in
                 do {
                     try block()
                     if let completion = completion {
-                        self.callbackQueue.async(execute: {
+                        self?.callbackQueue.async(execute: {
                             completion(nil)
                         })
                     }
                 } catch let error {
                     if let completion = completion {
-                        self.callbackQueue.async(execute: {
+                        self?.callbackQueue.async(execute: {
                             completion(error)
                         })
                     }

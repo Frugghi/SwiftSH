@@ -53,7 +53,7 @@ class ShellViewController: UIViewController, SSHViewController {
                 self.authenticationChallenge = .byPassword(username: self.username, password: password)
             } else {
                 self.authenticationChallenge = .byKeyboardInteractive(username: self.username) { [unowned self] challenge in
-                    DispatchQueue.main.async {
+                    DispatchQueue.main.async { [unowned self] in
                         self.appendToTextView(challenge)
                         self.textView.isEditable = true
                     }

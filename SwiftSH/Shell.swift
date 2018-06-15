@@ -76,138 +76,161 @@ public class SSHShell<T: RawLibrary>: SSHChannel<T> {
     }
 
     public func open(_ completion: SSHCompletionBlock?) {
-        self.queue.async(completion: completion) {
-            // Open the channel
-            try super.open()
-            
-            self.log.debug("Opening the shell...")
-            
-            // Set blocking mode
-            self.session.blocking = true
-            
-            // Open a shell
-            try self.channel.shell()
 
-            // Read the received data
-            self.readSource = DispatchSource.makeReadSource(fileDescriptor: CFSocketGetNative(self.socket), queue: self.queue.queue)
-            guard let readSource = self.readSource else {
-                throw SSHError.allocation
-            }
+        self.queue.async(completion: completion) { [weak self] in
 
-            readSource.setEventHandler { [unowned self] in
-                self.log.debug("Handle socket read")
-                
-                // Set non-blocking mode
-                self.session.blocking = false
-
-                // Read the response
-                var response: Data?
-                do {
-                    response = try self.channel.read() as Data
-                    self.log.debug("Read \((response ?? Data()).count) bytes")
-                } catch let error {
-                    self.log.error("[STD] \(error)")
-                }
-
-                // Read the error
-                var error: Data?
-                do {
-                    let data = try self.channel.readError()
-                    if data.count > 0 {
-                        error = data
-                    }
-                } catch let error{
-                    self.log.error("[ERR] \(error)")
-                }
-
-                // Call the callbacks
-                if let callback = self.readStringCallback {
-                    self.queue.callbackQueue.async {
-                        var responseString: String?
-                        if let data = response {
-                            responseString = String(data: data, encoding: .utf8)
-                        }
-
-                        var errorString: String?
-                        if let data = error {
-                            errorString = String(data: data, encoding: .utf8)
-                        }
-
-                        callback(responseString, errorString)
-                    }
-                }
-                if let callback = self.readDataCallback {
-                    self.queue.callbackQueue.async {
-                        callback(response, error)
-                    }
-                }
-
-                // Check if the host has closed the channel
-                if self.channel.receivedEOF {
-                    self.log.info("Received EOF")
-                    self.close()
-                }
-            }
-            readSource.resume()
-
-            // Write the input data
-            self.writeSource = DispatchSource.makeWriteSource(fileDescriptor: CFSocketGetNative(self.socket), queue: self.queue.queue)
-            guard let writeSource = self.writeSource else {
-                throw SSHError.allocation
-            }
-
-            writeSource.setEventHandler { [unowned self] in
-                self.log.debug("Handle socket write")
-                
-                // Set non-blocking mode
-                self.session.blocking = false
-
-                while !self.messageQueue.isEmpty {
-                    // Get the message and send it
-                    var message = self.messageQueue.last!
-                    self.log.debug("Sending a message of \(message.data.count) bytes")
-                    let result = self.channel.write(message.data)
-
-                    switch result {
-                        // We'll send the remaining bytes when the socket is ready
-                        case (.some(SSHError.again), let bytesSent):
-                            message.data.removeFirst(bytesSent)
-                            self.log.debug("Sent \(bytesSent) bytes (\(message.data.count) bytes remaining)")
-
-                        // Done, call the callback
-                        case (let error, _):
-                            self.messageQueue.removeLast()
-                            self.log.debug("Message sent (\(self.messageQueue.count) remaining)")
-                            if let completion = message.callback {
-                                self.queue.callbackQueue.async {
-                                    completion(error)
-                                }
-                            }
-                    }
-                }
-
-                // If the message queue is empty suspend the source
-                if let writeSource = self.writeSource, self.messageQueue.isEmpty {
-                    writeSource.suspend()
-                    self.writing = false
-                }
-            }
-            writeSource.setCancelHandler { [unowned self] in
-                if !self.writing {
-                    writeSource.resume()
-                }
-            }
-            
-            self.log.debug("Shell opened successfully")
+            try self?.openInQueue(completion: completion)
         }
     }
 
+    private func openInQueue(completion: SSHCompletionBlock?) throws {
+
+        // Open the channel
+        try super.open()
+
+        log.debug("Opening the shell...")
+
+        // Set blocking mode
+        session.blocking = true
+
+        // Open a shell
+        try channel.shell()
+
+        // Read the received data
+        readSource = DispatchSource.makeReadSource(fileDescriptor: CFSocketGetNative(socket), queue: queue.queue)
+        guard let readSource = readSource else {
+            throw SSHError.allocation
+        }
+
+        readSource.setEventHandler { [weak self] in
+
+            self?.handleReadEvent()
+        }
+        readSource.resume()
+
+        // Write the input data
+        writeSource = DispatchSource.makeWriteSource(fileDescriptor: CFSocketGetNative(socket), queue: queue.queue)
+        guard let writeSource = writeSource else {
+            throw SSHError.allocation
+        }
+
+        writeSource.setEventHandler { [weak self] in
+
+            self?.handleWriteEvent()
+
+        }
+        writeSource.setCancelHandler { [weak self] in
+            if self?.writing == false {
+                writeSource.resume()
+            }
+        }
+
+        log.debug("Shell opened successfully")
+
+    }
+
+    private func handleReadEvent() {
+
+        log.debug("Handle socket read")
+
+        // Set non-blocking mode
+        session.blocking = false
+
+        // Read the response
+        var response: Data?
+        do {
+            response = try channel.read() as Data
+            log.debug("Read \((response ?? Data()).count) bytes")
+        } catch let error {
+            log.error("[STD] \(error)")
+        }
+
+        // Read the error
+        var error: Data?
+        do {
+            let data = try channel.readError()
+            if data.count > 0 {
+                error = data
+            }
+        } catch let error{
+            log.error("[ERR] \(error)")
+        }
+
+        // Call the callbacks
+        if let callback = readStringCallback {
+            queue.callbackQueue.async {
+                var responseString: String?
+                if let data = response {
+                    responseString = String(data: data, encoding: .utf8)
+                }
+
+                var errorString: String?
+                if let data = error {
+                    errorString = String(data: data, encoding: .utf8)
+                }
+
+                callback(responseString, errorString)
+            }
+        }
+        if let callback = readDataCallback {
+            queue.callbackQueue.async {
+                callback(response, error)
+            }
+        }
+
+        // Check if the host has closed the channel
+        if channel.receivedEOF {
+            log.info("Received EOF")
+            close()
+        }
+    }
+
+    private func handleWriteEvent() {
+
+        log.debug("Handle socket write")
+
+        // Set non-blocking mode
+        session.blocking = false
+
+        while messageQueue.isEmpty == false,
+            var message = messageQueue.last {
+
+                // Get the message and send it
+                self.log.debug("Sending a message of \(message.data.count) bytes")
+                let result = channel.write(message.data)
+
+                switch result {
+                // We'll send the remaining bytes when the socket is ready
+                case (.some(SSHError.again), let bytesSent):
+                    message.data.removeFirst(bytesSent)
+                    self.log.debug("Sent \(bytesSent) bytes (\(message.data.count) bytes remaining)")
+
+                // Done, call the callback
+                case (let error, _):
+                    messageQueue.removeLast()
+                    log.debug("Message sent (\(self.messageQueue.count) remaining)")
+                    if let completion = message.callback {
+                        self.queue.callbackQueue.async {
+                            completion(error)
+                        }
+                    }
+                }
+        }
+
+        // If the message queue is empty suspend the source
+        if let writeSource = writeSource, self.messageQueue.isEmpty {
+            writeSource.suspend()
+            writing = false
+        }
+
+    }
+
     public func close(_ completion: (() -> ())?) {
-        self.queue.async {
-            self.close()
+        self.queue.async { [weak self] in
+            self?.close()
 
             if let completion = completion {
-                self.queue.callbackQueue.async {
+                self?.queue.callbackQueue.async {
                     completion()
                 }
             }
@@ -248,14 +271,14 @@ public class SSHShell<T: RawLibrary>: SSHChannel<T> {
     }
 
     public func write(_ data: Data, completion: ((Error?) -> Void)?) {
-        self.queue.async {
+        self.queue.async { [weak self] in
             // Insert the message in the message queue
             let message = Message(data: data, callback: completion)
-            self.messageQueue.insert(message, at: 0)
+            self?.messageQueue.insert(message, at: 0)
 
             // Start the write source if necessary
-            if let writeSource = self.writeSource, !self.messageQueue.isEmpty, !self.writing {
-                self.writing = true
+            if let writeSource = self?.writeSource, self?.messageQueue.isEmpty == false, self?.writing == false {
+                self?.writing = true
                 writeSource.resume()
             }
         }
