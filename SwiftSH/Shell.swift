@@ -94,35 +94,39 @@ public class SSHShell<T: RawLibrary>: SSHChannel<T> {
                 throw SSHError.allocation
             }
 
-            readSource.setEventHandler { [unowned self] in
-                self.log.debug("Handle socket read")
+            readSource.setEventHandler { [weak self] in
+
+                guard let strongSelf = self else {
+                    return
+                }
+                strongSelf.log.debug("Handle socket read")
                 
                 // Set non-blocking mode
-                self.session.blocking = false
+                strongSelf.session.blocking = false
 
                 // Read the response
                 var response: Data?
                 do {
-                    response = try self.channel.read() as Data
-                    self.log.debug("Read \((response ?? Data()).count) bytes")
+                    response = try strongSelf.channel.read() as Data
+                    strongSelf.log.debug("Read \((response ?? Data()).count) bytes")
                 } catch let error {
-                    self.log.error("[STD] \(error)")
+                    strongSelf.log.error("[STD] \(error)")
                 }
 
                 // Read the error
                 var error: Data?
                 do {
-                    let data = try self.channel.readError()
+                    let data = try strongSelf.channel.readError()
                     if data.count > 0 {
                         error = data
                     }
                 } catch let error{
-                    self.log.error("[ERR] \(error)")
+                    strongSelf.log.error("[ERR] \(error)")
                 }
 
                 // Call the callbacks
-                if let callback = self.readStringCallback {
-                    self.queue.callbackQueue.async {
+                if let callback = strongSelf.readStringCallback {
+                    strongSelf.queue.callbackQueue.async {
                         var responseString: String?
                         if let data = response {
                             responseString = String(data: data, encoding: .utf8)
@@ -136,16 +140,16 @@ public class SSHShell<T: RawLibrary>: SSHChannel<T> {
                         callback(responseString, errorString)
                     }
                 }
-                if let callback = self.readDataCallback {
-                    self.queue.callbackQueue.async {
+                if let callback = strongSelf.readDataCallback {
+                    strongSelf.queue.callbackQueue.async {
                         callback(response, error)
                     }
                 }
 
                 // Check if the host has closed the channel
-                if self.channel.receivedEOF {
-                    self.log.info("Received EOF")
-                    self.close()
+                if strongSelf.channel.receivedEOF {
+                    strongSelf.log.info("Received EOF")
+                    strongSelf.close()
                 }
             }
             readSource.resume()
@@ -156,30 +160,34 @@ public class SSHShell<T: RawLibrary>: SSHChannel<T> {
                 throw SSHError.allocation
             }
 
-            writeSource.setEventHandler { [unowned self] in
-                self.log.debug("Handle socket write")
+            writeSource.setEventHandler { [weak self] in
+
+                guard let strongSelf = self else {
+                    return
+                }
+                strongSelf.log.debug("Handle socket write")
                 
                 // Set non-blocking mode
-                self.session.blocking = false
+                strongSelf.session.blocking = false
 
-                while !self.messageQueue.isEmpty {
+                while !strongSelf.messageQueue.isEmpty {
                     // Get the message and send it
-                    var message = self.messageQueue.last!
-                    self.log.debug("Sending a message of \(message.data.count) bytes")
-                    let result = self.channel.write(message.data)
+                    var message = strongSelf.messageQueue.last!
+                    strongSelf.log.debug("Sending a message of \(message.data.count) bytes")
+                    let result = strongSelf.channel.write(message.data)
 
                     switch result {
                         // We'll send the remaining bytes when the socket is ready
                         case (.some(SSHError.again), let bytesSent):
                             message.data.removeFirst(bytesSent)
-                            self.log.debug("Sent \(bytesSent) bytes (\(message.data.count) bytes remaining)")
+                            strongSelf.log.debug("Sent \(bytesSent) bytes (\(message.data.count) bytes remaining)")
 
                         // Done, call the callback
                         case (let error, _):
-                            self.messageQueue.removeLast()
-                            self.log.debug("Message sent (\(self.messageQueue.count) remaining)")
+                            strongSelf.messageQueue.removeLast()
+                            strongSelf.log.debug("Message sent (\(strongSelf.messageQueue.count) remaining)")
                             if let completion = message.callback {
-                                self.queue.callbackQueue.async {
+                                strongSelf.queue.callbackQueue.async {
                                     completion(error)
                                 }
                             }
@@ -187,13 +195,18 @@ public class SSHShell<T: RawLibrary>: SSHChannel<T> {
                 }
 
                 // If the message queue is empty suspend the source
-                if let writeSource = self.writeSource, self.messageQueue.isEmpty {
+                if let writeSource = strongSelf.writeSource, strongSelf.messageQueue.isEmpty {
                     writeSource.suspend()
-                    self.writing = false
+                    strongSelf.writing = false
                 }
             }
-            writeSource.setCancelHandler { [unowned self] in
-                if !self.writing {
+            writeSource.setCancelHandler { [weak self] in
+
+                guard let strongSelf = self else {
+                    return
+                }
+
+                if !strongSelf.writing {
                     writeSource.resume()
                 }
             }
