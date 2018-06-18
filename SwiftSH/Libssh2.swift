@@ -484,7 +484,7 @@ extension Libssh2 {
             let bufferSize = self.bufferSize
             let buffer = UnsafeMutablePointer<Int8>.allocate(capacity: bufferSize)
             defer {
-                buffer.deallocate(capacity: bufferSize)
+                buffer.deallocate()
             }
 
             let data = NSMutableData()
@@ -513,7 +513,7 @@ extension Libssh2 {
             let bufferSize = self.bufferSize
             let buffer = UnsafeMutablePointer<Int8>.allocate(capacity: bufferSize)
             defer {
-                buffer.deallocate(capacity: bufferSize)
+                buffer.deallocate()
             }
 
             var bytesSent = 0

@@ -51,7 +51,7 @@ internal extension in_addr {
             address = String(cString: stringBuffer)
         }
 
-        stringBuffer.deallocate(capacity: addressLength)
+        stringBuffer.deallocate()
 
         return address
     }
@@ -70,7 +70,7 @@ internal extension in6_addr {
             address = String(cString: stringBuffer)
         }
 
-        stringBuffer.deallocate(capacity: addressLength)
+        stringBuffer.deallocate()
 
         return address
     }
