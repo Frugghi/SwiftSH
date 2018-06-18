@@ -200,7 +200,7 @@ extension Libssh2 {
             }
 
             // Create session instance
-            self.session = libssh2_session_init_ex(nil, nil, nil, UnsafeMutableRawPointer(mutating: _bridge(self)))
+            self.session = libssh2_session_init_ex(nil, nil, nil, UnsafeMutableRawPointer(mutating: Unmanaged.passUnretained(self).toOpaque()))
             guard self.session != nil else {
                 return nil
             }

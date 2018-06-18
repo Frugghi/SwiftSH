@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1805B2711CCE6B740009E4C9 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1805B2701CCE6B740009E4C9 /* Functions.swift */; };
 		180BD2031B4C622D000DB241 /* SwiftSH.h in Headers */ = {isa = PBXBuildFile; fileRef = 180BD2021B4C622D000DB241 /* SwiftSH.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		180BD21A1B4C6910000DB241 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180BD2191B4C6910000DB241 /* Session.swift */; };
 		180BD21C1B4C7367000DB241 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 180BD21B1B4C7367000DB241 /* libz.tbd */; };
@@ -29,7 +28,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1805B2701CCE6B740009E4C9 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		180BD1FF1B4C622D000DB241 /* SwiftSH.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftSH.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		180BD2021B4C622D000DB241 /* SwiftSH.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftSH.h; sourceTree = "<group>"; };
 		180BD2041B4C622D000DB241 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -124,7 +122,6 @@
 				188EA25C1B4D3C62007B7E49 /* DNS.swift */,
 				188EA25E1B4D57FB007B7E49 /* Queue.swift */,
 				18EB4C401B4FD6C0003A55BC /* ConsoleLogger.swift */,
-				1805B2701CCE6B740009E4C9 /* Functions.swift */,
 			);
 			name = Internal;
 			sourceTree = "<group>";
@@ -251,7 +248,6 @@
 				180BD2361B4C97E3000DB241 /* Extensions.swift in Sources */,
 				18B51C2E1B6D88440057BB2E /* SFTP.swift in Sources */,
 				1890C4F01B4EF68B008E89D0 /* Logger.swift in Sources */,
-				1805B2711CCE6B740009E4C9 /* Functions.swift in Sources */,
 				188EA2571B4D1E19007B7E49 /* Libssh2.swift in Sources */,
 				18EB4C431B534BA6003A55BC /* Shell.swift in Sources */,
 				7D89F9D21F535D7A00672446 /* Libssh2.m in Sources */,
