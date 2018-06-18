@@ -36,33 +36,31 @@ public class SSHCommand<T: RawLibrary>: SSHChannel<T> {
     }
 
     deinit {
-        if let timeoutSource = self.timeoutSource, !timeoutSource.isCancelled {
-            timeoutSource.cancel()
-        }
-
-        if let socketSource = self.socketSource, !socketSource.isCancelled {
-            socketSource.cancel()
-        }
+        self.cancelSources()
     }
 
     public override func close() {
-        if let timeoutSource = self.timeoutSource, !timeoutSource.isCancelled {
-            timeoutSource.cancel()
-        }
-
-        if let socketSource = self.socketSource, !socketSource.isCancelled {
-            socketSource.cancel()
-        }
+        self.cancelSources()
 
         self.queue.async {
             super.close()
         }
     }
+    
+    private func cancelSources() {
+        if let timeoutSource = self.timeoutSource, !timeoutSource.isCancelled {
+            timeoutSource.cancel()
+        }
+        
+        if let socketSource = self.socketSource, !socketSource.isCancelled {
+            socketSource.cancel()
+        }
+    }
 
     // MARK: - Execute
 
-    public fileprivate(set) var response: Data?
-    public fileprivate(set) var error: Data?
+    private var response: Data?
+    private var error: Data?
 
     public func execute(_ command: String, completion: ((String, Data?, Error?) -> Void)?) {
         self.queue.async(completion: { (error: Error?) in
@@ -93,14 +91,14 @@ public class SSHCommand<T: RawLibrary>: SSHChannel<T> {
             }
 
             socketSource.setEventHandler { [weak self] in
-                // Suspend the timer to prevent calling completion two times
-
-                guard let strongSelf = self else {
+                guard let strongSelf = self, let timeoutSource = self?.timeoutSource else {
                     return
                 }
-                strongSelf.timeoutSource!.suspend()
+                
+                // Suspend the timer to prevent calling completion two times
+                timeoutSource.suspend()
                 defer {
-                    strongSelf.timeoutSource!.resume()
+                    timeoutSource.resume()
                 }
 
                 // Set non-blocking mode
@@ -135,18 +133,17 @@ public class SSHCommand<T: RawLibrary>: SSHChannel<T> {
                 // Check if we can return the response
                 if strongSelf.channel.receivedEOF || strongSelf.channel.exitStatus() != nil {
                     defer {
-                        strongSelf.timeoutSource!.cancel()
-                        strongSelf.socketSource!.cancel()
+                        strongSelf.cancelSources()
                     }
 
                     if let completion = completion {
-                        strongSelf.queue.callbackQueue.async {
-                            let result = strongSelf.response
-                            var error: Error?
-                            if let message = strongSelf.error {
-                                error = SSHError.Command.execError(String(data: message, encoding: .utf8), message)
-                            }
+                        let result = strongSelf.response
+                        var error: Error?
+                        if let message = strongSelf.error {
+                            error = SSHError.Command.execError(String(data: message, encoding: .utf8), message)
+                        }
 
+                        strongSelf.queue.callbackQueue.async {
                             completion(command, result, error)
                         }
                     }
@@ -163,12 +160,17 @@ public class SSHCommand<T: RawLibrary>: SSHChannel<T> {
             }
 
             timeoutSource.setEventHandler { [weak self] in
-                self?.socketSource!.cancel()
-                self?.timeoutSource!.cancel()
+                guard let strongSelf = self else {
+                    return
+                }
+                
+                strongSelf.cancelSources()
 
                 if let completion = completion {
-                    self?.queue.callbackQueue.async {
-                        completion(command, self?.response, SSHError.timeout)
+                    let result = strongSelf.response
+                    
+                    strongSelf.queue.callbackQueue.async {
+                        completion(command, result, SSHError.timeout)
                     }
                 }
             }

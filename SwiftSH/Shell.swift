@@ -95,10 +95,10 @@ public class SSHShell<T: RawLibrary>: SSHChannel<T> {
             }
 
             readSource.setEventHandler { [weak self] in
-
                 guard let strongSelf = self else {
                     return
                 }
+                
                 strongSelf.log.debug("Handle socket read")
                 
                 // Set non-blocking mode
@@ -161,10 +161,10 @@ public class SSHShell<T: RawLibrary>: SSHChannel<T> {
             }
 
             writeSource.setEventHandler { [weak self] in
-
                 guard let strongSelf = self else {
                     return
                 }
+                
                 strongSelf.log.debug("Handle socket write")
                 
                 // Set non-blocking mode
@@ -201,7 +201,6 @@ public class SSHShell<T: RawLibrary>: SSHChannel<T> {
                 }
             }
             writeSource.setCancelHandler { [weak self] in
-
                 guard let strongSelf = self else {
                     return
                 }
