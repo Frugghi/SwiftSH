@@ -51,41 +51,39 @@ open class SSHChannel<T: RawLibrary>: SSHSession<T> {
     // MARK: - Open/Close
 
     internal func open() throws {
-        try self.queue.sync {
-            // Check if we are authenticated
-            guard self.authenticated else {
-                throw SSHError.authenticationFailed
-            }
-
-            // Check if the channel is already open
-            guard !self.channel.opened else {
-                throw SSHError.Channel.alreadyOpen
+        // Check if we are authenticated
+        guard self.authenticated else {
+            throw SSHError.authenticationFailed
+        }
+        
+        // Check if the channel is already open
+        guard !self.channel.opened else {
+            throw SSHError.Channel.alreadyOpen
+        }
+        
+        self.log.debug("Opening the channel...")
+        
+        // Set blocking mode
+        self.session.blocking = true
+        
+        // Opening the channel
+        try self.channel.openChannel()
+        
+        do {
+            // Set the environment's variables
+            self.log.debug("Environment: \(self.environment)")
+            for variable in self.environment {
+                try self.channel.setEnvironment(variable)
             }
             
-            self.log.debug("Opening the channel...")
-
-            // Set blocking mode
-            self.session.blocking = true
-
-            // Opening the channel
-            try self.channel.openChannel()
-
-            do {
-                // Set the environment's variables
-                self.log.debug("Environment: \(self.environment)")
-                for variable in self.environment {
-                    try self.channel.setEnvironment(variable)
-                }
-
-                // Request the pseudo terminal
-                if let terminal = self.terminal {
-                    self.log.debug("\(terminal) pseudo terminal requested")
-                    try self.channel.requestPseudoTerminal(terminal)
-                }
-            } catch {
-                self.close()
-                throw error
+            // Request the pseudo terminal
+            if let terminal = self.terminal {
+                self.log.debug("\(terminal) pseudo terminal requested")
+                try self.channel.requestPseudoTerminal(terminal)
             }
+        } catch {
+            self.close()
+            throw error
         }
     }
 
