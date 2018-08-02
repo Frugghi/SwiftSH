@@ -28,7 +28,7 @@ internal class Queue {
     fileprivate var objectIdentifier: ObjectIdentifier!
 
     let queue: DispatchQueue
-    let callbackQueue: DispatchQueue = DispatchQueue.main
+    let callbackQueue: DispatchQueue = .main
     var current: Bool {
         guard let specific = DispatchQueue.getSpecific(key: Queue.specific) else {
             return false
@@ -38,7 +38,7 @@ internal class Queue {
     }
 
     init(label: String, concurrent: Bool) {
-        self.queue = DispatchQueue(label: label, qos: DispatchQoS.background, attributes: concurrent ? DispatchQueue.Attributes.concurrent : DispatchQueue.Attributes())
+        self.queue = DispatchQueue(label: label, qos: .background, attributes: concurrent ? .concurrent : [])
 
         self.objectIdentifier = ObjectIdentifier(self)
         self.queue.setSpecific(key: Queue.specific, value: self.objectIdentifier)

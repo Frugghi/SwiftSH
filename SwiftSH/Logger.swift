@@ -50,14 +50,14 @@ public enum LogLevel: CustomStringConvertible, Comparable {
             case .error: return "ERROR"
         }
     }
-
-}
-
-public func <(lhs: LogLevel, rhs: LogLevel) -> Bool {
-    switch (lhs, rhs) {
+    
+    public static func <(lhs: LogLevel, rhs: LogLevel) -> Bool {
+        switch (lhs, rhs) {
         case (let lhs, .debug) where lhs != .debug: return true
         case (.warning, .info), (.error, .info): return true
         case (.error, .warning): return true
         default: return false
+        }
     }
+
 }

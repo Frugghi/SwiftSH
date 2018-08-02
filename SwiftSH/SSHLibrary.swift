@@ -67,16 +67,6 @@ public enum AuthenticationMethod: CustomStringConvertible, Equatable {
 
 }
 
-public func ==(lhs: AuthenticationMethod, rhs: AuthenticationMethod) -> Bool {
-    switch (lhs, rhs) {
-        case (.password, .password): return true
-        case (.keyboardInteractive, .keyboardInteractive): return true
-        case (.publicKey, .publicKey): return true
-        case (.unknown(let lhs), .unknown(let rhs)): return lhs == rhs
-        default: return false
-    }
-}
-
 // MARK: - AuthenticationChallenge enum
 
 public enum AuthenticationChallenge {
@@ -87,9 +77,8 @@ public enum AuthenticationChallenge {
 
     var username: String {
         switch self {
-            case .byPassword(let username, _): return username
-            case .byKeyboardInteractive(let username, _): return username
-            case .byPublicKey(let username, _, _, _): return username
+            case .byPassword(let username, _), .byKeyboardInteractive(let username, _), .byPublicKey(let username, _, _, _):
+                return username
         }
     }
 
@@ -103,7 +92,7 @@ public enum AuthenticationChallenge {
 
 }
 
-// MARK: - RawSession Protocol
+// MARK: - RawSession protocol
 
 public protocol RawSession {
 
