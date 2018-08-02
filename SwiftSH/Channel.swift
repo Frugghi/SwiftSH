@@ -51,6 +51,8 @@ open class SSHChannel<T: RawLibrary>: SSHSession<T> {
     // MARK: - Open/Close
 
     internal func open() throws {
+        assert(self.queue.current)
+        
         // Check if we are authenticated
         guard self.authenticated else {
             throw SSHError.authenticationFailed
@@ -88,6 +90,8 @@ open class SSHChannel<T: RawLibrary>: SSHSession<T> {
     }
 
     internal func close() {
+        assert(self.queue.current)
+        
         self.log.debug("Closing the channel...")
         
         // Set blocking mode

@@ -227,6 +227,8 @@ public class SSHShell<T: RawLibrary>: SSHChannel<T> {
     }
 
     internal override func close() {
+        assert(self.queue.current)
+        
         self.log.debug("Closing the shell...")
         
         // Cancel the socket sources
