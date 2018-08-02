@@ -41,38 +41,38 @@ internal extension CFSocket {
 
 internal extension in_addr {
 
-    var description: String? {
+    var description: String {
         var mutableSelf = self
-        var address: String?
         let addressLength = Int(INET_ADDRSTRLEN)
         let stringBuffer = UnsafeMutablePointer<CChar>.allocate(capacity: addressLength)
-
-        if inet_ntop(AF_INET, &mutableSelf, stringBuffer, socklen_t(addressLength)) != nil {
-            address = String(cString: stringBuffer)
+        defer {
+            stringBuffer.deallocate()
         }
 
-        stringBuffer.deallocate()
+        guard inet_ntop(AF_INET, &mutableSelf, stringBuffer, socklen_t(addressLength)) != nil else {
+            return "<invalid IPv4 address>"
+        }
 
-        return address
+        return String(cString: stringBuffer)
     }
 
 }
 
 internal extension in6_addr {
 
-    var description: String? {
+    var description: String {
         var mutableSelf = self
-        var address: String?
         let addressLength = Int(INET6_ADDRSTRLEN)
         let stringBuffer = UnsafeMutablePointer<CChar>.allocate(capacity: addressLength)
-
-        if inet_ntop(AF_INET6, &mutableSelf, stringBuffer, socklen_t(addressLength)) != nil {
-            address = String(cString: stringBuffer)
+        defer {
+            stringBuffer.deallocate()
         }
 
-        stringBuffer.deallocate()
+        guard inet_ntop(AF_INET6, &mutableSelf, stringBuffer, socklen_t(addressLength)) != nil else {
+            return "<invalid IPv6 address>"
+        }
 
-        return address
+        return String(cString: stringBuffer)
     }
     
 }

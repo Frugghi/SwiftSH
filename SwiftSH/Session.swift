@@ -139,7 +139,7 @@ open class SSHSession<T: RawLibrary> {
                         }
                         socketAddress.sin_port = CFSwapInt16HostToBig(self.port)
 
-                        ipAddress = socketAddress.sin_addr.description!
+                        ipAddress = socketAddress.sin_addr.description
                         addressFamily = AF_INET
                         dataAddress = Data(bytes: &socketAddress, count: MemoryLayout.size(ofValue: socketAddress))
 
@@ -150,7 +150,7 @@ open class SSHSession<T: RawLibrary> {
                         }
                         socketAddress.sin6_port = CFSwapInt16HostToBig(self.port)
 
-                        ipAddress = socketAddress.sin6_addr.description!
+                        ipAddress = socketAddress.sin6_addr.description
                         addressFamily = AF_INET6
                         dataAddress = Data(bytes: &socketAddress, count: MemoryLayout.size(ofValue: socketAddress))
 
