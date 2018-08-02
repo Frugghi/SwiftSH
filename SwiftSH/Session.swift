@@ -82,9 +82,10 @@ open class SSHSession<T: RawLibrary> {
     public fileprivate(set) var connected: Bool = false
 
     /// The banner received from the remote host.
-    public var remoteBanner: String? {
-        return self.queue.sync { self.session.banner }
-    }
+    public fileprivate(set) var remoteBanner: String?
+    
+    /// The fingerprint received from the remote host.
+    public fileprivate(set) var fingerprint: [FingerprintHashType: String] = [:]
 
     /// The timeout for the internal SSH operations.
     public var timeout: TimeInterval {
@@ -207,12 +208,17 @@ open class SSHSession<T: RawLibrary> {
             self.connected = true
             
             // Get the remote banner
+            self.remoteBanner = self.session.banner
             if let remoteBanner = self.remoteBanner {
                 self.log.debug("Remote banner is \(remoteBanner)")
             }
             
             // Get the host's fingerprint
-            self.log.debug("Fingerprint is \(try! self.fingerprint())")
+            self.fingerprint = [:]
+            for hashType: FingerprintHashType in [.md5, .sha1] {
+                self.fingerprint[hashType] = self.session.fingerprint(hashType)
+            }
+            self.log.debug("Fingerprint is \(self.fingerprint)")
         }
     }
 
@@ -246,9 +252,11 @@ open class SSHSession<T: RawLibrary> {
                 CFSocketInvalidate(socket)
             }
             
+            // Clean up state
             self.socket = nil
-
             self.connected = false
+            self.remoteBanner = nil
+            self.fingerprint = [:]
             
             self.log.debug("Disconnected")
         }
@@ -314,24 +322,13 @@ open class SSHSession<T: RawLibrary> {
         }
     }
     
-    public func fingerprint(_ hash: Fingerprint = .md5) throws -> String {
-        return try self.queue.sync {
-            guard self.connected else {
-                throw SSHError.Socket.disconnected
-            }
-
-            return self.session.fingerprint(hash)
-        }
-    }
-    
-    public func checkFingerprint(_ hash: Fingerprint = .md5, callback: @escaping (String) -> Bool) -> Self {
+    public func checkFingerprint(_ callback: @escaping ([FingerprintHashType: String]) -> Bool) -> Self {
         self.queue.async {
-            let fingerprint: String
-            do {
-                fingerprint = try self.fingerprint(hash)
-            } catch {
+            guard self.connected else {
                 return
             }
+            
+            let fingerprint = self.fingerprint
             var disconnect = false
 
             // Call the callback to verify the fingerprint
@@ -347,9 +344,9 @@ open class SSHSession<T: RawLibrary> {
         return self
     }
 
-    public func checkFingerprint(_ hash: Fingerprint = .md5, fingerprints validFingerprints: String...) -> Self {
-        return self.checkFingerprint(hash) { fingerprint in
-            return validFingerprints.contains(fingerprint)
+    public func checkFingerprint(_ validFingerprints: String...) -> Self {
+        return self.checkFingerprint { fingerprint in
+            return fingerprint.values.contains(where: { validFingerprints.contains($0) })
         }
     }
 

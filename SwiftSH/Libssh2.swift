@@ -270,11 +270,11 @@ extension Libssh2 {
             }
         }
 
-        func fingerprint(_ hash: Fingerprint) -> String {
+        func fingerprint(_ hashType: FingerprintHashType) -> String? {
             let type: Int32
             let length: Int
 
-            switch hash {
+            switch hashType {
                 case .md5:
                     type = LIBSSH2_HOSTKEY_HASH_MD5
                     length = 16
@@ -283,13 +283,13 @@ extension Libssh2 {
                     length = 20
             }
 
-            var fingerprint = Array<String>(repeating: "", count: length)
-            let hash = UnsafeRawPointer(libssh2_hostkey_hash(self.session, type)).assumingMemoryBound(to: UInt8.self)
-            for i in 0..<fingerprint.count {
-                fingerprint[i] = String(hash[i], radix: 16, uppercase: true)
+            guard let hashPointer = libssh2_hostkey_hash(self.session, type) else {
+                return nil
             }
-
-            return fingerprint.joined(separator: ":")
+            
+            let hash = UnsafeRawPointer(hashPointer).assumingMemoryBound(to: UInt8.self)
+            
+            return (0..<length).map({ String(hash[$0], radix: 16, uppercase: true) }).joined(separator: ":")
         }
 
         func authenticationList(_ username: String) throws -> [String] {

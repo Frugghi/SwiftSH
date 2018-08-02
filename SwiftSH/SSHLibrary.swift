@@ -34,10 +34,19 @@ public protocol RawLibrary {
     
 }
 
-// MARK: - Fingerprint enum
+// MARK: - FingerprintHashType enum
 
-public enum Fingerprint {
+public enum FingerprintHashType: CustomStringConvertible {
+    
     case md5, sha1
+    
+    public var description: String {
+        switch self {
+        case .md5:  return "MD5"
+        case .sha1: return "SHA1"
+        }
+    }
+    
 }
 
 // MARK: - AuthenticationMethod enum
@@ -103,7 +112,7 @@ public protocol RawSession {
 
     func setBanner(_ banner: String) throws
     func handshake(_ socket: CFSocket) throws
-    func fingerprint(_ hash: Fingerprint) -> String
+    func fingerprint(_ hashType: FingerprintHashType) -> String?
     func authenticationList(_ username: String) throws -> [String]
     func authenticateByPassword(_ username: String, password: String) throws
     func authenticateByKeyboardInteractive(_ username: String, callback: @escaping ((String) -> String)) throws
