@@ -81,12 +81,6 @@ public class SSHShell<T: RawLibrary>: SSHChannel<T> {
             try super.open()
             
             self.log.debug("Opening the shell...")
-            
-            // Set blocking mode
-            self.session.blocking = true
-            
-            // Open a shell
-            try self.channel.shell()
 
             // Read the received data
             self.readSource = DispatchSource.makeReadSource(fileDescriptor: CFSocketGetNative(self.socket), queue: self.queue.queue)
@@ -152,7 +146,6 @@ public class SSHShell<T: RawLibrary>: SSHChannel<T> {
                     strongSelf.close()
                 }
             }
-            readSource.resume()
 
             // Write the input data
             self.writeSource = DispatchSource.makeWriteSource(fileDescriptor: CFSocketGetNative(self.socket), queue: self.queue.queue)
@@ -209,6 +202,18 @@ public class SSHShell<T: RawLibrary>: SSHChannel<T> {
                     writeSource.resume()
                 }
             }
+            
+            // Set blocking mode
+            self.session.blocking = true
+            
+            // Open a shell
+            try self.channel.shell()
+            
+            // Set non-blocking mode
+            self.session.blocking = false
+            
+            // Start listening for new data
+            readSource.resume()
             
             self.log.debug("Shell opened successfully")
         }
