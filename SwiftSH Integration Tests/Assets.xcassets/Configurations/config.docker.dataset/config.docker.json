@@ -1,0 +1,23 @@
+{
+    "session": {
+        "host": "localhost",
+        "port": 2222,
+        "banner": "SwiftSH-Integration-Tests"
+    },
+    "authentication": {
+        "password": {
+            "username": "root",
+            "password": "root"
+        },
+        "keyboardInteractive": {
+            "username": "root",
+            "password": "root"
+        },
+        "publicKey": {
+            "username": "root",
+            "password": "rootroot",
+            "publicKey": "public-key.docker",
+            "privateKey": "private-key.docker"
+        }
+    }
+}
