@@ -346,9 +346,19 @@ extension Libssh2 {
             }
         }
 
-        func authenticateByPublicKey(_ username: String, password: String, publicKey: String, privateKey: String) throws {
+        func authenticateByPublicKeyFromFile(_ username: String, password: String, publicKey: String, privateKey: String) throws {
             try libssh2_function {
                 libssh2_userauth_publickey_fromfile_ex(self.session, username, UInt32(username.utf8.count), publicKey, privateKey, password)
+            }
+        }
+        
+        func authenticateByPublicKeyFromMemory(_ username: String, password: String, publicKey: Data, privateKey: Data) throws {
+            try libssh2_function {
+                publicKey.withUnsafeBytes { publicKeyPointer in
+                    privateKey.withUnsafeBytes { privateKeyPointer in
+                        libssh2_userauth_publickey_frommemory(self.session, username, username.utf8.count, publicKeyPointer, publicKey.count, privateKeyPointer, privateKey.count, password)
+                    }
+                }
             }
         }
 

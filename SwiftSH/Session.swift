@@ -312,12 +312,16 @@ open class SSHSession<T: RawLibrary> {
                     // Keyboard Interactive authentication
                     try self.session.authenticateByKeyboardInteractive(username, callback: callback)
 
-                case .byPublicKey(let username, let password, let publicKey, let privateKey):
+                case .byPublicKeyFromFile(let username, let password, let publicKey, let privateKey):
                     // Public Key authentication
                     let publicKey  = (publicKey as NSString).expandingTildeInPath
                     let privateKey = (privateKey as NSString).expandingTildeInPath
 
-                    try self.session.authenticateByPublicKey(username, password: password, publicKey: publicKey, privateKey: privateKey)
+                    try self.session.authenticateByPublicKeyFromFile(username, password: password, publicKey: publicKey, privateKey: privateKey)
+                
+                case .byPublicKeyFromMemory(let username, let password, let publicKey, let privateKey):
+                    // Public Key authentication
+                    try self.session.authenticateByPublicKeyFromMemory(username, password: password, publicKey: publicKey, privateKey: privateKey)
             }
         }
     }
