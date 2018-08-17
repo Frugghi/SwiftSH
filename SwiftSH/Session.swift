@@ -314,7 +314,7 @@ open class SSHSession<T: RawLibrary> {
 
                 case .byPublicKeyFromFile(let username, let password, let publicKey, let privateKey):
                     // Public Key authentication
-                    let publicKey  = (publicKey as NSString).expandingTildeInPath
+                    let publicKey  = (publicKey as NSString?)?.expandingTildeInPath
                     let privateKey = (privateKey as NSString).expandingTildeInPath
 
                     try self.session.authenticateByPublicKeyFromFile(username, password: password, publicKey: publicKey, privateKey: privateKey)

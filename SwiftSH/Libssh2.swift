@@ -346,17 +346,21 @@ extension Libssh2 {
             }
         }
 
-        func authenticateByPublicKeyFromFile(_ username: String, password: String, publicKey: String, privateKey: String) throws {
+        func authenticateByPublicKeyFromFile(_ username: String, password: String, publicKey: String?, privateKey: String) throws {
             try libssh2_function {
                 libssh2_userauth_publickey_fromfile_ex(self.session, username, UInt32(username.utf8.count), publicKey, privateKey, password)
             }
         }
         
-        func authenticateByPublicKeyFromMemory(_ username: String, password: String, publicKey: Data, privateKey: Data) throws {
+        func authenticateByPublicKeyFromMemory(_ username: String, password: String, publicKey: Data?, privateKey: Data) throws {
             try libssh2_function {
-                publicKey.withUnsafeBytes { publicKeyPointer in
-                    privateKey.withUnsafeBytes { privateKeyPointer in
-                        libssh2_userauth_publickey_frommemory(self.session, username, username.utf8.count, publicKeyPointer, publicKey.count, privateKeyPointer, privateKey.count, password)
+                privateKey.withUnsafeBytes { (privateKeyPointer: UnsafePointer<Int8>) -> Int32 in
+                    if let publicKey = publicKey {
+                        return publicKey.withUnsafeBytes { publicKeyPointer in
+                            libssh2_userauth_publickey_frommemory(self.session, username, username.utf8.count, publicKeyPointer, publicKey.count, privateKeyPointer, privateKey.count, password)
+                        }
+                    } else {
+                        return libssh2_userauth_publickey_frommemory(self.session, username, username.utf8.count, nil, 0, privateKeyPointer, privateKey.count, password)
                     }
                 }
             }
@@ -582,10 +586,10 @@ private func libssh2_success(_ function: () -> Int32) -> Bool {
     return returnCode == 0
 }
 
-private func libssh2_function<T: BinaryInteger>(_ function: () -> T) throws {
+private func libssh2_function(_ function: () -> Int32) throws {
     var returnCode: Int32
     repeat {
-        returnCode = Int32(Int64(function()))
+        returnCode = function()
     } while returnCode == LIBSSH2_ERROR_EAGAIN
 
     guard returnCode == 0 else {

@@ -82,8 +82,8 @@ public enum AuthenticationChallenge {
 
     case byPassword(username: String, password: String)
     case byKeyboardInteractive(username: String, callback: ((String) -> String))
-    case byPublicKeyFromFile(username: String, password: String, publicKey: String, privateKey: String)
-    case byPublicKeyFromMemory(username: String, password: String, publicKey: Data, privateKey: Data)
+    case byPublicKeyFromFile(username: String, password: String, publicKey: String?, privateKey: String)
+    case byPublicKeyFromMemory(username: String, password: String, publicKey: Data?, privateKey: Data)
 
     var username: String {
         switch self {
@@ -117,8 +117,8 @@ public protocol RawSession {
     func authenticationList(_ username: String) throws -> [String]
     func authenticateByPassword(_ username: String, password: String) throws
     func authenticateByKeyboardInteractive(_ username: String, callback: @escaping ((String) -> String)) throws
-    func authenticateByPublicKeyFromFile(_ username: String, password: String, publicKey: String, privateKey: String) throws
-    func authenticateByPublicKeyFromMemory(_ username: String, password: String, publicKey: Data, privateKey: Data) throws
+    func authenticateByPublicKeyFromFile(_ username: String, password: String, publicKey: String?, privateKey: String) throws
+    func authenticateByPublicKeyFromMemory(_ username: String, password: String, publicKey: Data?, privateKey: Data) throws
     func disconnect() throws
     
 }

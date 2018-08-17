@@ -63,22 +63,22 @@ class AuthenticationTests: XCTestCase {
         self.authenticate(.byPublicKeyFromMemory(username: username, password: password, publicKey: publicKey, privateKey: privateKey))
     }
     
-    func testAuthenticationByPublicKeyFromFile() {
-        let writeTempFile = { (data: Data) throws -> URL? in
-            let filePath = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(UUID().uuidString)
-            
-            try data.write(to: filePath)
-            
-            return filePath
-        }
+    func testAuthenticationByPublicKeyFromMemoryWithNilPublicKey() {
+        let username = self.config.authentication.publicKey.username
+        let password = self.config.authentication.publicKey.password
+        let privateKey = NSDataAsset(name: self.config.authentication.publicKey.privateKey, bundle: Config.bundle)!.data
         
+        self.authenticate(.byPublicKeyFromMemory(username: username, password: password, publicKey: nil, privateKey: privateKey))
+    }
+    
+    func testAuthenticationByPublicKeyFromFile() {
         let username = self.config.authentication.publicKey.username
         let password = self.config.authentication.publicKey.password
         var publicKey = ""
         var privateKey = ""
         
-        XCTAssertNoThrow(publicKey = try writeTempFile(NSDataAsset(name: self.config.authentication.publicKey.publicKey, bundle: Config.bundle)!.data)!.path)
-        XCTAssertNoThrow(privateKey = try writeTempFile(NSDataAsset(name: self.config.authentication.publicKey.privateKey, bundle: Config.bundle)!.data)!.path)
+        XCTAssertNoThrow(publicKey = try self.writeTempFile(NSDataAsset(name: self.config.authentication.publicKey.publicKey, bundle: Config.bundle)!.data)!.path)
+        XCTAssertNoThrow(privateKey = try self.writeTempFile(NSDataAsset(name: self.config.authentication.publicKey.privateKey, bundle: Config.bundle)!.data)!.path)
                 
         defer {
             _ = URL(string: publicKey)?.withUnsafeFileSystemRepresentation { unlink($0) }
@@ -86,6 +86,28 @@ class AuthenticationTests: XCTestCase {
         }
         
         self.authenticate(.byPublicKeyFromFile(username: username, password: password, publicKey: publicKey, privateKey: privateKey))
+    }
+    
+    func testAuthenticationByPublicKeyFromFileWithNilPublicKey() {
+        let username = self.config.authentication.publicKey.username
+        let password = self.config.authentication.publicKey.password
+        var privateKey = ""
+        
+        XCTAssertNoThrow(privateKey = try self.writeTempFile(NSDataAsset(name: self.config.authentication.publicKey.privateKey, bundle: Config.bundle)!.data)!.path)
+        
+        defer {
+            _ = URL(string: privateKey)?.withUnsafeFileSystemRepresentation { unlink($0) }
+        }
+        
+        self.authenticate(.byPublicKeyFromFile(username: username, password: password, publicKey: nil, privateKey: privateKey))
+    }
+    
+    private func writeTempFile(_ data: Data) throws -> URL? {
+        let filePath = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(UUID().uuidString)
+        
+        try data.write(to: filePath)
+        
+        return filePath
     }
     
     private func authenticate(_ authenticationChallenge: AuthenticationChallenge) {
