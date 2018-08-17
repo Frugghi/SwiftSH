@@ -99,6 +99,7 @@ public class SSHCommand<T: RawLibrary>: SSHChannel<T> {
                 strongSelf.session.blocking = false
 
                 // Read the result
+                var socketClosed = true
                 do {
                     let data = try strongSelf.channel.read()
                     if strongSelf.response == nil {
@@ -106,6 +107,8 @@ public class SSHCommand<T: RawLibrary>: SSHChannel<T> {
                     }
 
                     strongSelf.response!.append(data)
+                    
+                    socketClosed = false
                 } catch let error {
                     strongSelf.log.error("[STD] \(error)")
                 }
@@ -120,12 +123,14 @@ public class SSHCommand<T: RawLibrary>: SSHChannel<T> {
 
                         strongSelf.error!.append(data)
                     }
+                    
+                    socketClosed = false
                 } catch let error {
                     strongSelf.log.error("[ERR] \(error)")
                 }
 
                 // Check if we can return the response
-                if strongSelf.channel.receivedEOF || strongSelf.channel.exitStatus() != nil {
+                if strongSelf.channel.receivedEOF || strongSelf.channel.exitStatus() != nil || socketClosed {
                     defer {
                         strongSelf.cancelSources()
                     }
