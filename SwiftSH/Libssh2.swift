@@ -414,8 +414,8 @@ extension Libssh2 {
         
         func openSCPChannel(remotePath path: String) throws {
             var fileInfo = libssh2_struct_stat()
-            self.channel = try libssh2_function(self.session) {
-                libssh2_scp_recv2(self.session, path, &fileInfo)
+            self.channel = try libssh2_function(self.session) { session in
+                libssh2_scp_recv2(session, path, &fileInfo)
             }
         }
 
