@@ -1,0 +1,1447 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Channel.swift",
+      "line": 25,
+      "symbol": "SSHChannel",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Channel.swift",
+      "line": 29,
+      "symbol": "SSHChannel.terminal",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Channel.swift",
+      "line": 108,
+      "symbol": "SSHChannel.disconnect(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Channel.swift",
+      "line": 118,
+      "symbol": "SSHChannel.setTerminalSize(width:height:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Channel.swift",
+      "line": 124,
+      "symbol": "SSHChannel.setTerminalSize(width:height:completion:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Command.swift",
+      "line": 25,
+      "symbol": "SSHCommand",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Command.swift",
+      "line": 34,
+      "symbol": "SSHCommand.init(host:port:environment:terminal:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Command.swift",
+      "line": 42,
+      "symbol": "SSHCommand.close()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Command.swift",
+      "line": 65,
+      "symbol": "SSHCommand.execute(_:completion:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Command.swift",
+      "line": 193,
+      "symbol": "SSHCommand.execute(_:completion:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 25,
+      "symbol": "SSHError",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 26,
+      "symbol": "SSHError.unknown",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 28,
+      "symbol": "SSHError.bannerReceive",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 29,
+      "symbol": "SSHError.bannerSend",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 30,
+      "symbol": "SSHError.invalidMessageAuthenticationCode",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 31,
+      "symbol": "SSHError.decrypt",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 32,
+      "symbol": "SSHError.methodNone",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 33,
+      "symbol": "SSHError.requestDenied",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 34,
+      "symbol": "SSHError.methodNotSupported",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 35,
+      "symbol": "SSHError.invalid",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 36,
+      "symbol": "SSHError.agentProtocol",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 37,
+      "symbol": "SSHError.encrypt",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 40,
+      "symbol": "SSHError.allocation",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 41,
+      "symbol": "SSHError.timeout",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 42,
+      "symbol": "SSHError.protocol",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 43,
+      "symbol": "SSHError.again",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 44,
+      "symbol": "SSHError.bufferTooSmall",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 45,
+      "symbol": "SSHError.badUse",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 46,
+      "symbol": "SSHError.compress",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 47,
+      "symbol": "SSHError.outOfBoundary",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 50,
+      "symbol": "SSHError.alreadyConnected",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 51,
+      "symbol": "SSHError.hostResolutionFailed",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 52,
+      "symbol": "SSHError.keyExchangeFailure",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 53,
+      "symbol": "SSHError.hostkey",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 56,
+      "symbol": "SSHError.authenticationFailed",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 57,
+      "symbol": "SSHError.passwordExpired",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 58,
+      "symbol": "SSHError.publicKeyUnverified",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 59,
+      "symbol": "SSHError.publicKeyProtocol",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 60,
+      "symbol": "SSHError.publicKeyFile",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 61,
+      "symbol": "SSHError.unsupportedAuthenticationMethod",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 62,
+      "symbol": "SSHError.knownHosts",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 65,
+      "symbol": "SSHError.Socket",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 66,
+      "symbol": "SSHError.Socket.write",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 67,
+      "symbol": "SSHError.Socket.read",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 68,
+      "symbol": "SSHError.Socket.disconnected",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 69,
+      "symbol": "SSHError.Socket.timeout",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 70,
+      "symbol": "SSHError.Socket.invalid",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 74,
+      "symbol": "SSHError.Channel",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 75,
+      "symbol": "SSHError.Channel.unknown",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 76,
+      "symbol": "SSHError.Channel.alreadyOpen",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 77,
+      "symbol": "SSHError.Channel.invalid",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 78,
+      "symbol": "SSHError.Channel.outOfOrder",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 79,
+      "symbol": "SSHError.Channel.failure",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 80,
+      "symbol": "SSHError.Channel.requestDenied",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 81,
+      "symbol": "SSHError.Channel.windowExceeded",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 82,
+      "symbol": "SSHError.Channel.packetExceeded",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 83,
+      "symbol": "SSHError.Channel.closed",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 84,
+      "symbol": "SSHError.Channel.sentEndOfFile",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 88,
+      "symbol": "SSHError.SFTP",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 89,
+      "symbol": "SSHError.SFTP.unknown",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 90,
+      "symbol": "SSHError.SFTP.invalidSession",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 91,
+      "symbol": "SSHError.SFTP.endOfFile",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 92,
+      "symbol": "SSHError.SFTP.noSuchFile",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 93,
+      "symbol": "SSHError.SFTP.permissionDenied",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 94,
+      "symbol": "SSHError.SFTP.failure",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 95,
+      "symbol": "SSHError.SFTP.badMessage",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 96,
+      "symbol": "SSHError.SFTP.noConnection",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 97,
+      "symbol": "SSHError.SFTP.connectionLost",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 98,
+      "symbol": "SSHError.SFTP.operationUnsupported",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 99,
+      "symbol": "SSHError.SFTP.invalidHandle",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 100,
+      "symbol": "SSHError.SFTP.noSuchPath",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 101,
+      "symbol": "SSHError.SFTP.fileAlreadyExists",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 102,
+      "symbol": "SSHError.SFTP.writeProtect",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 103,
+      "symbol": "SSHError.SFTP.noMedia",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 104,
+      "symbol": "SSHError.SFTP.noSpaceOnFilesystem",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 105,
+      "symbol": "SSHError.SFTP.quotaExceeded",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 106,
+      "symbol": "SSHError.SFTP.unknownPrincipal",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 107,
+      "symbol": "SSHError.SFTP.lockConflict",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 108,
+      "symbol": "SSHError.SFTP.directoryNotEmpty",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 109,
+      "symbol": "SSHError.SFTP.notADirectory",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 110,
+      "symbol": "SSHError.SFTP.invalidFilename",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 111,
+      "symbol": "SSHError.SFTP.linkLoop",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 115,
+      "symbol": "SSHError.SCP",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 116,
+      "symbol": "SSHError.SCP.protocol",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 117,
+      "symbol": "SSHError.SCP.invalidPath",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 121,
+      "symbol": "SSHError.Command",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 122,
+      "symbol": "SSHError.Command.execError",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 126,
+      "symbol": "SSHDisconnectionCode",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 127,
+      "symbol": "SSHDisconnectionCode.hostNotAllowedToConnect",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 128,
+      "symbol": "SSHDisconnectionCode.protocolError",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 129,
+      "symbol": "SSHDisconnectionCode.keyExchangeFailed",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 130,
+      "symbol": "SSHDisconnectionCode.reserved",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 131,
+      "symbol": "SSHDisconnectionCode.macError",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 132,
+      "symbol": "SSHDisconnectionCode.compressionError",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 133,
+      "symbol": "SSHDisconnectionCode.serviceNotAvailable",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 134,
+      "symbol": "SSHDisconnectionCode.protocolVersionNotSupported",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 135,
+      "symbol": "SSHDisconnectionCode.hostKeyNotVerifiable",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 136,
+      "symbol": "SSHDisconnectionCode.connectionLost",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 137,
+      "symbol": "SSHDisconnectionCode.byApplication",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 138,
+      "symbol": "SSHDisconnectionCode.tooManyConnections",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 139,
+      "symbol": "SSHDisconnectionCode.authenticationCancelledByUser",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 140,
+      "symbol": "SSHDisconnectionCode.noMoreAuthenticationMethodsAvailable",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Error.swift",
+      "line": 141,
+      "symbol": "SSHDisconnectionCode.illegalUserName",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Libssh2.swift",
+      "line": 27,
+      "symbol": "SSH",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Libssh2.swift",
+      "line": 28,
+      "symbol": "Channel",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Libssh2.swift",
+      "line": 29,
+      "symbol": "Command",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Libssh2.swift",
+      "line": 30,
+      "symbol": "Shell",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Libssh2.swift",
+      "line": 34,
+      "symbol": "Libssh2",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Libssh2.swift",
+      "line": 36,
+      "symbol": "Libssh2.name",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Libssh2.swift",
+      "line": 37,
+      "symbol": "Libssh2.version",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Libssh2.swift",
+      "line": 39,
+      "symbol": "Libssh2.newSession()",
+      "symbol_kind": "source.lang.swift.decl.function.method.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Libssh2.swift",
+      "line": 43,
+      "symbol": "Libssh2.newChannel(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Logger.swift",
+      "line": 27,
+      "symbol": "Logger",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Logger.swift",
+      "line": 29,
+      "symbol": "Logger.enabled",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Logger.swift",
+      "line": 30,
+      "symbol": "Logger.level",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Logger.swift",
+      "line": 32,
+      "symbol": "Logger.debug(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Logger.swift",
+      "line": 33,
+      "symbol": "Logger.info(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Logger.swift",
+      "line": 34,
+      "symbol": "Logger.warn(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Logger.swift",
+      "line": 35,
+      "symbol": "Logger.error(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Logger.swift",
+      "line": 41,
+      "symbol": "LogLevel",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Logger.swift",
+      "line": 43,
+      "symbol": "LogLevel.debug",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Logger.swift",
+      "line": 43,
+      "symbol": "LogLevel.error",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Logger.swift",
+      "line": 43,
+      "symbol": "LogLevel.info",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Logger.swift",
+      "line": 43,
+      "symbol": "LogLevel.warning",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/SSHLibrary.swift",
+      "line": 27,
+      "symbol": "RawLibrary",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/SSHLibrary.swift",
+      "line": 29,
+      "symbol": "RawLibrary.name",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/SSHLibrary.swift",
+      "line": 30,
+      "symbol": "RawLibrary.version",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/SSHLibrary.swift",
+      "line": 32,
+      "symbol": "RawLibrary.newSession()",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/SSHLibrary.swift",
+      "line": 33,
+      "symbol": "RawLibrary.newChannel(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/SSHLibrary.swift",
+      "line": 39,
+      "symbol": "FingerprintHashType",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/SSHLibrary.swift",
+      "line": 41,
+      "symbol": "FingerprintHashType.md5",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/SSHLibrary.swift",
+      "line": 41,
+      "symbol": "FingerprintHashType.sha1",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/SSHLibrary.swift",
+      "line": 54,
+      "symbol": "AuthenticationMethod",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/SSHLibrary.swift",
+      "line": 56,
+      "symbol": "AuthenticationMethod.keyboardInteractive",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/SSHLibrary.swift",
+      "line": 56,
+      "symbol": "AuthenticationMethod.password",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/SSHLibrary.swift",
+      "line": 56,
+      "symbol": "AuthenticationMethod.publicKey",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/SSHLibrary.swift",
+      "line": 57,
+      "symbol": "AuthenticationMethod.unknown",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/SSHLibrary.swift",
+      "line": 59,
+      "symbol": "AuthenticationMethod.init(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/SSHLibrary.swift",
+      "line": 81,
+      "symbol": "AuthenticationChallenge",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/SSHLibrary.swift",
+      "line": 83,
+      "symbol": "AuthenticationChallenge.byPassword",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/SSHLibrary.swift",
+      "line": 84,
+      "symbol": "AuthenticationChallenge.byKeyboardInteractive",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/SSHLibrary.swift",
+      "line": 85,
+      "symbol": "AuthenticationChallenge.byPublicKeyFromFile",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/SSHLibrary.swift",
+      "line": 86,
+      "symbol": "AuthenticationChallenge.byPublicKeyFromMemory",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/SSHLibrary.swift",
+      "line": 107,
+      "symbol": "RawSession",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/SSHLibrary.swift",
+      "line": 109,
+      "symbol": "RawSession.authenticated",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/SSHLibrary.swift",
+      "line": 110,
+      "symbol": "RawSession.blocking",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/SSHLibrary.swift",
+      "line": 111,
+      "symbol": "RawSession.banner",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/SSHLibrary.swift",
+      "line": 112,
+      "symbol": "RawSession.timeout",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/SSHLibrary.swift",
+      "line": 114,
+      "symbol": "RawSession.setBanner(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/SSHLibrary.swift",
+      "line": 115,
+      "symbol": "RawSession.handshake(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/SSHLibrary.swift",
+      "line": 116,
+      "symbol": "RawSession.fingerprint(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/SSHLibrary.swift",
+      "line": 117,
+      "symbol": "RawSession.authenticationList(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/SSHLibrary.swift",
+      "line": 118,
+      "symbol": "RawSession.authenticateByPassword(_:password:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/SSHLibrary.swift",
+      "line": 119,
+      "symbol": "RawSession.authenticateByKeyboardInteractive(_:callback:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/SSHLibrary.swift",
+      "line": 120,
+      "symbol": "RawSession.authenticateByPublicKeyFromFile(_:password:publicKey:privateKey:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/SSHLibrary.swift",
+      "line": 121,
+      "symbol": "RawSession.authenticateByPublicKeyFromMemory(_:password:publicKey:privateKey:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/SSHLibrary.swift",
+      "line": 122,
+      "symbol": "RawSession.disconnect()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/SSHLibrary.swift",
+      "line": 128,
+      "symbol": "Environment",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/SSHLibrary.swift",
+      "line": 130,
+      "symbol": "Environment.name",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/SSHLibrary.swift",
+      "line": 131,
+      "symbol": "Environment.variable",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/SSHLibrary.swift",
+      "line": 137,
+      "symbol": "Terminal",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/SSHLibrary.swift",
+      "line": 139,
+      "symbol": "Terminal.name",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/SSHLibrary.swift",
+      "line": 140,
+      "symbol": "Terminal.width",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/SSHLibrary.swift",
+      "line": 141,
+      "symbol": "Terminal.height",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/SSHLibrary.swift",
+      "line": 147,
+      "symbol": "Terminal.init(_:width:height:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/SSHLibrary.swift",
+      "line": 175,
+      "symbol": "RawChannel",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/SSHLibrary.swift",
+      "line": 177,
+      "symbol": "RawChannel.opened",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/SSHLibrary.swift",
+      "line": 178,
+      "symbol": "RawChannel.receivedEOF",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/SSHLibrary.swift",
+      "line": 180,
+      "symbol": "RawChannel.openChannel()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/SSHLibrary.swift",
+      "line": 181,
+      "symbol": "RawChannel.closeChannel()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/SSHLibrary.swift",
+      "line": 182,
+      "symbol": "RawChannel.setEnvironment(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/SSHLibrary.swift",
+      "line": 183,
+      "symbol": "RawChannel.requestPseudoTerminal(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/SSHLibrary.swift",
+      "line": 184,
+      "symbol": "RawChannel.setPseudoTerminalSize(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/SSHLibrary.swift",
+      "line": 185,
+      "symbol": "RawChannel.exec(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/SSHLibrary.swift",
+      "line": 186,
+      "symbol": "RawChannel.shell()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/SSHLibrary.swift",
+      "line": 187,
+      "symbol": "RawChannel.read()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/SSHLibrary.swift",
+      "line": 188,
+      "symbol": "RawChannel.readError()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/SSHLibrary.swift",
+      "line": 189,
+      "symbol": "RawChannel.write(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/SSHLibrary.swift",
+      "line": 190,
+      "symbol": "RawChannel.exitStatus()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/SSHLibrary.swift",
+      "line": 191,
+      "symbol": "RawChannel.sendEOF()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/SSHLibrary.swift",
+      "line": 197,
+      "symbol": "RawSFTP",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/SSHLibrary.swift",
+      "line": 203,
+      "symbol": "RawSCP",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Session.swift",
+      "line": 25,
+      "symbol": "SSHCompletionBlock",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Session.swift",
+      "line": 27,
+      "symbol": "SSHSession",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Session.swift",
+      "line": 51,
+      "symbol": "SSHSession.init(host:port:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Session.swift",
+      "line": 101,
+      "symbol": "SSHSession.connect()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Session.swift",
+      "line": 107,
+      "symbol": "SSHSession.connect(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Session.swift",
+      "line": 225,
+      "symbol": "SSHSession.disconnect(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Session.swift",
+      "line": 272,
+      "symbol": "SSHSession.supportedAuthenticationMethods(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Session.swift",
+      "line": 278,
+      "symbol": "SSHSession.authenticate(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Session.swift",
+      "line": 284,
+      "symbol": "SSHSession.authenticate(_:completion:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Session.swift",
+      "line": 329,
+      "symbol": "SSHSession.checkFingerprint(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Session.swift",
+      "line": 351,
+      "symbol": "SSHSession.checkFingerprint(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Shell.swift",
+      "line": 25,
+      "symbol": "SSHShell",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Shell.swift",
+      "line": 39,
+      "symbol": "SSHShell.init(host:port:environment:terminal:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Shell.swift",
+      "line": 55,
+      "symbol": "SSHShell.readStringCallback",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Shell.swift",
+      "line": 56,
+      "symbol": "SSHShell.readDataCallback",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Shell.swift",
+      "line": 58,
+      "symbol": "SSHShell.withCallback(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Shell.swift",
+      "line": 64,
+      "symbol": "SSHShell.withCallback(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Shell.swift",
+      "line": 72,
+      "symbol": "SSHShell.open()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Shell.swift",
+      "line": 78,
+      "symbol": "SSHShell.open(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Shell.swift",
+      "line": 228,
+      "symbol": "SSHShell.close(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Shell.swift",
+      "line": 269,
+      "symbol": "SSHShell.write(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Shell.swift",
+      "line": 275,
+      "symbol": "SSHShell.write(_:completion:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Shell.swift",
+      "line": 289,
+      "symbol": "SSHShell.write(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftSH/SwiftSH/Shell.swift",
+      "line": 295,
+      "symbol": "SSHShell.write(_:completion:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/travis/build/Frugghi/SwiftSH"
+}

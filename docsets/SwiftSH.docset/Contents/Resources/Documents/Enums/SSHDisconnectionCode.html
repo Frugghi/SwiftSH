@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>SSHDisconnectionCode Enumeration Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Enum/SSHDisconnectionCode" class="dashAnchor"></a>
+    <a title="SSHDisconnectionCode Enumeration Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">SwiftSH Docs</a> (8% documented)</p>
+        <p class="header-right"><a href="https://github.com/Frugghi/SwiftSH"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">SwiftSH Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        SSHDisconnectionCode Enumeration Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/Libssh2.html">Libssh2</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SSHChannel.html">SSHChannel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SSHCommand.html">SSHCommand</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SSHSession.html">SSHSession</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SSHShell.html">SSHShell</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/AuthenticationChallenge.html">AuthenticationChallenge</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/AuthenticationMethod.html">AuthenticationMethod</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/FingerprintHashType.html">FingerprintHashType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/LogLevel.html">LogLevel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/SSHDisconnectionCode.html">SSHDisconnectionCode</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/SSHError.html">SSHError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/SSHError/Socket.html">– Socket</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/SSHError/Channel.html">– Channel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/SSHError/SFTP.html">– SFTP</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/SSHError/SCP.html">– SCP</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/SSHError/Command.html">– Command</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/Logger.html">Logger</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/RawChannel.html">RawChannel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/RawLibrary.html">RawLibrary</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/s:7SwiftSH6RawSCPP">RawSCP</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/s:7SwiftSH7RawSFTPP">RawSFTP</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/RawSession.html">RawSession</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/Environment.html">Environment</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Terminal.html">Terminal</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:7SwiftSH7Channela">Channel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:7SwiftSH7Commanda">Command</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:7SwiftSH3SSHa">SSH</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:7SwiftSH18SSHCompletionBlocka">SSHCompletionBlock</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:7SwiftSH5Shella">Shell</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>SSHDisconnectionCode</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">SSHDisconnectionCode</span> <span class="p">:</span> <span class="kt">Int</span></code></pre>
+
+                </div>
+              </div>
+            <p>Undocumented</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7SwiftSH20SSHDisconnectionCodeO23hostNotAllowedToConnectA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/hostNotAllowedToConnect" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7SwiftSH20SSHDisconnectionCodeO23hostNotAllowedToConnectA2CmF">hostNotAllowedToConnect</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">hostNotAllowedToConnect</span> <span class="o">=</span> <span class="mi">1</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7SwiftSH20SSHDisconnectionCodeO13protocolErrorA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/protocolError" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7SwiftSH20SSHDisconnectionCodeO13protocolErrorA2CmF">protocolError</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">protocolError</span> <span class="o">=</span> <span class="mi">2</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7SwiftSH20SSHDisconnectionCodeO17keyExchangeFailedA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/keyExchangeFailed" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7SwiftSH20SSHDisconnectionCodeO17keyExchangeFailedA2CmF">keyExchangeFailed</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">keyExchangeFailed</span> <span class="o">=</span> <span class="mi">3</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7SwiftSH20SSHDisconnectionCodeO8reservedA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/reserved" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7SwiftSH20SSHDisconnectionCodeO8reservedA2CmF">reserved</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">reserved</span> <span class="o">=</span> <span class="mi">4</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7SwiftSH20SSHDisconnectionCodeO8macErrorA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/macError" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7SwiftSH20SSHDisconnectionCodeO8macErrorA2CmF">macError</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">macError</span> <span class="o">=</span> <span class="mi">5</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7SwiftSH20SSHDisconnectionCodeO16compressionErrorA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/compressionError" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7SwiftSH20SSHDisconnectionCodeO16compressionErrorA2CmF">compressionError</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">compressionError</span> <span class="o">=</span> <span class="mi">6</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7SwiftSH20SSHDisconnectionCodeO19serviceNotAvailableA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/serviceNotAvailable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7SwiftSH20SSHDisconnectionCodeO19serviceNotAvailableA2CmF">serviceNotAvailable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">serviceNotAvailable</span> <span class="o">=</span> <span class="mi">7</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7SwiftSH20SSHDisconnectionCodeO27protocolVersionNotSupportedA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/protocolVersionNotSupported" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7SwiftSH20SSHDisconnectionCodeO27protocolVersionNotSupportedA2CmF">protocolVersionNotSupported</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">protocolVersionNotSupported</span> <span class="o">=</span> <span class="mi">8</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7SwiftSH20SSHDisconnectionCodeO20hostKeyNotVerifiableA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/hostKeyNotVerifiable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7SwiftSH20SSHDisconnectionCodeO20hostKeyNotVerifiableA2CmF">hostKeyNotVerifiable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">hostKeyNotVerifiable</span> <span class="o">=</span> <span class="mi">9</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7SwiftSH20SSHDisconnectionCodeO14connectionLostA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/connectionLost" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7SwiftSH20SSHDisconnectionCodeO14connectionLostA2CmF">connectionLost</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">connectionLost</span> <span class="o">=</span> <span class="mi">10</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7SwiftSH20SSHDisconnectionCodeO13byApplicationA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/byApplication" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7SwiftSH20SSHDisconnectionCodeO13byApplicationA2CmF">byApplication</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">byApplication</span> <span class="o">=</span> <span class="mi">11</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7SwiftSH20SSHDisconnectionCodeO18tooManyConnectionsA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/tooManyConnections" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7SwiftSH20SSHDisconnectionCodeO18tooManyConnectionsA2CmF">tooManyConnections</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">tooManyConnections</span> <span class="o">=</span> <span class="mi">12</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7SwiftSH20SSHDisconnectionCodeO29authenticationCancelledByUserA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/authenticationCancelledByUser" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7SwiftSH20SSHDisconnectionCodeO29authenticationCancelledByUserA2CmF">authenticationCancelledByUser</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">authenticationCancelledByUser</span> <span class="o">=</span> <span class="mi">13</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7SwiftSH20SSHDisconnectionCodeO36noMoreAuthenticationMethodsAvailableA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/noMoreAuthenticationMethodsAvailable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7SwiftSH20SSHDisconnectionCodeO36noMoreAuthenticationMethodsAvailableA2CmF">noMoreAuthenticationMethodsAvailable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">noMoreAuthenticationMethodsAvailable</span> <span class="o">=</span> <span class="mi">14</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7SwiftSH20SSHDisconnectionCodeO15illegalUserNameA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/illegalUserName" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7SwiftSH20SSHDisconnectionCodeO15illegalUserNameA2CmF">illegalUserName</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">illegalUserName</span> <span class="o">=</span> <span class="mi">15</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2018 <a class="link" href="https://github.com/Frugghi/SwiftSH" target="_blank" rel="external">Tommaso Madonia</a>. All rights reserved. (Last updated: 2018-08-31)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

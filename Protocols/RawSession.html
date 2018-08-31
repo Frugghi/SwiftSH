@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>RawSession Protocol Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Protocol/RawSession" class="dashAnchor"></a>
+    <a title="RawSession Protocol Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">SwiftSH Docs</a> (8% documented)</p>
+        <p class="header-right"><a href="https://github.com/Frugghi/SwiftSH"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">SwiftSH Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        RawSession Protocol Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/Libssh2.html">Libssh2</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SSHChannel.html">SSHChannel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SSHCommand.html">SSHCommand</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SSHSession.html">SSHSession</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SSHShell.html">SSHShell</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/AuthenticationChallenge.html">AuthenticationChallenge</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/AuthenticationMethod.html">AuthenticationMethod</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/FingerprintHashType.html">FingerprintHashType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/LogLevel.html">LogLevel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/SSHDisconnectionCode.html">SSHDisconnectionCode</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/SSHError.html">SSHError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/SSHError/Socket.html">– Socket</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/SSHError/Channel.html">– Channel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/SSHError/SFTP.html">– SFTP</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/SSHError/SCP.html">– SCP</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/SSHError/Command.html">– Command</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/Logger.html">Logger</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/RawChannel.html">RawChannel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/RawLibrary.html">RawLibrary</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/s:7SwiftSH6RawSCPP">RawSCP</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/s:7SwiftSH7RawSFTPP">RawSFTP</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/RawSession.html">RawSession</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/Environment.html">Environment</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Terminal.html">Terminal</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:7SwiftSH7Channela">Channel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:7SwiftSH7Commanda">Command</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:7SwiftSH3SSHa">SSH</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:7SwiftSH18SSHCompletionBlocka">SSHCompletionBlock</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:7SwiftSH5Shella">Shell</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>RawSession</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">RawSession</span></code></pre>
+
+                </div>
+              </div>
+            <p>Undocumented</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7SwiftSH10RawSessionP13authenticatedSbvp"></a>
+                    <a name="//apple_ref/swift/Property/authenticated" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7SwiftSH10RawSessionP13authenticatedSbvp">authenticated</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">authenticated</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7SwiftSH10RawSessionP8blockingSbvp"></a>
+                    <a name="//apple_ref/swift/Property/blocking" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7SwiftSH10RawSessionP8blockingSbvp">blocking</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">blocking</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7SwiftSH10RawSessionP6bannerSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/banner" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7SwiftSH10RawSessionP6bannerSSSgvp">banner</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">banner</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7SwiftSH10RawSessionP7timeoutSivp"></a>
+                    <a name="//apple_ref/swift/Property/timeout" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7SwiftSH10RawSessionP7timeoutSivp">timeout</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">timeout</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7SwiftSH10RawSessionP9setBannerySSKF"></a>
+                    <a name="//apple_ref/swift/Method/setBanner(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7SwiftSH10RawSessionP9setBannerySSKF">setBanner(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">setBanner</span><span class="p">(</span><span class="n">_</span> <span class="nv">banner</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="k">throws</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7SwiftSH10RawSessionP9handshakeySo8CFSocketCKF"></a>
+                    <a name="//apple_ref/swift/Method/handshake(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7SwiftSH10RawSessionP9handshakeySo8CFSocketCKF">handshake(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">handshake</span><span class="p">(</span><span class="n">_</span> <span class="nv">socket</span><span class="p">:</span> <span class="kt">CFSocket</span><span class="p">)</span> <span class="k">throws</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7SwiftSH10RawSessionP11fingerprintSSSgAA19FingerprintHashTypeOF"></a>
+                    <a name="//apple_ref/swift/Method/fingerprint(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7SwiftSH10RawSessionP11fingerprintSSSgAA19FingerprintHashTypeOF">fingerprint(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">fingerprint</span><span class="p">(</span><span class="n">_</span> <span class="nv">hashType</span><span class="p">:</span> <span class="kt"><a href="../Enums/FingerprintHashType.html">FingerprintHashType</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7SwiftSH10RawSessionP18authenticationListSaySSGSSKF"></a>
+                    <a name="//apple_ref/swift/Method/authenticationList(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7SwiftSH10RawSessionP18authenticationListSaySSGSSKF">authenticationList(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">authenticationList</span><span class="p">(</span><span class="n">_</span> <span class="nv">username</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">String</span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7SwiftSH10RawSessionP22authenticateByPasswordySS_SS8passwordtKF"></a>
+                    <a name="//apple_ref/swift/Method/authenticateByPassword(_:password:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7SwiftSH10RawSessionP22authenticateByPasswordySS_SS8passwordtKF">authenticateByPassword(_:password:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">authenticateByPassword</span><span class="p">(</span><span class="n">_</span> <span class="nv">username</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">password</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="k">throws</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7SwiftSH10RawSessionP33authenticateByKeyboardInteractiveySS_S2Sc8callbacktKF"></a>
+                    <a name="//apple_ref/swift/Method/authenticateByKeyboardInteractive(_:callback:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7SwiftSH10RawSessionP33authenticateByKeyboardInteractiveySS_S2Sc8callbacktKF">authenticateByKeyboardInteractive(_:callback:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">authenticateByKeyboardInteractive</span><span class="p">(</span><span class="n">_</span> <span class="nv">username</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">((</span><span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span><span class="p">))</span> <span class="k">throws</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7SwiftSH10RawSessionP31authenticateByPublicKeyFromFileySS_SS8passwordSSSg06publicH0SS07privateH0tKF"></a>
+                    <a name="//apple_ref/swift/Method/authenticateByPublicKeyFromFile(_:password:publicKey:privateKey:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7SwiftSH10RawSessionP31authenticateByPublicKeyFromFileySS_SS8passwordSSSg06publicH0SS07privateH0tKF">authenticateByPublicKeyFromFile(_:password:publicKey:privateKey:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">authenticateByPublicKeyFromFile</span><span class="p">(</span><span class="n">_</span> <span class="nv">username</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">password</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">publicKey</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="nv">privateKey</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="k">throws</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7SwiftSH10RawSessionP33authenticateByPublicKeyFromMemoryySS_SS8password10Foundation4DataVSg06publicH0AH07privateH0tKF"></a>
+                    <a name="//apple_ref/swift/Method/authenticateByPublicKeyFromMemory(_:password:publicKey:privateKey:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7SwiftSH10RawSessionP33authenticateByPublicKeyFromMemoryySS_SS8password10Foundation4DataVSg06publicH0AH07privateH0tKF">authenticateByPublicKeyFromMemory(_:password:publicKey:privateKey:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">authenticateByPublicKeyFromMemory</span><span class="p">(</span><span class="n">_</span> <span class="nv">username</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">password</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">publicKey</span><span class="p">:</span> <span class="kt">Data</span><span class="p">?,</span> <span class="nv">privateKey</span><span class="p">:</span> <span class="kt">Data</span><span class="p">)</span> <span class="k">throws</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7SwiftSH10RawSessionP10disconnectyyKF"></a>
+                    <a name="//apple_ref/swift/Method/disconnect()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7SwiftSH10RawSessionP10disconnectyyKF">disconnect()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">disconnect</span><span class="p">()</span> <span class="k">throws</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2018 <a class="link" href="https://github.com/Frugghi/SwiftSH" target="_blank" rel="external">Tommaso Madonia</a>. All rights reserved. (Last updated: 2018-08-31)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>SFTP Enumeration Reference</title>
+    <link rel="stylesheet" type="text/css" href="../../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../../js/jquery.min.js" defer></script>
+    <script src="../../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Enum/SFTP" class="dashAnchor"></a>
+    <a title="SFTP Enumeration Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../../index.html">SwiftSH Docs</a> (8% documented)</p>
+        <p class="header-right"><a href="https://github.com/Frugghi/SwiftSH"><img src="../../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../../index.html">SwiftSH Reference</a>
+        <img id="carat" src="../../img/carat.png" />
+        SFTP Enumeration Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../../Classes/Libssh2.html">Libssh2</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/SSHChannel.html">SSHChannel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/SSHCommand.html">SSHCommand</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/SSHSession.html">SSHSession</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/SSHShell.html">SSHShell</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../../Enums/AuthenticationChallenge.html">AuthenticationChallenge</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Enums/AuthenticationMethod.html">AuthenticationMethod</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Enums/FingerprintHashType.html">FingerprintHashType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Enums/LogLevel.html">LogLevel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Enums/SSHDisconnectionCode.html">SSHDisconnectionCode</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Enums/SSHError.html">SSHError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Enums/SSHError/Socket.html">– Socket</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Enums/SSHError/Channel.html">– Channel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Enums/SSHError/SFTP.html">– SFTP</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Enums/SSHError/SCP.html">– SCP</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Enums/SSHError/Command.html">– Command</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../../Protocols/Logger.html">Logger</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Protocols/RawChannel.html">RawChannel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Protocols/RawLibrary.html">RawLibrary</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Protocols.html#/s:7SwiftSH6RawSCPP">RawSCP</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Protocols.html#/s:7SwiftSH7RawSFTPP">RawSFTP</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Protocols/RawSession.html">RawSession</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../../Structs/Environment.html">Environment</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/Terminal.html">Terminal</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../../Typealiases.html#/s:7SwiftSH7Channela">Channel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Typealiases.html#/s:7SwiftSH7Commanda">Command</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Typealiases.html#/s:7SwiftSH3SSHa">SSH</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Typealiases.html#/s:7SwiftSH18SSHCompletionBlocka">SSHCompletionBlock</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Typealiases.html#/s:7SwiftSH5Shella">Shell</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>SFTP</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">SFTP</span> <span class="p">:</span> <span class="kt">Error</span></code></pre>
+
+                </div>
+              </div>
+            <p>Undocumented</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7SwiftSH8SSHErrorO4SFTPO7unknownA2EmF"></a>
+                    <a name="//apple_ref/swift/Element/unknown" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7SwiftSH8SSHErrorO4SFTPO7unknownA2EmF">unknown</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">unknown</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7SwiftSH8SSHErrorO4SFTPO14invalidSessionA2EmF"></a>
+                    <a name="//apple_ref/swift/Element/invalidSession" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7SwiftSH8SSHErrorO4SFTPO14invalidSessionA2EmF">invalidSession</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">invalidSession</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7SwiftSH8SSHErrorO4SFTPO9endOfFileA2EmF"></a>
+                    <a name="//apple_ref/swift/Element/endOfFile" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7SwiftSH8SSHErrorO4SFTPO9endOfFileA2EmF">endOfFile</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">endOfFile</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7SwiftSH8SSHErrorO4SFTPO10noSuchFileA2EmF"></a>
+                    <a name="//apple_ref/swift/Element/noSuchFile" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7SwiftSH8SSHErrorO4SFTPO10noSuchFileA2EmF">noSuchFile</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">noSuchFile</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7SwiftSH8SSHErrorO4SFTPO16permissionDeniedA2EmF"></a>
+                    <a name="//apple_ref/swift/Element/permissionDenied" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7SwiftSH8SSHErrorO4SFTPO16permissionDeniedA2EmF">permissionDenied</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">permissionDenied</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7SwiftSH8SSHErrorO4SFTPO7failureA2EmF"></a>
+                    <a name="//apple_ref/swift/Element/failure" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7SwiftSH8SSHErrorO4SFTPO7failureA2EmF">failure</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">failure</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7SwiftSH8SSHErrorO4SFTPO10badMessageA2EmF"></a>
+                    <a name="//apple_ref/swift/Element/badMessage" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7SwiftSH8SSHErrorO4SFTPO10badMessageA2EmF">badMessage</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">badMessage</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7SwiftSH8SSHErrorO4SFTPO12noConnectionA2EmF"></a>
+                    <a name="//apple_ref/swift/Element/noConnection" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7SwiftSH8SSHErrorO4SFTPO12noConnectionA2EmF">noConnection</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">noConnection</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7SwiftSH8SSHErrorO4SFTPO14connectionLostA2EmF"></a>
+                    <a name="//apple_ref/swift/Element/connectionLost" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7SwiftSH8SSHErrorO4SFTPO14connectionLostA2EmF">connectionLost</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">connectionLost</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7SwiftSH8SSHErrorO4SFTPO20operationUnsupportedA2EmF"></a>
+                    <a name="//apple_ref/swift/Element/operationUnsupported" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7SwiftSH8SSHErrorO4SFTPO20operationUnsupportedA2EmF">operationUnsupported</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">operationUnsupported</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7SwiftSH8SSHErrorO4SFTPO13invalidHandleA2EmF"></a>
+                    <a name="//apple_ref/swift/Element/invalidHandle" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7SwiftSH8SSHErrorO4SFTPO13invalidHandleA2EmF">invalidHandle</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">invalidHandle</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7SwiftSH8SSHErrorO4SFTPO10noSuchPathA2EmF"></a>
+                    <a name="//apple_ref/swift/Element/noSuchPath" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7SwiftSH8SSHErrorO4SFTPO10noSuchPathA2EmF">noSuchPath</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">noSuchPath</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7SwiftSH8SSHErrorO4SFTPO17fileAlreadyExistsA2EmF"></a>
+                    <a name="//apple_ref/swift/Element/fileAlreadyExists" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7SwiftSH8SSHErrorO4SFTPO17fileAlreadyExistsA2EmF">fileAlreadyExists</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">fileAlreadyExists</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7SwiftSH8SSHErrorO4SFTPO12writeProtectA2EmF"></a>
+                    <a name="//apple_ref/swift/Element/writeProtect" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7SwiftSH8SSHErrorO4SFTPO12writeProtectA2EmF">writeProtect</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">writeProtect</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7SwiftSH8SSHErrorO4SFTPO7noMediaA2EmF"></a>
+                    <a name="//apple_ref/swift/Element/noMedia" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7SwiftSH8SSHErrorO4SFTPO7noMediaA2EmF">noMedia</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">noMedia</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7SwiftSH8SSHErrorO4SFTPO19noSpaceOnFilesystemA2EmF"></a>
+                    <a name="//apple_ref/swift/Element/noSpaceOnFilesystem" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7SwiftSH8SSHErrorO4SFTPO19noSpaceOnFilesystemA2EmF">noSpaceOnFilesystem</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">noSpaceOnFilesystem</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7SwiftSH8SSHErrorO4SFTPO13quotaExceededA2EmF"></a>
+                    <a name="//apple_ref/swift/Element/quotaExceeded" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7SwiftSH8SSHErrorO4SFTPO13quotaExceededA2EmF">quotaExceeded</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">quotaExceeded</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7SwiftSH8SSHErrorO4SFTPO16unknownPrincipalA2EmF"></a>
+                    <a name="//apple_ref/swift/Element/unknownPrincipal" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7SwiftSH8SSHErrorO4SFTPO16unknownPrincipalA2EmF">unknownPrincipal</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">unknownPrincipal</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7SwiftSH8SSHErrorO4SFTPO12lockConflictA2EmF"></a>
+                    <a name="//apple_ref/swift/Element/lockConflict" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7SwiftSH8SSHErrorO4SFTPO12lockConflictA2EmF">lockConflict</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">lockConflict</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7SwiftSH8SSHErrorO4SFTPO17directoryNotEmptyA2EmF"></a>
+                    <a name="//apple_ref/swift/Element/directoryNotEmpty" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7SwiftSH8SSHErrorO4SFTPO17directoryNotEmptyA2EmF">directoryNotEmpty</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">directoryNotEmpty</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7SwiftSH8SSHErrorO4SFTPO13notADirectoryA2EmF"></a>
+                    <a name="//apple_ref/swift/Element/notADirectory" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7SwiftSH8SSHErrorO4SFTPO13notADirectoryA2EmF">notADirectory</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">notADirectory</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7SwiftSH8SSHErrorO4SFTPO15invalidFilenameA2EmF"></a>
+                    <a name="//apple_ref/swift/Element/invalidFilename" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7SwiftSH8SSHErrorO4SFTPO15invalidFilenameA2EmF">invalidFilename</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">invalidFilename</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7SwiftSH8SSHErrorO4SFTPO8linkLoopA2EmF"></a>
+                    <a name="//apple_ref/swift/Element/linkLoop" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7SwiftSH8SSHErrorO4SFTPO8linkLoopA2EmF">linkLoop</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">linkLoop</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2018 <a class="link" href="https://github.com/Frugghi/SwiftSH" target="_blank" rel="external">Tommaso Madonia</a>. All rights reserved. (Last updated: 2018-08-31)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

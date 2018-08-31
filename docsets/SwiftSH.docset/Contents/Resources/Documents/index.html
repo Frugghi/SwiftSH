@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>SwiftSH  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="SwiftSH  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html">SwiftSH Docs</a> (8% documented)</p>
+        <p class="header-right"><a href="https://github.com/Frugghi/SwiftSH"><img src="img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">SwiftSH Reference</a>
+        <img id="carat" src="img/carat.png" />
+        SwiftSH  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/Libssh2.html">Libssh2</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/SSHChannel.html">SSHChannel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/SSHCommand.html">SSHCommand</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/SSHSession.html">SSHSession</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/SSHShell.html">SSHShell</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Enums/AuthenticationChallenge.html">AuthenticationChallenge</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/AuthenticationMethod.html">AuthenticationMethod</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/FingerprintHashType.html">FingerprintHashType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/LogLevel.html">LogLevel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/SSHDisconnectionCode.html">SSHDisconnectionCode</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/SSHError.html">SSHError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/SSHError/Socket.html">– Socket</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/SSHError/Channel.html">– Channel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/SSHError/SFTP.html">– SFTP</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/SSHError/SCP.html">– SCP</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/SSHError/Command.html">– Command</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols/Logger.html">Logger</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/RawChannel.html">RawChannel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/RawLibrary.html">RawLibrary</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols.html#/s:7SwiftSH6RawSCPP">RawSCP</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols.html#/s:7SwiftSH7RawSFTPP">RawSFTP</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/RawSession.html">RawSession</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Structs/Environment.html">Environment</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Terminal.html">Terminal</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:7SwiftSH7Channela">Channel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:7SwiftSH7Commanda">Command</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:7SwiftSH3SSHa">SSH</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:7SwiftSH18SSHCompletionBlocka">SSHCompletionBlock</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:7SwiftSH5Shella">Shell</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            
+            <h1 id='swiftsh' class='heading'>SwiftSH</h1>
+
+<p><a href="https://travis-ci.org/Frugghi/SwiftSH"><img src="https://travis-ci.org/Frugghi/SwiftSH.svg?branch=master" alt="Build Status"></a>
+<a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage compatible"></a>
+<a href="https://cocoapods.org/pods/SwiftSH"><img src="https://img.shields.io/cocoapods/v/SwiftSH.svg" alt="Pods"></a>
+<a href="https://cocoapods.org/pods/SwiftSH"><img src="https://img.shields.io/cocoapods/p/SwiftSH.svg" alt="Pod platforms"></a></p>
+
+<p>A Swift SSH framework that wraps <a href="https://www.libssh2.org/">libssh2</a>.</p>
+
+<p><strong>Features:</strong></p>
+
+<ul>
+<li>[x] Thread-safety</li>
+<li>[x] SSH shell</li>
+<li>[x] SSH command</li>
+<li>[ ] SCP</li>
+<li>[ ] SFTP</li>
+<li>[ ] Tests</li>
+<li>[ ] Documentation</li>
+</ul>
+<h2 id='package-installation' class='heading'>:package: Installation</h2>
+<h3 id='cocoapods' class='heading'>CocoaPods</h3>
+
+<p><a href="https://cocoapods.org">CocoaPods</a> is the dependency manager for Swift and Objective-C Cocoa projects. It has over ten thousand libraries and can help you scale your projects elegantly.</p>
+
+<p>Add this to your <em>Podfile</em>:</p>
+<pre class="highlight plaintext"><code>use_frameworks!
+
+pod 'SwiftSH'
+</code></pre>
+<h3 id='carthage' class='heading'>Carthage</h3>
+
+<p><a href="https://github.com/Carthage/Carthage">Carthage</a> builds your dependencies and provides you with binary frameworks, but you retain full control over your project structure and setup.</p>
+
+<p>Add this to your <em>Cartfile</em>:</p>
+<pre class="highlight plaintext"><code>github "Frugghi/SwiftSH"
+</code></pre>
+<h2 id='book-documentation' class='heading'>:book: Documentation</h2>
+
+<p>The API documentation is available <a href="https://frugghi.github.io/SwiftSH/">here</a>.</p>
+<h2 id='computer-usage' class='heading'>:computer: Usage</h2>
+
+<p>Import the framework:</p>
+<pre class="highlight plaintext"><code>import SwiftSH
+</code></pre>
+
+<p>Execute a SSH command:</p>
+<pre class="highlight plaintext"><code>let command = Command(host: "localhost", port: 22)
+// ...
+command.connect()
+       .authenticate(.byPassword(username: "username", password: "password"))
+       .execute(command) { (command, result: String?, error) in
+           if let result = result {
+               print("\(result)")
+           } else {
+               print("ERROR: \(error)")
+           }
+       }
+</code></pre>
+
+<p>Open a SSH shell:</p>
+<pre class="highlight plaintext"><code>let shell = Shell(host: "localhost", port: 22)
+// ...
+shell.withCallback { (string: String?, error: String?) in
+         print("\(string ?? error!)")
+     }
+     .connect()
+     .authenticate(.byPassword(username: "username", password: "password"))
+     .open { (error) in
+         if let error = error {
+             print("\(error)")
+         }
+     }
+// ...
+shell.write("ls -lA") { (error) in
+    if let error = error {
+        print("\(error)")
+    }
+}
+// ...
+shell.disconnect()
+</code></pre>
+<h2 id='warning-openssl-and-libssh2-binaries' class='heading'>:warning: OpenSSL and Libssh2 binaries</h2>
+
+<p><em>SwiftSH</em> includes precompiled binaries of Libssh2 and OpenSSL generated with <a href="https://github.com/Frugghi/iSSH2">this script</a>. For security reasons, you are strongly encouraged to recompile the libraries and replace the binaries.</p>
+<h2 id='page_facing_up-license-a-href-https-raw-githubusercontent-com-frugghi-swiftsh-master-license-img-src-https-img-shields-io-cocoapods-l-swiftsh-svg-alt-license-a' class='heading'>:page_facing_up: License <a href="https://raw.githubusercontent.com/Frugghi/SwiftSH/master/LICENSE"><img src="https://img.shields.io/cocoapods/l/SwiftSH.svg" alt="LICENSE"></a></h2>
+
+<p><em>SwiftSH</em> is released under the MIT license. See <a href="https://raw.githubusercontent.com/Frugghi/SwiftSH/master/LICENSE">LICENSE</a> for details.</p>
+
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2018 <a class="link" href="https://github.com/Frugghi/SwiftSH" target="_blank" rel="external">Tommaso Madonia</a>. All rights reserved. (Last updated: 2018-08-31)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
