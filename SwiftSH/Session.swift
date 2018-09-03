@@ -99,12 +99,11 @@ open class SSHSession<T: RawLibrary> {
     }
 
     public func connect() -> Self {
-        self.connect(nil)
-
-        return self
+        return connect(nil)
     }
 
-    public func connect(_ completion: SSHCompletionBlock?) {
+    @discardableResult
+    public func connect(_ completion: SSHCompletionBlock?) -> Self {
         self.queue.async(completion: completion) {
             defer {
                 if !self.connected {
@@ -220,6 +219,7 @@ open class SSHSession<T: RawLibrary> {
             }
             self.log.debug("Fingerprint is \(self.fingerprint)")
         }
+        return self
     }
 
     public func disconnect(_ completion: (() -> ())?) {
@@ -276,12 +276,11 @@ open class SSHSession<T: RawLibrary> {
     }
 
     public func authenticate(_ challenge: AuthenticationChallenge?) -> Self {
-        self.authenticate(challenge, completion: nil)
-
-        return self
+        return self.authenticate(challenge, completion: nil)
     }
 
-    public func authenticate(_ challenge: AuthenticationChallenge?, completion: SSHCompletionBlock?) {
+    @discardableResult
+    public func authenticate(_ challenge: AuthenticationChallenge?, completion: SSHCompletionBlock?) -> Self {
         self.queue.async(completion: completion) {
             guard let challenge = challenge, !self.authenticated else {
                 return
@@ -324,6 +323,7 @@ open class SSHSession<T: RawLibrary> {
                     try self.session.authenticateByPublicKeyFromMemory(username, password: password, publicKey: publicKey, privateKey: privateKey)
             }
         }
+        return self
     }
     
     public func checkFingerprint(_ callback: @escaping ([FingerprintHashType: String]) -> Bool) -> Self {
