@@ -354,13 +354,16 @@ extension Libssh2 {
         
         func authenticateByPublicKeyFromMemory(_ username: String, password: String, publicKey: Data?, privateKey: Data) throws {
             try libssh2_function {
-                privateKey.withUnsafeBytes { (privateKeyPointer: UnsafePointer<Int8>) -> Int32 in
+                privateKey.withUnsafeBytes { privateKeyPointer in
+                    let privateKeyUnsafePointer = privateKeyPointer.baseAddress!.assumingMemoryBound(to: Int8.self)
+
                     if let publicKey = publicKey {
                         return publicKey.withUnsafeBytes { publicKeyPointer in
-                            libssh2_userauth_publickey_frommemory(self.session, username, username.utf8.count, publicKeyPointer, publicKey.count, privateKeyPointer, privateKey.count, password)
+                            let publicKeyUnsafePointer = publicKeyPointer.baseAddress!.assumingMemoryBound(to: Int8.self)
+                            return libssh2_userauth_publickey_frommemory(self.session, username, username.utf8.count, publicKeyUnsafePointer, publicKey.count, privateKeyUnsafePointer, privateKey.count, password)
                         }
                     } else {
-                        return libssh2_userauth_publickey_frommemory(self.session, username, username.utf8.count, nil, 0, privateKeyPointer, privateKey.count, password)
+                        return libssh2_userauth_publickey_frommemory(self.session, username, username.utf8.count, nil, 0, privateKeyUnsafePointer, privateKey.count, password)
                     }
                 }
             }
@@ -538,7 +541,7 @@ extension Libssh2 {
             repeat {
                 let length = min(data.count - bytesSent, self.bufferSize)
                 let returnCode = data.withUnsafeBytes { buffer in
-                    libssh2_channel_write_ex(channel, 0, buffer + bytesSent, length)
+                    libssh2_channel_write_ex(channel, 0, buffer.baseAddress!.assumingMemoryBound(to: Int8.self) + bytesSent, length)
                 }
 
                 guard returnCode >= 0 || returnCode == Int(LIBSSH2_ERROR_EAGAIN) else {
