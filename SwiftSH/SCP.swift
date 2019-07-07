@@ -53,7 +53,7 @@ public class SCPSession<T: RawLibrary>: SSHChannel<T> {
     public func download(_ from: String, to stream: OutputStream, completion: SSHCompletionBlock?) {
         self.queue.async(completion: completion) {
             stream.open()
-            defer {
+            do {
                 stream.close()
             }
         }
