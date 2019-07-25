@@ -352,7 +352,7 @@ extension Libssh2 {
             }
         }
         
-        func authenticateByPublicKeyFromMemory(_ username: String, password:    String, publicKey: Data?, privateKey: Data) throws {
+        func authenticateByPublicKeyFromMemory(_ username: String, password: String, publicKey: Data?, privateKey: Data) throws {
             try libssh2_function {
                 privateKey.withUnsafeBytes { privateKeyPointer -> Int32 in
                     guard privateKeyPointer.count > 0 else {
