@@ -135,7 +135,7 @@ open class SSHSession<T: RawLibrary> {
                     case MemoryLayout<sockaddr_in>.size:
                         // IPv4
                         var socketAddress: sockaddr_in = address.withUnsafeBytes {
-                            UnsafeRawPointer($0).bindMemory(to: sockaddr_in.self, capacity: address.count).pointee
+                            $0.load(as: sockaddr_in.self)
                         }
                         socketAddress.sin_port = CFSwapInt16HostToBig(self.port)
 
@@ -146,7 +146,7 @@ open class SSHSession<T: RawLibrary> {
                     case MemoryLayout<sockaddr_in6>.size:
                         // IPv6
                         var socketAddress: sockaddr_in6 = address.withUnsafeBytes {
-                            UnsafeRawPointer($0).bindMemory(to: sockaddr_in6.self, capacity: address.count).pointee
+                            $0.load(as: sockaddr_in6.self)
                         }
                         socketAddress.sin6_port = CFSwapInt16HostToBig(self.port)
 
