@@ -88,37 +88,7 @@ internal class Queue {
         }
     }
 
-    func sync(_ block: @escaping () -> Void)  {
-        if self.current {
-            return block()
-        } else {
-            self.queue.sync(execute: block)
-        }
-    }
-
-    func sync(_ block: @escaping () throws -> Void) throws {
-        if self.current {
-            try block()
-        } else {
-            try self.queue.sync(block)
-        }
-    }
-
-    func sync<T>(_ block: @escaping () -> T) -> T {
-        if self.current {
-            return block()
-        } else {
-            var result: T!
-            
-            self.queue.sync(execute: {
-                result = block()
-            })
-
-            return result
-        }
-    }
-
-    func sync<T>(_ block: @escaping () throws -> T) throws -> T {
+    func sync<T>(_ block: @escaping () throws -> T) rethrows -> T {
         if self.current {
             return try block()
         } else {

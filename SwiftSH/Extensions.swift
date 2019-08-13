@@ -80,20 +80,6 @@ internal extension in6_addr {
 // MARK: - GCD
 
 internal extension DispatchQueue {
-
-    func sync(_ block: () throws -> Void) throws {
-        var error: Error?
-        self.sync(execute: {
-            do {
-                try block()
-            } catch let e {
-                error = e
-            }
-        })
-        if let error = error {
-            throw error
-        }
-    }
     
     class func syncOnMain(_ block: () -> Void) {
         if Thread.isMainThread {

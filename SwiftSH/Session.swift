@@ -222,7 +222,7 @@ open class SSHSession<T: RawLibrary> {
         }
     }
 
-    public func disconnect(_ completion: (() -> ())?) {
+    public func disconnect(_ completion: (() -> Void)?) {
         self.queue.async {
             self.disconnect()
 

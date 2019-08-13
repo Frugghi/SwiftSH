@@ -29,10 +29,10 @@ public protocol Logger {
     var enabled: Bool { get set }
     var level: LogLevel { get set }
 
-    func debug(_ message: String)
-    func info(_ message: String)
-    func warn(_ message: String)
-    func error(_ message: String)
+    func debug(_ message: @autoclosure () -> String)
+    func info(_ message: @autoclosure () -> String)
+    func warn(_ message: @autoclosure () -> String)
+    func error(_ message: @autoclosure () -> String)
     
 }
 

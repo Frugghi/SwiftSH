@@ -105,7 +105,7 @@ open class SSHChannel<T: RawLibrary>: SSHSession<T> {
         }
     }
     
-    public override func disconnect(_ completion: (() -> ())?) {
+    public override func disconnect(_ completion: (() -> Void)?) {
         self.queue.async {
             self.close()
             

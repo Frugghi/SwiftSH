@@ -32,25 +32,25 @@ internal struct ConsoleLogger: Logger {
         self.level = level
     }
 
-    func debug(_ message: String) {
+    func debug(_ message: @autoclosure () -> String) {
         self.log(.debug, message)
     }
 
-    func info(_ message: String) {
+    func info(_ message: @autoclosure () -> String) {
         self.log(.info, message)
     }
 
-    func warn(_ message: String) {
+    func warn(_ message: @autoclosure () -> String) {
         self.log(.warning, message)
     }
 
-    func error(_ message: String) {
+    func error(_ message: @autoclosure () -> String) {
         self.log(.error, message)
     }
     
-    func log(_ messageLevel: LogLevel, _ message: String) {
+    func log(_ messageLevel: LogLevel, _ message: () -> String) {
         if self.enabled && messageLevel <= self.level {
-            print("\(messageLevel): \(message)")
+            print("\(messageLevel): \(message())")
         }
     }
     

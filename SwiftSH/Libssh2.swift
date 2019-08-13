@@ -354,22 +354,17 @@ extension Libssh2 {
         
         func authenticateByPublicKeyFromMemory(_ username: String, password: String, publicKey: Data?, privateKey: Data) throws {
             try libssh2_function {
-                privateKey.withUnsafeBytes { privateKeyPointer -> Int32 in
-                    guard privateKeyPointer.count > 0 else {
-                        return LIBSSH2_ERROR_AUTHENTICATION_FAILED
-                    }
-                    let privateKeyUnsafePointer = privateKeyPointer.baseAddress!.assumingMemoryBound(to: Int8.self)
+                privateKey.withUnsafeBytes {
+                    let privateKey = $0.bindMemory(to: Int8.self)
 
-                    if let publicKey = publicKey {
-                        return publicKey.withUnsafeBytes { publicKeyPointer -> Int32 in
-                            guard publicKeyPointer.count > 0 else {
-                                return LIBSSH2_ERROR_PUBLICKEY_UNRECOGNIZED
-                            }
-                            let publicKeyUnsafePointer = publicKeyPointer.baseAddress!.assumingMemoryBound(to: Int8.self)
-                            return libssh2_userauth_publickey_frommemory(self.session, username, username.utf8.count, publicKeyUnsafePointer, publicKey.count, privateKeyUnsafePointer, privateKey.count, password)
+                    if let publicKey = publicKey, !publicKey.isEmpty {
+                        return publicKey.withUnsafeBytes {
+                            let publicKey = $0.bindMemory(to: Int8.self)
+                            
+                            return libssh2_userauth_publickey_frommemory(self.session, username, username.utf8.count, publicKey.baseAddress, publicKey.count, privateKey.baseAddress, privateKey.count, password)
                         }
                     } else {
-                        return libssh2_userauth_publickey_frommemory(self.session, username, username.utf8.count, nil, 0, privateKeyUnsafePointer, privateKey.count, password)
+                        return libssh2_userauth_publickey_frommemory(self.session, username, username.utf8.count, nil, 0, privateKey.baseAddress, privateKey.count, password)
                     }
                 }
             }
@@ -542,27 +537,30 @@ extension Libssh2 {
             guard let channel = self.channel else {
                 return (error: SSHError.Channel.invalid, bytesSent: 0)
             }
-
-            var bytesSent = 0
-            repeat {
-                let length = min(data.count - bytesSent, self.bufferSize)
-                let returnCode = data.withUnsafeBytes { buffer -> Int in
-                    guard buffer.count > 0 else {
-                        return Int(LIBSSH2_ERROR_CHANNEL_FAILURE)
-                    }
-                    return libssh2_channel_write_ex(channel, 0, buffer.baseAddress!.assumingMemoryBound(to: Int8.self) + bytesSent, length)
-                }
-
-                guard returnCode >= 0 || returnCode == Int(LIBSSH2_ERROR_EAGAIN) else {
-                    return (error: returnCode.error, bytesSent: bytesSent)
-                }
-
-                if returnCode > 0 {
-                    bytesSent += returnCode
-                }
-            } while bytesSent < data.count
             
-            return (error: nil, bytesSent: bytesSent)
+            guard !data.isEmpty else {
+                return (error: nil, bytesSent: 0)
+            }
+            
+            return data.withUnsafeBytes{
+                let buffer = $0.bindMemory(to: Int8.self)
+                
+                var bytesSent = 0
+                repeat {
+                    let length = min(data.count - bytesSent, self.bufferSize)
+                    let returnCode = libssh2_channel_write_ex(channel, 0, buffer.baseAddress?.advanced(by: bytesSent), length)
+                    
+                    guard returnCode >= 0 || returnCode == Int(LIBSSH2_ERROR_EAGAIN) else {
+                        return (error: returnCode.error, bytesSent: bytesSent)
+                    }
+                    
+                    if returnCode > 0 {
+                        bytesSent += returnCode
+                    }
+                } while bytesSent < data.count
+                
+                return (error: nil, bytesSent: bytesSent)
+            }
         }
 
         func exitStatus() -> Int? {

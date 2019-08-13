@@ -85,7 +85,7 @@ public class SSHCommand<T: RawLibrary>: SSHChannel<T> {
             }
 
             socketSource.setEventHandler { [weak self] in
-                guard let strongSelf = self, let timeoutSource = self?.timeoutSource else {
+                guard let self = self, let timeoutSource = self.timeoutSource else {
                     return
                 }
                 
@@ -96,53 +96,53 @@ public class SSHCommand<T: RawLibrary>: SSHChannel<T> {
                 }
 
                 // Set non-blocking mode
-                strongSelf.session.blocking = false
+                self.session.blocking = false
 
                 // Read the result
                 var socketClosed = true
                 do {
-                    let data = try strongSelf.channel.read()
-                    if strongSelf.response == nil {
-                        strongSelf.response = Data()
+                    let data = try self.channel.read()
+                    if self.response == nil {
+                        self.response = Data()
                     }
 
-                    strongSelf.response!.append(data)
+                    self.response!.append(data)
                     
                     socketClosed = false
                 } catch let error {
-                    strongSelf.log.error("[STD] \(error)")
+                    self.log.error("[STD] \(error)")
                 }
 
                 // Read the error
                 do {
-                    let data = try strongSelf.channel.readError()
+                    let data = try self.channel.readError()
                     if data.count > 0 {
-                        if strongSelf.error == nil {
-                            strongSelf.error = Data()
+                        if self.error == nil {
+                            self.error = Data()
                         }
 
-                        strongSelf.error!.append(data)
+                        self.error!.append(data)
                     }
                     
                     socketClosed = false
                 } catch let error {
-                    strongSelf.log.error("[ERR] \(error)")
+                    self.log.error("[ERR] \(error)")
                 }
 
                 // Check if we can return the response
-                if strongSelf.channel.receivedEOF || strongSelf.channel.exitStatus() != nil || socketClosed {
+                if self.channel.receivedEOF || self.channel.exitStatus() != nil || socketClosed {
                     defer {
-                        strongSelf.cancelSources()
+                        self.cancelSources()
                     }
 
                     if let completion = completion {
-                        let result = strongSelf.response
+                        let result = self.response
                         var error: Error?
-                        if let message = strongSelf.error {
+                        if let message = self.error {
                             error = SSHError.Command.execError(String(data: message, encoding: .utf8), message)
                         }
 
-                        strongSelf.queue.callbackQueue.async {
+                        self.queue.callbackQueue.async {
                             completion(command, result, error)
                         }
                     }
@@ -159,16 +159,16 @@ public class SSHCommand<T: RawLibrary>: SSHChannel<T> {
             }
 
             timeoutSource.setEventHandler { [weak self] in
-                guard let strongSelf = self else {
+                guard let self = self else {
                     return
                 }
                 
-                strongSelf.cancelSources()
+                self.cancelSources()
 
                 if let completion = completion {
-                    let result = strongSelf.response
+                    let result = self.response
                     
-                    strongSelf.queue.callbackQueue.async {
+                    self.queue.callbackQueue.async {
                         completion(command, result, SSHError.timeout)
                     }
                 }
