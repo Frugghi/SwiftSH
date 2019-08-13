@@ -337,7 +337,7 @@ extension Libssh2 {
 
                         let password = keyboardInteractiveCallback(challenge)
                         let response = password.withCString {
-                             LIBSSH2_USERAUTH_KBDINT_RESPONSE(text: strdup($0), length: UInt32(strlen(password!)))
+                             LIBSSH2_USERAUTH_KBDINT_RESPONSE(text: strdup($0), length: UInt32(strlen(password)))
                         }
                         
                         responses?[i] = response
