@@ -29,9 +29,9 @@ open class SSHSession {
     // MARK: - Internal variables
 
     internal let queue: Queue
-    internal var session: RawSession
+    internal var session: SSHLibrarySession
     internal var socket: CFSocket?
-    internal let sshLibrary: RawLibrary.Type
+    internal let sshLibrary: SSHLibrary.Type
 
     // MARK: - Initialization
 
@@ -45,27 +45,20 @@ open class SSHSession {
     public var log: Logger
 
     /// The version of the underlying SSH library.
-    public var version: String? {
+    public var version: String {
         return self.sshLibrary.version
     }
     
-    public init?(sshLibrary: RawLibrary.Type = Libssh2.self, host: String, port: UInt16 = 22) {
+    public init(sshLibrary: SSHLibrary.Type = Libssh2.self, host: String, port: UInt16 = 22) throws {
         self.sshLibrary = sshLibrary
         self.host = host
         self.port = port
         self.log = ConsoleLogger(level: .debug, enabled: true)
         self.queue = Queue(label: "SSH Queue", concurrent: false)
-        
-        guard let session = sshLibrary.newSession() else {
-            return nil
-        }
-
-        self.session = session
+        self.session = try sshLibrary.makeSession()
         self.timeout = 10
 
-        if let version = sshLibrary.version {
-            self.log.info("\(sshLibrary.name) v\(version)")
-        }
+        self.log.info("\(sshLibrary.name) v\(sshLibrary.version)")
     }
 
     deinit {

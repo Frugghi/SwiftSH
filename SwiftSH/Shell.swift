@@ -36,8 +36,8 @@ public class SSHShell: SSHChannel {
 
     // MARK: - Initialization
 
-    public override init?(sshLibrary: RawLibrary.Type = Libssh2.self, host: String, port: UInt16 = 22, environment: [Environment] = [], terminal: Terminal? = nil) {
-        super.init(sshLibrary: sshLibrary, host: host, port: port, environment: environment, terminal: terminal)
+    public override init(sshLibrary: SSHLibrary.Type = Libssh2.self, host: String, port: UInt16 = 22, environment: [Environment] = [], terminal: Terminal? = nil) throws {
+        try super.init(sshLibrary: sshLibrary, host: host, port: port, environment: environment, terminal: terminal)
     }
 
     deinit {

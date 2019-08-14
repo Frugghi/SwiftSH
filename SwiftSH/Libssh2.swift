@@ -24,21 +24,26 @@
 
 import Libssh2
 
-public class Libssh2: RawLibrary {
+public class Libssh2: SSHLibrary {
 
-    public private(set) static var name: String = "Libssh2"
-    public private(set) static var version: String?
+    public static let name: String = "Libssh2"
+    public static var version: String = .init(cString: libssh2_version(0))
+    
+    private static let queue: DispatchQueue = .init(label: "Libssh2 global")
+    private static var libssh2Initialized: Bool = false
 
-    public static func newSession() -> RawSession? {
-        return Libssh2.Session()
-    }
-
-    public static func newChannel(_ session: RawSession) -> RawChannel? {
-        if let session = session as? Libssh2.Session {
-            return Libssh2.Channel(session: session.session)
-        } else {
-            return nil
+    public static func makeSession() throws -> SSHLibrarySession {
+        // Libssh2 global initialization is not thread safe!
+        try self.queue.sync {
+            if !self.libssh2Initialized {
+                // Initialize libssh2
+                try libssh2_function { libssh2_init(0) }
+                
+                self.libssh2Initialized = true
+            }
         }
+        
+        return Libssh2.Session()
     }
 
 }
@@ -178,7 +183,7 @@ fileprivate extension Int32 {
 
 extension Libssh2 {
 
-    fileprivate class Session: RawSession {
+    fileprivate class Session: SSHLibrarySession {
 
         var session: OpaquePointer!
         var keyboardInteractiveCallback: ((String) -> String)?
@@ -186,20 +191,12 @@ extension Libssh2 {
             return libssh2_session_last_errno(self.session).error
         }
 
-        init?() {
-            // Initialize libssh2
-            guard libssh2_init(0) == 0 else {
-                return nil
-            }
-
+        init() {
             // Create session instance
-            self.session = libssh2_session_init_ex(nil, nil, nil, UnsafeMutableRawPointer(mutating: Unmanaged.passUnretained(self).toOpaque()))
-            guard self.session != nil else {
-                return nil
-            }
-
-            // Get the libssh2 version
-            Libssh2.version = String(cString: libssh2_version(0))
+            let session = libssh2_session_init_ex(nil, nil, nil, UnsafeMutableRawPointer(mutating: Unmanaged.passUnretained(self).toOpaque()))
+            precondition(session != nil, "Failed to initialize libssh2 session")
+            
+            self.session = session
             
             // Set libssh2 callbacks
             libssh2_setup_session_callbacks(UnsafeMutableRawPointer(self.session))
@@ -249,6 +246,10 @@ extension Libssh2 {
             }
 
             return String(cString: libssh2_session_banner_get(session))
+        }
+        
+        func makeChannel() -> SSHLibraryChannel {
+            return Libssh2.Channel(session: self.session)
         }
 
         func setBanner(_ banner: String) throws {
@@ -375,7 +376,7 @@ extension Libssh2 {
 
 extension Libssh2 {
 
-    fileprivate class Channel: RawChannel {
+    fileprivate class Channel: SSHLibraryChannel {
 
         var session: OpaquePointer
         var channel: OpaquePointer?

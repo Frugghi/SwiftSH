@@ -22,19 +22,81 @@
 // SOFTWARE.
 //
 
-// MARK: - RawLibrary protocol
+// MARK: - SSH Library
 
-public protocol RawLibrary {
+/// A library that implements the SSH2 protocol.
+public protocol SSHLibrary {
 
+    /// The name of the library.
     static var name: String { get }
-    static var version: String? { get }
+    
+    /// The version of the library.
+    static var version: String { get }
 
-    static func newSession() -> RawSession?
-    static func newChannel(_ session: RawSession) -> RawChannel?
+    /// Initialize a new SSH session.
+    ///
+    /// - Returns: The SSH session.
+    static func makeSession() throws -> SSHLibrarySession
     
 }
 
-// MARK: - FingerprintHashType enum
+// MARK: - Session
+
+public protocol SSHLibrarySession {
+    
+    var authenticated: Bool { get }
+    var blocking: Bool { get set }
+    var banner: String? { get }
+    var timeout: Int { get set }
+    
+    func makeChannel() -> SSHLibraryChannel
+    func setBanner(_ banner: String) throws
+    func handshake(_ socket: CFSocket) throws
+    func fingerprint(_ hashType: FingerprintHashType) -> String?
+    func authenticationList(_ username: String) throws -> [String]
+    func authenticateByPassword(_ username: String, password: String) throws
+    func authenticateByKeyboardInteractive(_ username: String, callback: @escaping ((String) -> String)) throws
+    func authenticateByPublicKeyFromFile(_ username: String, password: String, publicKey: String?, privateKey: String) throws
+    func authenticateByPublicKeyFromMemory(_ username: String, password: String, publicKey: Data?, privateKey: Data) throws
+    func disconnect() throws
+    
+}
+
+// MARK: - Channel
+
+public protocol SSHLibraryChannel {
+    
+    var opened: Bool { get }
+    var receivedEOF: Bool { get }
+    
+    func openChannel() throws
+    func closeChannel() throws
+    func setEnvironment(_ environment: Environment) throws
+    func requestPseudoTerminal(_ terminal: Terminal) throws
+    func setPseudoTerminalSize(_ terminal: Terminal) throws
+    func exec(_ command: String) throws
+    func shell() throws
+    func read() throws -> Data
+    func readError() throws -> Data
+    func write(_ data: Data) -> (error: Error?, bytesSent: Int)
+    func exitStatus() -> Int?
+    func sendEOF() throws
+    
+}
+
+// MARK: - SFTP
+
+public protocol SSHLibrarySFTP {
+    
+}
+
+// MARK: - SCP
+
+public protocol SSHLibrarySCP {
+    
+}
+
+// MARK: - Fingerprint
 
 public enum FingerprintHashType: CustomStringConvertible {
     
@@ -49,7 +111,7 @@ public enum FingerprintHashType: CustomStringConvertible {
     
 }
 
-// MARK: - AuthenticationMethod enum
+// MARK: - Authentication
 
 public enum AuthenticationMethod: CustomStringConvertible, Equatable {
 
@@ -76,8 +138,6 @@ public enum AuthenticationMethod: CustomStringConvertible, Equatable {
 
 }
 
-// MARK: - AuthenticationChallenge enum
-
 public enum AuthenticationChallenge {
 
     case byPassword(username: String, password: String)
@@ -102,28 +162,7 @@ public enum AuthenticationChallenge {
 
 }
 
-// MARK: - RawSession protocol
-
-public protocol RawSession {
-
-    var authenticated: Bool { get }
-    var blocking: Bool { get set }
-    var banner: String? { get }
-    var timeout: Int { get set }
-
-    func setBanner(_ banner: String) throws
-    func handshake(_ socket: CFSocket) throws
-    func fingerprint(_ hashType: FingerprintHashType) -> String?
-    func authenticationList(_ username: String) throws -> [String]
-    func authenticateByPassword(_ username: String, password: String) throws
-    func authenticateByKeyboardInteractive(_ username: String, callback: @escaping ((String) -> String)) throws
-    func authenticateByPublicKeyFromFile(_ username: String, password: String, publicKey: String?, privateKey: String) throws
-    func authenticateByPublicKeyFromMemory(_ username: String, password: String, publicKey: Data?, privateKey: Data) throws
-    func disconnect() throws
-    
-}
-
-// MARK: - Environment struct
+// MARK: - Environment
 
 public struct Environment {
 
@@ -132,7 +171,7 @@ public struct Environment {
 
 }
 
-// MARK: - Terminal struct
+// MARK: - Terminal
 
 public struct Terminal: ExpressibleByStringLiteral, CustomStringConvertible {
     
@@ -168,38 +207,4 @@ public struct Terminal: ExpressibleByStringLiteral, CustomStringConvertible {
         self.height = 24
     }
     
-}
-
-// MARK: - RawChannel protocol
-
-public protocol RawChannel {
-
-    var opened: Bool { get }
-    var receivedEOF: Bool { get }
-
-    func openChannel() throws
-    func closeChannel() throws
-    func setEnvironment(_ environment: Environment) throws
-    func requestPseudoTerminal(_ terminal: Terminal) throws
-    func setPseudoTerminalSize(_ terminal: Terminal) throws
-    func exec(_ command: String) throws
-    func shell() throws
-    func read() throws -> Data
-    func readError() throws -> Data
-    func write(_ data: Data) -> (error: Error?, bytesSent: Int)
-    func exitStatus() -> Int?
-    func sendEOF() throws
-
-}
-
-// MARK: - RawSFTP protocol
-
-public protocol RawSFTP {
-    
-}
-
-// MARK: - RawSCP protocol
-
-public protocol RawSCP {
-
 }

@@ -30,22 +30,18 @@ open class SSHChannel: SSHSession {
 
     // MARK: - Internal variables
 
-    internal var channel: RawChannel!
+    internal var channel: SSHLibraryChannel!
     internal let environment: [Environment]
 
     // MARK: - Initialization
 
-    internal init?(sshLibrary: RawLibrary.Type = Libssh2.self, host: String, port: UInt16 = 22, environment: [Environment] = [], terminal: Terminal? = nil) {
+    internal init(sshLibrary: SSHLibrary.Type = Libssh2.self, host: String, port: UInt16 = 22, environment: [Environment] = [], terminal: Terminal? = nil) throws {
         self.environment = environment
         self.terminal = terminal
 
-        super.init(sshLibrary: sshLibrary, host: host, port: port)
+        try super.init(sshLibrary: sshLibrary, host: host, port: port)
 
-        guard let channel = sshLibrary.newChannel(self.session) else {
-            return nil
-        }
-
-        self.channel = channel
+        self.channel = self.session.makeChannel()
     }
 
     // MARK: - Open/Close

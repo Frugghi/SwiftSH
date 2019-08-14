@@ -17,7 +17,7 @@ class AuthenticationTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        self.session = SSHSession(host: self.config.session.host, port: self.config.session.port)
+        self.session = try! SSHSession(host: self.config.session.host, port: self.config.session.port)
     }
     
     override func tearDown() {

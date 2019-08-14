@@ -67,7 +67,7 @@ class ShellViewController: UIViewController, SSHViewController {
             }
         }
         
-        self.shell = SSHShell(host: self.hostname, port: self.port ?? 22, terminal: "vanilla")
+        self.shell = try? SSHShell(host: self.hostname, port: self.port ?? 22, terminal: "vanilla")
     }
     
     override func viewDidAppear(_ animated: Bool) {

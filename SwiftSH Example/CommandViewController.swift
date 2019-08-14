@@ -65,7 +65,7 @@ class CommandViewController: UIViewController, SSHViewController {
         
         self.textView.text = ""
         
-        self.command = SSHCommand(host: self.hostname, port: self.port ?? 22)
+        self.command = try? SSHCommand(host: self.hostname, port: self.port ?? 22)
     }
     
     @IBAction func disconnect() {
