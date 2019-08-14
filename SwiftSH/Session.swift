@@ -24,13 +24,14 @@
 
 public typealias SSHCompletionBlock = (Error?) -> Void
 
-open class SSHSession<T: RawLibrary> {
+open class SSHSession {
 
     // MARK: - Internal variables
 
     internal let queue: Queue
     internal var session: RawSession
     internal var socket: CFSocket?
+    internal let sshLibrary: RawLibrary.Type
 
     // MARK: - Initialization
 
@@ -45,23 +46,25 @@ open class SSHSession<T: RawLibrary> {
 
     /// The version of the underlying SSH library.
     public var version: String? {
-        return T.version
+        return self.sshLibrary.version
     }
-
-    public init?(host: String, port: UInt16 = 22) {
+    
+    public init?(sshLibrary: RawLibrary.Type = Libssh2.self, host: String, port: UInt16 = 22) {
+        self.sshLibrary = sshLibrary
         self.host = host
         self.port = port
         self.log = ConsoleLogger(level: .debug, enabled: true)
         self.queue = Queue(label: "SSH Queue", concurrent: false)
-        guard let session = T.newSession() else {
+        
+        guard let session = sshLibrary.newSession() else {
             return nil
         }
 
         self.session = session
         self.timeout = 10
 
-        if let version = T.version {
-            self.log.info("\(T.name) v\(version)")
+        if let version = sshLibrary.version {
+            self.log.info("\(sshLibrary.name) v\(version)")
         }
     }
 

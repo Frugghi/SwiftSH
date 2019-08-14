@@ -31,7 +31,7 @@ class CommandViewController: UIViewController, SSHViewController {
     @IBOutlet var commandTextField: UITextField!
     @IBOutlet var textView: UITextView!
     
-    var command: Command!
+    var command: SSHCommand!
     var authenticationChallenge: AuthenticationChallenge?
     var semaphore: DispatchSemaphore!
     var passwordTextField: UITextField?
@@ -65,7 +65,7 @@ class CommandViewController: UIViewController, SSHViewController {
         
         self.textView.text = ""
         
-        self.command = Command(host: self.hostname, port: self.port ?? 22)
+        self.command = SSHCommand(host: self.hostname, port: self.port ?? 22)
     }
     
     @IBAction func disconnect() {

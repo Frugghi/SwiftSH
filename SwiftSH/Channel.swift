@@ -22,7 +22,7 @@
 // SOFTWARE.
 //
 
-open class SSHChannel<T: RawLibrary>: SSHSession<T> {
+open class SSHChannel: SSHSession {
 
     // MARK: - Public variables
 
@@ -35,13 +35,13 @@ open class SSHChannel<T: RawLibrary>: SSHSession<T> {
 
     // MARK: - Initialization
 
-    internal init?(host: String, port: UInt16 = 22, environment: [Environment] = [], terminal: Terminal? = nil) {
+    internal init?(sshLibrary: RawLibrary.Type = Libssh2.self, host: String, port: UInt16 = 22, environment: [Environment] = [], terminal: Terminal? = nil) {
         self.environment = environment
         self.terminal = terminal
 
-        super.init(host: host, port: port)
+        super.init(sshLibrary: sshLibrary, host: host, port: port)
 
-        guard let channel = T.newChannel(self.session) else {
+        guard let channel = sshLibrary.newChannel(self.session) else {
             return nil
         }
 

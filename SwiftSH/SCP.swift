@@ -23,7 +23,7 @@
 //
 
 @available(*, unavailable)
-public class SCPSession<T: RawLibrary>: SSHChannel<T> {
+public class SCPSession: SSHChannel {
 
     // MARK: - Download
     

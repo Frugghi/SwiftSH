@@ -22,7 +22,7 @@
 // SOFTWARE.
 //
 
-public class SSHShell<T: RawLibrary>: SSHChannel<T> {
+public class SSHShell: SSHChannel {
 
     // MARK: - Internal variables
 
@@ -32,12 +32,12 @@ public class SSHShell<T: RawLibrary>: SSHChannel<T> {
 
     // MARK: - Private variables
 
-    fileprivate var messageQueue = [Message]()
+    fileprivate var messageQueue: [Message] = []
 
     // MARK: - Initialization
 
-    public override init?(host: String, port: UInt16 = 22, environment: [Environment] = [], terminal: Terminal? = nil) {
-        super.init(host: host, port: port, environment: environment, terminal: terminal)
+    public override init?(sshLibrary: RawLibrary.Type = Libssh2.self, host: String, port: UInt16 = 22, environment: [Environment] = [], terminal: Terminal? = nil) {
+        super.init(sshLibrary: sshLibrary, host: host, port: port, environment: environment, terminal: terminal)
     }
 
     deinit {

@@ -23,6 +23,6 @@
 //
 
 @available(*, unavailable)
-public class SFTPSession<T: RawLibrary>: SSHSession<T> {
+public class SFTPSession: SSHSession {
 
 }

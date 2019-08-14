@@ -24,23 +24,16 @@
 
 import Libssh2
 
-public typealias SSH = SSHSession<Libssh2>
-public typealias Channel = SSHChannel<Libssh2>
-public typealias Command = SSHCommand<Libssh2>
-public typealias Shell = SSHShell<Libssh2>
-//public typealias SCP = SCPSession<Libssh2>
-//public typealias SFTP = SFTPSession<Libssh2>
-
 public class Libssh2: RawLibrary {
 
     public private(set) static var name: String = "Libssh2"
     public private(set) static var version: String?
 
-    public class func newSession() -> RawSession? {
+    public static func newSession() -> RawSession? {
         return Libssh2.Session()
     }
 
-    public class func newChannel(_ session: RawSession) -> RawChannel? {
+    public static func newChannel(_ session: RawSession) -> RawChannel? {
         if let session = session as? Libssh2.Session {
             return Libssh2.Channel(session: session.session)
         } else {

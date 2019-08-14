@@ -30,7 +30,7 @@ class ShellViewController: UIViewController, SSHViewController {
     
     @IBOutlet var textView: UITextView!
     
-    var shell: Shell!
+    var shell: SSHShell!
     var authenticationChallenge: AuthenticationChallenge?
     var semaphore: DispatchSemaphore!
     var lastCommand = ""
@@ -67,7 +67,7 @@ class ShellViewController: UIViewController, SSHViewController {
             }
         }
         
-        self.shell = Shell(host: self.hostname, port: self.port ?? 22, terminal: "vanilla")
+        self.shell = SSHShell(host: self.hostname, port: self.port ?? 22, terminal: "vanilla")
     }
     
     override func viewDidAppear(_ animated: Bool) {

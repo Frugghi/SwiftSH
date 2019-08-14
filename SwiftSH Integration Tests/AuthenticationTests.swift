@@ -12,7 +12,7 @@ import XCTest
 class AuthenticationTests: XCTestCase {
     
     private let config = Config.load()
-    private var session: SSHSession<Libssh2>!
+    private var session: SSHSession!
     
     override func setUp() {
         super.setUp()
