@@ -28,12 +28,11 @@ public class SCPSession: SSHChannel {
     // MARK: - Download
     
     public func download(_ from: String, to path: String) -> Self {
-        self.download(from, to: path, completion: nil)
-
-        return self
+        return self.download(from, to: path, completion: nil)
     }
 
-    public func download(_ from: String, to path: String, completion: SSHCompletionBlock?) {
+    @discardableResult
+    public func download(_ from: String, to path: String, completion: SSHCompletionBlock?) -> Self {
         if let stream = OutputStream(toFileAtPath: path, append: false) {
             self.download(from, to: stream, completion: completion)
         } else if let completion = completion {
@@ -41,22 +40,22 @@ public class SCPSession: SSHChannel {
                 completion(SSHError.SCP.invalidPath)
             }
         }
-    }
-
-    
-    public func download(_ from: String, to stream: OutputStream) -> Self {
-        self.download(from, to: stream, completion: nil)
-
         return self
     }
 
-    public func download(_ from: String, to stream: OutputStream, completion: SSHCompletionBlock?) {
+    public func download(_ from: String, to stream: OutputStream) -> Self {
+        return self.download(from, to: stream, completion: nil)
+    }
+
+    @discardableResult
+    public func download(_ from: String, to stream: OutputStream, completion: SSHCompletionBlock?) -> Self {
         self.queue.async(completion: completion) {
             stream.open()
             do {
                 stream.close()
             }
         }
+        return self
     }
 
     public func download(_ from: String, completion: @escaping ((Data?, Error?) -> Void)) {

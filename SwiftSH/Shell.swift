@@ -70,12 +70,11 @@ public class SSHShell: SSHChannel {
     // MARK: - Open/Close
 
     public func open() -> Self {
-        self.open(nil)
-
-        return self
+        return open(nil)
     }
 
-    public func open(_ completion: SSHCompletionBlock?) {
+    @discardableResult
+    public func open(_ completion: SSHCompletionBlock?) -> Self {
         self.queue.async(completion: completion) {
             // Open the channel
             try super.open()
@@ -223,6 +222,8 @@ public class SSHShell: SSHChannel {
             
             self.log.debug("Shell opened successfully")
         }
+
+        return self
     }
 
     public func close(_ completion: (() -> Void)?) {
@@ -267,12 +268,11 @@ public class SSHShell: SSHChannel {
     // MARK: - Write
     
     public func write(_ data: Data) -> Self {
-        self.write(data, completion: nil)
-
-        return self
+        return self.write(data, completion: nil)
     }
 
-    public func write(_ data: Data, completion: ((Error?) -> Void)?) {
+    @discardableResult
+    public func write(_ data: Data, completion: ((Error?) -> Void)?) -> Self {
         self.queue.async {
             // Insert the message in the message queue
             let message = Message(data: data, callback: completion)
@@ -284,25 +284,27 @@ public class SSHShell: SSHChannel {
                 writeSource.resume()
             }
         }
-    }
-
-    public func write(_ command: String) -> Self {
-        self.write(command, completion: nil)
-        
         return self
     }
 
-    public func write(_ command: String, completion: ((Error?) -> Void)?) {
+    public func write(_ command: String) -> Self {
+        return self.write(command, completion: nil)
+    }
+
+    @discardableResult
+    public func write(_ command: String, completion: ((Error?) -> Void)?) -> Self {
         guard let data = command.data(using: .utf8) else {
             if let completion = completion {
                 self.queue.callbackQueue.async {
                     completion(SSHError.invalid)
                 }
             }
-            return
+            return self
         }
         
         self.write(data, completion: completion)
+
+        return self
     }
 }
 

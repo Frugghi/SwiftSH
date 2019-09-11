@@ -112,12 +112,10 @@ open class SSHChannel: SSHSession {
     // MARK: - Terminal
     
     public func setTerminalSize(width: UInt, height: UInt) -> Self {
-        self.setTerminalSize(width: width, height: height, completion: nil)
-
-        return self
+        return self.setTerminalSize(width: width, height: height, completion: nil)
     }
 
-    public func setTerminalSize(width: UInt, height: UInt, completion: SSHCompletionBlock?) {
+    public func setTerminalSize(width: UInt, height: UInt, completion: SSHCompletionBlock?) -> Self {
         self.queue.async(completion: completion) {
             guard let terminal = self.terminal else {
                 throw SSHError.badUse
@@ -136,6 +134,7 @@ open class SSHChannel: SSHSession {
                 self.terminal = resizedTerminal
             }
         }
+        return self
     }
 
 }
