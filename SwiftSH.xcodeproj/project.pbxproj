@@ -29,6 +29,24 @@
 		7D148D10212262DE009C1CCC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D148D0F212262DE009C1CCC /* Assets.xcassets */; };
 		7D89F9D11F535D7A00672446 /* Libssh2.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D89F9CF1F535D7A00672446 /* Libssh2.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7D89F9D21F535D7A00672446 /* Libssh2.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D89F9D01F535D7A00672446 /* Libssh2.m */; };
+		D96E2A14235C28EF00DA1970 /* SwiftSH.h in Headers */ = {isa = PBXBuildFile; fileRef = D96E2A12235C28EF00DA1970 /* SwiftSH.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D96E2A1E235C2AE700DA1970 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 180BD21B1B4C7367000DB241 /* libz.tbd */; };
+		D96E2A21235C2BAD00DA1970 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180BD2191B4C6910000DB241 /* Session.swift */; };
+		D96E2A22235C2BAD00DA1970 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1890C4F31B4F5024008E89D0 /* Channel.swift */; };
+		D96E2A23235C2BAD00DA1970 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1890C4F11B4F4687008E89D0 /* Command.swift */; };
+		D96E2A24235C2BAD00DA1970 /* Shell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB4C421B534BA6003A55BC /* Shell.swift */; };
+		D96E2A25235C2BAD00DA1970 /* SCP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B51C2B1B6D88380057BB2E /* SCP.swift */; };
+		D96E2A26235C2BAD00DA1970 /* SFTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B51C2D1B6D88440057BB2E /* SFTP.swift */; };
+		D96E2A27235C2BAD00DA1970 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1890C4EF1B4EF68B008E89D0 /* Logger.swift */; };
+		D96E2A28235C2BAD00DA1970 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186694771B5DBD7B004DE8A8 /* Error.swift */; };
+		D96E2A29235C2BAD00DA1970 /* SSHLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188EA2581B4D3B05007B7E49 /* SSHLibrary.swift */; };
+		D96E2A2A235C2BB300DA1970 /* Libssh2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188EA2561B4D1E19007B7E49 /* Libssh2.swift */; };
+		D96E2A2B235C2BB300DA1970 /* Libssh2.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D89F9CF1F535D7A00672446 /* Libssh2.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D96E2A2C235C2BB300DA1970 /* Libssh2.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D89F9D01F535D7A00672446 /* Libssh2.m */; };
+		D96E2A2D235C2BB600DA1970 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180BD2351B4C97E3000DB241 /* Extensions.swift */; };
+		D96E2A2E235C2BB600DA1970 /* DNS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188EA25C1B4D3C62007B7E49 /* DNS.swift */; };
+		D96E2A2F235C2BB600DA1970 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188EA25E1B4D57FB007B7E49 /* Queue.swift */; };
+		D96E2A30235C2BB600DA1970 /* ConsoleLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB4C401B4FD6C0003A55BC /* ConsoleLogger.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +85,12 @@
 		7D148D0F212262DE009C1CCC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7D89F9CF1F535D7A00672446 /* Libssh2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Libssh2.h; sourceTree = "<group>"; };
 		7D89F9D01F535D7A00672446 /* Libssh2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Libssh2.m; sourceTree = "<group>"; };
+		D96E2A10235C28EF00DA1970 /* SwiftSH.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftSH.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D96E2A12235C28EF00DA1970 /* SwiftSH.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftSH.h; sourceTree = "<group>"; };
+		D96E2A13235C28EF00DA1970 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D96E2A35235C2EFE00DA1970 /* libssh2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libssh2.a; sourceTree = "<group>"; };
+		D96E2A36235C2EFE00DA1970 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libssl.a; sourceTree = "<group>"; };
+		D96E2A37235C2EFE00DA1970 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
 		EB2336731E3F16660016379F /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
 		EB2336751E3F16660016379F /* libssh2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = libssh2.h; sourceTree = "<group>"; };
 		EB2336761E3F16660016379F /* libssh2_publickey.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = libssh2_publickey.h; sourceTree = "<group>"; };
@@ -93,6 +117,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D96E2A0D235C28EF00DA1970 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D96E2A1E235C2AE700DA1970 /* libz.tbd in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -102,7 +134,9 @@
 				180BD21D1B4C745A000DB241 /* Libraries */,
 				180BD2011B4C622D000DB241 /* SwiftSH */,
 				7D148CFB21225961009C1CCC /* SwiftSH Integration Tests */,
+				D96E2A11235C28EF00DA1970 /* SwiftSH tvOS */,
 				180BD2001B4C622D000DB241 /* Products */,
+				D96E2A18235C2A5A00DA1970 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -111,6 +145,7 @@
 			children = (
 				180BD1FF1B4C622D000DB241 /* SwiftSH.framework */,
 				7D148CFA21225961009C1CCC /* SwiftSH Integration Tests.xctest */,
+				D96E2A10235C28EF00DA1970 /* SwiftSH.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -176,6 +211,33 @@
 			path = "SwiftSH Integration Tests";
 			sourceTree = "<group>";
 		};
+		D96E2A11235C28EF00DA1970 /* SwiftSH tvOS */ = {
+			isa = PBXGroup;
+			children = (
+				D96E2A1D235C2AB100DA1970 /* Libraries */,
+				D96E2A12235C28EF00DA1970 /* SwiftSH.h */,
+				D96E2A13235C28EF00DA1970 /* Info.plist */,
+			);
+			path = "SwiftSH tvOS";
+			sourceTree = "<group>";
+		};
+		D96E2A18235C2A5A00DA1970 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D96E2A1D235C2AB100DA1970 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				D96E2A37235C2EFE00DA1970 /* libcrypto.a */,
+				D96E2A35235C2EFE00DA1970 /* libssh2.a */,
+				D96E2A36235C2EFE00DA1970 /* libssl.a */,
+			);
+			path = Libraries;
+			sourceTree = "<group>";
+		};
 		EB2336721E3F16660016379F /* libssh2 */ = {
 			isa = PBXGroup;
 			children = (
@@ -210,12 +272,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D96E2A0B235C28EF00DA1970 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D96E2A2B235C2BB300DA1970 /* Libssh2.h in Headers */,
+				D96E2A14235C28EF00DA1970 /* SwiftSH.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		180BD1FE1B4C622D000DB241 /* SwiftSH */ = {
+		180BD1FE1B4C622D000DB241 /* SwiftSH iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 180BD2131B4C622D000DB241 /* Build configuration list for PBXNativeTarget "SwiftSH" */;
+			buildConfigurationList = 180BD2131B4C622D000DB241 /* Build configuration list for PBXNativeTarget "SwiftSH iOS" */;
 			buildPhases = (
 				180BD1FA1B4C622D000DB241 /* Sources */,
 				180BD1FB1B4C622D000DB241 /* Frameworks */,
@@ -226,7 +297,7 @@
 			);
 			dependencies = (
 			);
-			name = SwiftSH;
+			name = "SwiftSH iOS";
 			productName = SwiftSH;
 			productReference = 180BD1FF1B4C622D000DB241 /* SwiftSH.framework */;
 			productType = "com.apple.product-type.framework";
@@ -249,6 +320,24 @@
 			productReference = 7D148CFA21225961009C1CCC /* SwiftSH Integration Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		D96E2A0F235C28EF00DA1970 /* SwiftSH tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D96E2A17235C28EF00DA1970 /* Build configuration list for PBXNativeTarget "SwiftSH tvOS" */;
+			buildPhases = (
+				D96E2A0C235C28EF00DA1970 /* Sources */,
+				D96E2A0D235C28EF00DA1970 /* Frameworks */,
+				D96E2A0B235C28EF00DA1970 /* Headers */,
+				D96E2A0E235C28EF00DA1970 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "SwiftSH tvOS";
+			productName = "SwiftSH tvOS";
+			productReference = D96E2A10235C28EF00DA1970 /* SwiftSH.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -269,6 +358,11 @@
 						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 					};
+					D96E2A0F235C28EF00DA1970 = {
+						CreatedOnToolsVersion = 11.1;
+						DevelopmentTeam = 2C26AD8SGU;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 180BD1F91B4C622D000DB241 /* Build configuration list for PBXProject "SwiftSH" */;
@@ -284,8 +378,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				180BD1FE1B4C622D000DB241 /* SwiftSH */,
+				180BD1FE1B4C622D000DB241 /* SwiftSH iOS */,
 				7D148CF921225961009C1CCC /* SwiftSH Integration Tests */,
+				D96E2A0F235C28EF00DA1970 /* SwiftSH tvOS */,
 			);
 		};
 /* End PBXProject section */
@@ -303,6 +398,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D148D10212262DE009C1CCC /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D96E2A0E235C28EF00DA1970 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,12 +442,34 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D96E2A0C235C28EF00DA1970 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D96E2A28235C2BAD00DA1970 /* Error.swift in Sources */,
+				D96E2A2F235C2BB600DA1970 /* Queue.swift in Sources */,
+				D96E2A26235C2BAD00DA1970 /* SFTP.swift in Sources */,
+				D96E2A30235C2BB600DA1970 /* ConsoleLogger.swift in Sources */,
+				D96E2A2E235C2BB600DA1970 /* DNS.swift in Sources */,
+				D96E2A21235C2BAD00DA1970 /* Session.swift in Sources */,
+				D96E2A2A235C2BB300DA1970 /* Libssh2.swift in Sources */,
+				D96E2A2C235C2BB300DA1970 /* Libssh2.m in Sources */,
+				D96E2A22235C2BAD00DA1970 /* Channel.swift in Sources */,
+				D96E2A25235C2BAD00DA1970 /* SCP.swift in Sources */,
+				D96E2A2D235C2BB600DA1970 /* Extensions.swift in Sources */,
+				D96E2A29235C2BAD00DA1970 /* SSHLibrary.swift in Sources */,
+				D96E2A27235C2BAD00DA1970 /* Logger.swift in Sources */,
+				D96E2A24235C2BAD00DA1970 /* Shell.swift in Sources */,
+				D96E2A23235C2BAD00DA1970 /* Command.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
 		7D148D0121225961009C1CCC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 180BD1FE1B4C622D000DB241 /* SwiftSH */;
+			target = 180BD1FE1B4C622D000DB241 /* SwiftSH iOS */;
 			targetProxy = 7D148D0021225961009C1CCC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -480,7 +604,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/libssh2";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tommasomadonia.SwiftSH;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SwiftSH;
 				SKIP_INSTALL = YES;
 				SWIFT_INCLUDE_PATHS = "$(PROJECT_DIR)/libssh2";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -503,7 +627,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/libssh2";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tommasomadonia.SwiftSH;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SwiftSH;
 				SKIP_INSTALL = YES;
 				SWIFT_INCLUDE_PATHS = "$(PROJECT_DIR)/libssh2";
 				SWIFT_VERSION = 5.0;
@@ -557,6 +681,82 @@
 			};
 			name = Release;
 		};
+		D96E2A15235C28EF00DA1970 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = 2C26AD8SGU;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/libssh2";
+				INFOPLIST_FILE = "SwiftSH tvOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(PROJECT_DIR)/SwiftSH tvOS/Libraries\"",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tommasomadonia.SwiftSH;
+				PRODUCT_NAME = "${PROJECT_NAME}";
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_INCLUDE_PATHS = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 13.0;
+			};
+			name = Debug;
+		};
+		D96E2A16235C28EF00DA1970 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = 2C26AD8SGU;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/libssh2";
+				INFOPLIST_FILE = "SwiftSH tvOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(PROJECT_DIR)/SwiftSH tvOS/Libraries\"",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tommasomadonia.SwiftSH;
+				PRODUCT_NAME = "${PROJECT_NAME}";
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_INCLUDE_PATHS = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 13.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -569,7 +769,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		180BD2131B4C622D000DB241 /* Build configuration list for PBXNativeTarget "SwiftSH" */ = {
+		180BD2131B4C622D000DB241 /* Build configuration list for PBXNativeTarget "SwiftSH iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				180BD2141B4C622D000DB241 /* Debug */,
@@ -583,6 +783,15 @@
 			buildConfigurations = (
 				7D148D0221225961009C1CCC /* Debug */,
 				7D148D0321225961009C1CCC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D96E2A17235C28EF00DA1970 /* Build configuration list for PBXNativeTarget "SwiftSH tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D96E2A15235C28EF00DA1970 /* Debug */,
+				D96E2A16235C28EF00DA1970 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

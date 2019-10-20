@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "180BD1FE1B4C622D000DB241"
                BuildableName = "SwiftSH.framework"
-               BlueprintName = "SwiftSH"
+               BlueprintName = "SwiftSH iOS"
                ReferencedContainer = "container:SwiftSH.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -29,8 +29,6 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -47,12 +45,10 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "180BD1FE1B4C622D000DB241"
             BuildableName = "SwiftSH.framework"
-            BlueprintName = "SwiftSH"
+            BlueprintName = "SwiftSH iOS"
             ReferencedContainer = "container:SwiftSH.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -65,7 +61,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "180BD1FE1B4C622D000DB241"
             BuildableName = "SwiftSH.framework"
-            BlueprintName = "SwiftSH"
+            BlueprintName = "SwiftSH iOS"
             ReferencedContainer = "container:SwiftSH.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
