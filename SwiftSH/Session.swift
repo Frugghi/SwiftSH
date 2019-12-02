@@ -37,10 +37,10 @@ open class SSHSession {
 
     /// The server host to connect to.
     public let host: String
-    
+
     /// The server port to connect to.
     public let port: UInt16
-    
+
     /// The logger.
     public var log: Logger
 
@@ -48,12 +48,12 @@ open class SSHSession {
     public var version: String {
         return self.sshLibrary.version
     }
-    
+
     public init(sshLibrary: SSHLibrary.Type = Libssh2.self, host: String, port: UInt16 = 22) throws {
         self.sshLibrary = sshLibrary
         self.host = host
         self.port = port
-        self.log = ConsoleLogger(level: .debug, enabled: true)
+        self.log = ConsoleLogger(level: .debug, enabled: false)
         self.queue = Queue(label: "SSH Queue", concurrent: false)
         self.session = try sshLibrary.makeSession()
         self.timeout = 10
@@ -79,7 +79,7 @@ open class SSHSession {
 
     /// The banner received from the remote host.
     public fileprivate(set) var remoteBanner: String?
-    
+
     /// The fingerprint received from the remote host.
     public fileprivate(set) var fingerprint: [FingerprintHashType: String] = [:]
 
@@ -202,13 +202,13 @@ open class SSHSession {
 
             // Connection completed successfully
             self.connected = true
-            
+
             // Get the remote banner
             self.remoteBanner = self.session.banner
             if let remoteBanner = self.remoteBanner {
                 self.log.debug("Remote banner is \(remoteBanner)")
             }
-            
+
             // Get the host's fingerprint
             self.fingerprint = [:]
             for hashType: FingerprintHashType in [.md5, .sha1] {
@@ -247,13 +247,13 @@ open class SSHSession {
             if let socket = self.socket, CFSocketIsValid(socket) {
                 CFSocketInvalidate(socket)
             }
-            
+
             // Clean up state
             self.socket = nil
             self.connected = false
             self.remoteBanner = nil
             self.fingerprint = [:]
-            
+
             self.log.debug("Disconnected")
         }
     }
@@ -314,20 +314,20 @@ open class SSHSession {
                     let privateKey = (privateKey as NSString).expandingTildeInPath
 
                     try self.session.authenticateByPublicKeyFromFile(username, password: password, publicKey: publicKey, privateKey: privateKey)
-                
+
                 case .byPublicKeyFromMemory(let username, let password, let publicKey, let privateKey):
                     // Public Key authentication
                     try self.session.authenticateByPublicKeyFromMemory(username, password: password, publicKey: publicKey, privateKey: privateKey)
             }
         }
     }
-    
+
     public func checkFingerprint(_ callback: @escaping ([FingerprintHashType: String]) -> Bool) -> Self {
         self.queue.async {
             guard self.connected else {
                 return
             }
-            
+
             let fingerprint = self.fingerprint
             var disconnect = false
 
