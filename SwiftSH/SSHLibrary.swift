@@ -169,6 +169,11 @@ public struct Environment {
     public let name: String
     public let variable: String
 
+    public init (name: String, variable: String)
+    {
+        self.name = name
+        self.variable = variable
+    }
 }
 
 // MARK: - Terminal
