@@ -94,6 +94,7 @@ open class SSHSession {
         }
     }
 
+    @discardableResult
     public func connect() -> Self {
         self.connect(nil)
 
@@ -271,6 +272,7 @@ open class SSHSession {
         }
     }
 
+    @discardableResult
     public func authenticate(_ challenge: AuthenticationChallenge?) -> Self {
         self.authenticate(challenge, completion: nil)
 
@@ -322,6 +324,7 @@ open class SSHSession {
         }
     }
     
+    @discardableResult
     public func checkFingerprint(_ callback: @escaping ([FingerprintHashType: String]) -> Bool) -> Self {
         self.queue.async {
             guard self.connected else {
@@ -344,6 +347,7 @@ open class SSHSession {
         return self
     }
 
+    @discardableResult
     public func checkFingerprint(_ validFingerprints: String...) -> Self {
         return self.checkFingerprint { fingerprint in
             return fingerprint.values.contains(where: { validFingerprints.contains($0) })

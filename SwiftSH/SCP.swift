@@ -26,7 +26,7 @@
 public class SCPSession: SSHChannel {
 
     // MARK: - Download
-    
+    @discardableResult
     public func download(_ from: String, to path: String) -> Self {
         self.download(from, to: path, completion: nil)
 
@@ -43,7 +43,7 @@ public class SCPSession: SSHChannel {
         }
     }
 
-    
+    @discardableResult
     public func download(_ from: String, to stream: OutputStream) -> Self {
         self.download(from, to: stream, completion: nil)
 

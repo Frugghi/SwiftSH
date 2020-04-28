@@ -110,7 +110,7 @@ open class SSHChannel: SSHSession {
     }
 
     // MARK: - Terminal
-    
+    @discardableResult
     public func setTerminalSize(width: UInt, height: UInt) -> Self {
         self.setTerminalSize(width: width, height: height, completion: nil)
 

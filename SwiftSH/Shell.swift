@@ -55,12 +55,14 @@ public class SSHShell: SSHChannel {
     public fileprivate(set) var readStringCallback: ((_ string: String?, _ error: String?) -> Void)?
     public fileprivate(set) var readDataCallback: ((_ data: Data?, _ error: Data?) -> Void)?
     
+    @discardableResult
     public func withCallback(_ callback: ((_ string: String?, _ error: String?) -> Void)?) -> Self {
         self.readStringCallback = callback
 
         return self
     }
     
+    @discardableResult
     public func withCallback(_ callback: ((_ data: Data?, _ error: Data?) -> Void)?) -> Self {
         self.readDataCallback = callback
 
@@ -68,7 +70,7 @@ public class SSHShell: SSHChannel {
     }
 
     // MARK: - Open/Close
-
+    @discardableResult
     public func open() -> Self {
         self.open(nil)
 
@@ -265,7 +267,7 @@ public class SSHShell: SSHChannel {
     }
 
     // MARK: - Write
-    
+    @discardableResult
     public func write(_ data: Data) -> Self {
         self.write(data, completion: nil)
 
@@ -286,6 +288,7 @@ public class SSHShell: SSHChannel {
         }
     }
 
+    @discardableResult
     public func write(_ command: String) -> Self {
         self.write(command, completion: nil)
         
