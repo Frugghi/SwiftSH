@@ -61,6 +61,11 @@ open class SSHSession {
         self.log.info("\(sshLibrary.name) v\(sshLibrary.version)")
     }
 
+    public func setCallbackQueue (queue: DispatchQueue)
+    {
+        self.queue.callbackQueue = queue
+    }
+    
     deinit {
         self.disconnect()
     }

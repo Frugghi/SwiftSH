@@ -28,7 +28,7 @@ internal class Queue {
     fileprivate var objectIdentifier: ObjectIdentifier!
 
     let queue: DispatchQueue
-    let callbackQueue: DispatchQueue = .main
+    var callbackQueue: DispatchQueue = .main
     var current: Bool {
         guard let specific = DispatchQueue.getSpecific(key: Queue.specific) else {
             return false
