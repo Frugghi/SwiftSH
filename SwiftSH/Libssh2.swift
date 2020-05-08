@@ -191,7 +191,7 @@ extension Libssh2 {
             return libssh2_session_last_errno(self.session).error
         }
 
-        init() {
+        init(libSsh2TraceFlags: Int32 = 0) {
             // Create session instance
             let session = libssh2_session_init_ex(nil, nil, nil, UnsafeMutableRawPointer(mutating: Unmanaged.passUnretained(self).toOpaque()))
             precondition(session != nil, "Failed to initialize libssh2 session")
@@ -199,7 +199,7 @@ extension Libssh2 {
             self.session = session
             
             // Set libssh2 callbacks
-            libssh2_setup_session_callbacks(UnsafeMutableRawPointer(self.session))
+            libssh2_setup_session_callbacks(UnsafeMutableRawPointer(self.session), libSsh2TraceFlags)
         }
 
         var authenticated: Bool {

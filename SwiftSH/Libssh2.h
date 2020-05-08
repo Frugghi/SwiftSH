@@ -22,4 +22,4 @@
 // SOFTWARE.
 //
 
-void libssh2_setup_session_callbacks(void *session);
+void libssh2_setup_session_callbacks(void *session, int flags);

@@ -29,7 +29,7 @@
 @import Foundation;
 
 void trace_callback(LIBSSH2_SESSION *session, void *context, const char *data, size_t length) {
-    NSLog(@"Trace Callback");
+    NSLog(@"Trace Callback %s", data);
 }
 
 ssize_t send_callback(libssh2_socket_t socket, const void *buffer, size_t length, int flags, void **abstract) {
@@ -58,8 +58,8 @@ void disconnect_callback(LIBSSH2_SESSION *session, int reason, const char *messa
     NSLog(@"Libssh2 disconnect");
 }
 
-void libssh2_setup_session_callbacks(void *session) {
-    libssh2_trace(session, 1);
+void libssh2_setup_session_callbacks(void *session, int flags) {
+    libssh2_trace(session, flags);
     libssh2_trace_sethandler(session, nil, &trace_callback);
     
     libssh2_session_callback_set(session, LIBSSH2_CALLBACK_SEND, &send_callback);
