@@ -1,4 +1,16 @@
+
 # SwiftSH
+
+This is a fork of the original SwiftSH module with a handful of bug
+fixes and changes that I wanted for my SwiftTerm emulator.   The upstream
+package does not seem active.
+
+While Carthage, Pods and other platforms were originally supported, I
+have not attempted to update those, and instead I am moving to use
+XCFrameworks.
+
+# Original Readme
+
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Pods](https://img.shields.io/cocoapods/v/SwiftSH.svg)](https://cocoapods.org/pods/SwiftSH)
 [![Pod platforms](https://img.shields.io/cocoapods/p/SwiftSH.svg)](https://cocoapods.org/pods/SwiftSH)
