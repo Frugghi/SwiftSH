@@ -1,3 +1,4 @@
+#/bin/bash
 config=Debug
 includessh=false
 while test x$1 != x; do
@@ -17,7 +18,7 @@ while test x$1 != x; do
 done
     
 build_dir=local-build
-rm -rf $build_dir macoslib
+rm -rf $build_dir macoslib SwiftSH.xcframework
 if $mac; then
     mkdir macoslib
 fi

@@ -22,7 +22,7 @@
 // SOFTWARE.
 //
 
-import Libssh2
+@_implementationOnly import Libssh2
 
 public class Libssh2: SSHLibrary {
 
