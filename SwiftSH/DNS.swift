@@ -50,7 +50,7 @@ internal class DNS {
             throw DNSError.inProgress
         }
 
-        var mutableSelf = self
+        var _ = self
         var context = CFHostClientContext()
         context.info = Unmanaged.passRetained(self).toOpaque()
         CFHostSetClient(self.host, {
