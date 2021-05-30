@@ -22,6 +22,8 @@
 // SOFTWARE.
 //
 
+import Foundation
+
 public enum SSHError: Error {
     case unknown
 

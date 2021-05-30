@@ -25,7 +25,7 @@
 #import "Libssh2.h"
 
 @import Darwin;
-@import Libssh2;
+@import CSSH;
 @import Foundation;
 
 void trace_callback(LIBSSH2_SESSION *session, void *context, const char *data, size_t length) {

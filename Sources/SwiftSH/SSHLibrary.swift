@@ -21,7 +21,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //
-
+import CFNetwork
+import Foundation
 // MARK: - SSH Library
 
 /// A library that implements the SSH2 protocol.

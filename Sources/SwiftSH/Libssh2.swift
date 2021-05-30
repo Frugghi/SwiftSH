@@ -21,8 +21,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //
-
-@_implementationOnly import Libssh2
+import Foundation
+@_implementationOnly import CSSH
+import CSwiftSH
+//@_implementationOnly import CSwiftSH
 
 public class Libssh2: SSHLibrary {
 
