@@ -59,6 +59,7 @@ public protocol SSHLibrarySession {
     func authenticateByKeyboardInteractive(_ username: String, callback: @escaping ((String) -> String)) throws
     func authenticateByPublicKeyFromFile(_ username: String, password: String, publicKey: String?, privateKey: String) throws
     func authenticateByPublicKeyFromMemory(_ username: String, password: String, publicKey: Data?, privateKey: Data) throws
+    func authenticateByCallback(_ username: String, publicKey: Data) throws
     func disconnect() throws
     
 }
@@ -145,10 +146,11 @@ public enum AuthenticationChallenge {
     case byKeyboardInteractive(username: String, callback: ((String) -> String))
     case byPublicKeyFromFile(username: String, password: String, publicKey: String?, privateKey: String)
     case byPublicKeyFromMemory(username: String, password: String, publicKey: Data?, privateKey: Data)
-
+    case byCallback (username: String, publicKey: Data)
+    
     var username: String {
         switch self {
-            case .byPassword(let username, _), .byKeyboardInteractive(let username, _), .byPublicKeyFromFile(let username, _, _, _), .byPublicKeyFromMemory(let username, _, _, _):
+        case .byPassword(let username, _), .byKeyboardInteractive(let username, _), .byPublicKeyFromFile(let username, _, _, _), .byPublicKeyFromMemory(let username, _, _, _), .byCallback(username: let username, _):
                 return username
         }
     }
@@ -158,6 +160,7 @@ public enum AuthenticationChallenge {
             case .byPassword: return .password
             case .byKeyboardInteractive: return .keyboardInteractive
             case .byPublicKeyFromFile, .byPublicKeyFromMemory: return .publicKey
+            case .byCallback: return .publicKey
         }
     }
 

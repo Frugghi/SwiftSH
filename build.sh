@@ -18,18 +18,21 @@ while test x$1 != x; do
 done
     
 build_dir=local-build
-rm -rf $build_dir macoslib SwiftSH.xcframework
+rm -rf $build_dir macoslib SwiftSH.xcframework tvoslib
 if $mac; then
     mkdir macoslib
 fi
+mkdir tvoslib
 if $includessh; then
     cd ../iSSH2
     ./iSSH2.sh --platform=iphoneos  --no-clean  --min-version=11.0
     ./iSSH2.sh --platform=macosx  --no-clean --sdk-version=10.15 --min-version=10.15
+    ./iSSH2.sh --platform=appletvos --no-clean  --min-version=11.0
 fi
 
 cp ../iSSH2/libssh2_iphoneos/include/* libssh2/libssh2
 cp ../iSSH2/libssh2_iphoneos/lib/* libssh2/
+cp ../iSSH2/*_appletvos/lib/* tvoslib
 cp ../iSSH2/*_macosx/lib/* macoslib
 
 
@@ -53,7 +56,7 @@ xcode_platform_archive_build()
 	       -derivedDataPath /tmp/build-$_name	\
 	       $*
 }
-
+xcode_platform_archive_build tvos appletvos LIBRARY_SEARCH_PATHS=`pwd`/tvoslib
 xcode_platform_archive_build ios iphoneos $IOS_ARCHS
 xcode_platform_archive_build iossimulator iphonesimulator
 xcode_platform_archive_build mac macosx LIBRARY_SEARCH_PATHS=`pwd`/macoslib

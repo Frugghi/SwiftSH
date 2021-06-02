@@ -40,6 +40,24 @@ class ShellViewController: UIViewController, SSHViewController {
     var port: UInt16?
     var username: String!
     var password: String?
+    var optPubKey: Data? = Data (base64Encoded: "AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBMbKg1AKKNrafUml2oRD+8ikICZ3DEBFOPL12gvTy0MVyx8g7MJVcCuQSX/gw985Ymy9he3FQAFu3Yr+qp6p8TU=")
+    
+    func getKey (_ src: Data) -> Data {
+        func getInt (_ d: Data) -> Int {
+            
+            var v: Int32 = 0
+            Swift.withUnsafeMutableBytes(of: &v, { d.copyBytes(to: $0)} )
+            
+            return Int (v.bigEndian)
+        }
+        
+        var n = getInt (src) + 4
+        n += getInt (src [n...]) + 4
+        let rest = src [(n+4)...]
+        
+        assert (rest.count == 65)
+        return rest
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +67,11 @@ class ShellViewController: UIViewController, SSHViewController {
         self.textView.isSelectable = false
         
         if self.requiresAuthentication {
-            if let password = self.password {
+            if let pubKey = optPubKey {
+                let justTheKey = getKey (pubKey);
+                let d = Data (base64Encoded: "AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBH8XTNtz0gOYDp/GqWJLWh6erTPjdY0XSQkgRhz1jLe3WSvWha2nqQhBxUlvy2owpLtIq2RYaUtshxPZnzrn8xY=")
+                self.authenticationChallenge = .byCallback(username: self.username, publicKey: d!)
+            } else if let password = self.password {
                 self.authenticationChallenge = .byPassword(username: self.username, password: password)
             } else {
                 self.authenticationChallenge = .byKeyboardInteractive(username: self.username) { [unowned self] challenge in

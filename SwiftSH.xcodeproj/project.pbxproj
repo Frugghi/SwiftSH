@@ -3,32 +3,31 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		180BD2031B4C622D000DB241 /* SwiftSH.h in Headers */ = {isa = PBXBuildFile; fileRef = 180BD2021B4C622D000DB241 /* SwiftSH.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		180BD21A1B4C6910000DB241 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180BD2191B4C6910000DB241 /* Session.swift */; };
 		180BD21C1B4C7367000DB241 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 180BD21B1B4C7367000DB241 /* libz.tbd */; };
-		180BD2361B4C97E3000DB241 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180BD2351B4C97E3000DB241 /* Extensions.swift */; };
-		186694781B5DBD7B004DE8A8 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186694771B5DBD7B004DE8A8 /* Error.swift */; };
-		188EA2571B4D1E19007B7E49 /* Libssh2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188EA2561B4D1E19007B7E49 /* Libssh2.swift */; };
-		188EA2591B4D3B05007B7E49 /* SSHLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188EA2581B4D3B05007B7E49 /* SSHLibrary.swift */; };
-		188EA25D1B4D3C62007B7E49 /* DNS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188EA25C1B4D3C62007B7E49 /* DNS.swift */; };
-		188EA25F1B4D57FB007B7E49 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188EA25E1B4D57FB007B7E49 /* Queue.swift */; };
-		1890C4F01B4EF68B008E89D0 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1890C4EF1B4EF68B008E89D0 /* Logger.swift */; };
-		1890C4F21B4F4687008E89D0 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1890C4F11B4F4687008E89D0 /* Command.swift */; };
-		1890C4F41B4F5024008E89D0 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1890C4F31B4F5024008E89D0 /* Channel.swift */; };
-		18B51C2C1B6D88390057BB2E /* SCP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B51C2B1B6D88380057BB2E /* SCP.swift */; };
-		18B51C2E1B6D88440057BB2E /* SFTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B51C2D1B6D88440057BB2E /* SFTP.swift */; };
-		18EB4C411B4FD6C0003A55BC /* ConsoleLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB4C401B4FD6C0003A55BC /* ConsoleLogger.swift */; };
-		18EB4C431B534BA6003A55BC /* Shell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB4C421B534BA6003A55BC /* Shell.swift */; };
+		49176A2F2666C72C00D32353 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49176A212666C72C00D32353 /* Command.swift */; };
+		49176A302666C72C00D32353 /* SCP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49176A222666C72C00D32353 /* SCP.swift */; };
+		49176A312666C72C00D32353 /* Libssh2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49176A232666C72C00D32353 /* Libssh2.swift */; };
+		49176A322666C72C00D32353 /* SFTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49176A242666C72C00D32353 /* SFTP.swift */; };
+		49176A332666C72C00D32353 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49176A252666C72C00D32353 /* Error.swift */; };
+		49176A342666C72C00D32353 /* SSHLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49176A262666C72C00D32353 /* SSHLibrary.swift */; };
+		49176A352666C72C00D32353 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49176A272666C72C00D32353 /* Queue.swift */; };
+		49176A362666C72C00D32353 /* DNS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49176A282666C72C00D32353 /* DNS.swift */; };
+		49176A372666C72C00D32353 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49176A292666C72C00D32353 /* Session.swift */; };
+		49176A382666C72C00D32353 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49176A2A2666C72C00D32353 /* Logger.swift */; };
+		49176A392666C72C00D32353 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49176A2B2666C72C00D32353 /* Extensions.swift */; };
+		49176A3A2666C72C00D32353 /* ConsoleLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49176A2C2666C72C00D32353 /* ConsoleLogger.swift */; };
+		49176A3B2666C72C00D32353 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49176A2D2666C72C00D32353 /* Channel.swift */; };
+		49176A3C2666C72C00D32353 /* Shell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49176A2E2666C72C00D32353 /* Shell.swift */; };
+		49176A3F2666C7E500D32353 /* CSwiftSH in Frameworks */ = {isa = PBXBuildFile; productRef = 49176A3E2666C7E500D32353 /* CSwiftSH */; };
 		7D148CFF21225961009C1CCC /* SwiftSH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180BD1FF1B4C622D000DB241 /* SwiftSH.framework */; };
 		7D148D0B21225C5E009C1CCC /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D148D0A21225C5E009C1CCC /* Config.swift */; };
 		7D148D0E21225D46009C1CCC /* AuthenticationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D148D0D21225D46009C1CCC /* AuthenticationTests.swift */; };
 		7D148D10212262DE009C1CCC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D148D0F212262DE009C1CCC /* Assets.xcassets */; };
-		7D89F9D11F535D7A00672446 /* Libssh2.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D89F9CF1F535D7A00672446 /* Libssh2.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7D89F9D21F535D7A00672446 /* Libssh2.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D89F9D01F535D7A00672446 /* Libssh2.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,28 +44,26 @@
 		180BD1FF1B4C622D000DB241 /* SwiftSH.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftSH.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		180BD2021B4C622D000DB241 /* SwiftSH.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftSH.h; sourceTree = "<group>"; };
 		180BD2041B4C622D000DB241 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		180BD2191B4C6910000DB241 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		180BD21B1B4C7367000DB241 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
-		180BD2351B4C97E3000DB241 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		186694771B5DBD7B004DE8A8 /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
-		188EA2561B4D1E19007B7E49 /* Libssh2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Libssh2.swift; sourceTree = "<group>"; };
-		188EA2581B4D3B05007B7E49 /* SSHLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSHLibrary.swift; sourceTree = "<group>"; };
-		188EA25C1B4D3C62007B7E49 /* DNS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DNS.swift; sourceTree = "<group>"; };
-		188EA25E1B4D57FB007B7E49 /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
-		1890C4EF1B4EF68B008E89D0 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
-		1890C4F11B4F4687008E89D0 /* Command.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
-		1890C4F31B4F5024008E89D0 /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
-		18B51C2B1B6D88380057BB2E /* SCP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCP.swift; sourceTree = "<group>"; };
-		18B51C2D1B6D88440057BB2E /* SFTP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SFTP.swift; sourceTree = "<group>"; };
-		18EB4C401B4FD6C0003A55BC /* ConsoleLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsoleLogger.swift; sourceTree = "<group>"; };
-		18EB4C421B534BA6003A55BC /* Shell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shell.swift; sourceTree = "<group>"; };
+		49176A212666C72C00D32353 /* Command.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Command.swift; path = Sources/SwiftSH/Command.swift; sourceTree = "<group>"; };
+		49176A222666C72C00D32353 /* SCP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SCP.swift; path = Sources/SwiftSH/SCP.swift; sourceTree = "<group>"; };
+		49176A232666C72C00D32353 /* Libssh2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Libssh2.swift; path = Sources/SwiftSH/Libssh2.swift; sourceTree = "<group>"; };
+		49176A242666C72C00D32353 /* SFTP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SFTP.swift; path = Sources/SwiftSH/SFTP.swift; sourceTree = "<group>"; };
+		49176A252666C72C00D32353 /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Error.swift; path = Sources/SwiftSH/Error.swift; sourceTree = "<group>"; };
+		49176A262666C72C00D32353 /* SSHLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SSHLibrary.swift; path = Sources/SwiftSH/SSHLibrary.swift; sourceTree = "<group>"; };
+		49176A272666C72C00D32353 /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Queue.swift; path = Sources/SwiftSH/Queue.swift; sourceTree = "<group>"; };
+		49176A282666C72C00D32353 /* DNS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DNS.swift; path = Sources/SwiftSH/DNS.swift; sourceTree = "<group>"; };
+		49176A292666C72C00D32353 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Session.swift; path = Sources/SwiftSH/Session.swift; sourceTree = "<group>"; };
+		49176A2A2666C72C00D32353 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Logger.swift; path = Sources/SwiftSH/Logger.swift; sourceTree = "<group>"; };
+		49176A2B2666C72C00D32353 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = Sources/SwiftSH/Extensions.swift; sourceTree = "<group>"; };
+		49176A2C2666C72C00D32353 /* ConsoleLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConsoleLogger.swift; path = Sources/SwiftSH/ConsoleLogger.swift; sourceTree = "<group>"; };
+		49176A2D2666C72C00D32353 /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Channel.swift; path = Sources/SwiftSH/Channel.swift; sourceTree = "<group>"; };
+		49176A2E2666C72C00D32353 /* Shell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Shell.swift; path = Sources/SwiftSH/Shell.swift; sourceTree = "<group>"; };
 		7D148CFA21225961009C1CCC /* SwiftSH Integration Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SwiftSH Integration Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D148CFE21225961009C1CCC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7D148D0A21225C5E009C1CCC /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		7D148D0D21225D46009C1CCC /* AuthenticationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationTests.swift; sourceTree = "<group>"; };
 		7D148D0F212262DE009C1CCC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		7D89F9CF1F535D7A00672446 /* Libssh2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Libssh2.h; sourceTree = "<group>"; };
-		7D89F9D01F535D7A00672446 /* Libssh2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Libssh2.m; sourceTree = "<group>"; };
 		EB2336731E3F16660016379F /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
 		EB2336751E3F16660016379F /* libssh2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = libssh2.h; sourceTree = "<group>"; };
 		EB2336761E3F16660016379F /* libssh2_publickey.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = libssh2_publickey.h; sourceTree = "<group>"; };
@@ -82,6 +79,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				180BD21C1B4C7367000DB241 /* libz.tbd in Frameworks */,
+				49176A3F2666C7E500D32353 /* CSwiftSH in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,6 +97,20 @@
 		180BD1F51B4C622D000DB241 = {
 			isa = PBXGroup;
 			children = (
+				49176A2D2666C72C00D32353 /* Channel.swift */,
+				49176A212666C72C00D32353 /* Command.swift */,
+				49176A2C2666C72C00D32353 /* ConsoleLogger.swift */,
+				49176A282666C72C00D32353 /* DNS.swift */,
+				49176A252666C72C00D32353 /* Error.swift */,
+				49176A2B2666C72C00D32353 /* Extensions.swift */,
+				49176A232666C72C00D32353 /* Libssh2.swift */,
+				49176A2A2666C72C00D32353 /* Logger.swift */,
+				49176A272666C72C00D32353 /* Queue.swift */,
+				49176A222666C72C00D32353 /* SCP.swift */,
+				49176A292666C72C00D32353 /* Session.swift */,
+				49176A242666C72C00D32353 /* SFTP.swift */,
+				49176A2E2666C72C00D32353 /* Shell.swift */,
+				49176A262666C72C00D32353 /* SSHLibrary.swift */,
 				180BD21D1B4C745A000DB241 /* Libraries */,
 				180BD2011B4C622D000DB241 /* SwiftSH */,
 				7D148CFB21225961009C1CCC /* SwiftSH Integration Tests */,
@@ -119,15 +131,6 @@
 			isa = PBXGroup;
 			children = (
 				180BD2021B4C622D000DB241 /* SwiftSH.h */,
-				180BD2191B4C6910000DB241 /* Session.swift */,
-				1890C4F31B4F5024008E89D0 /* Channel.swift */,
-				1890C4F11B4F4687008E89D0 /* Command.swift */,
-				18EB4C421B534BA6003A55BC /* Shell.swift */,
-				18B51C2B1B6D88380057BB2E /* SCP.swift */,
-				18B51C2D1B6D88440057BB2E /* SFTP.swift */,
-				1890C4EF1B4EF68B008E89D0 /* Logger.swift */,
-				186694771B5DBD7B004DE8A8 /* Error.swift */,
-				188EA2581B4D3B05007B7E49 /* SSHLibrary.swift */,
 				188EA25B1B4D3BCF007B7E49 /* Lib Wrapper */,
 				188EA25A1B4D3B94007B7E49 /* Internal */,
 				180BD2041B4C622D000DB241 /* Info.plist */,
@@ -147,10 +150,6 @@
 		188EA25A1B4D3B94007B7E49 /* Internal */ = {
 			isa = PBXGroup;
 			children = (
-				180BD2351B4C97E3000DB241 /* Extensions.swift */,
-				188EA25C1B4D3C62007B7E49 /* DNS.swift */,
-				188EA25E1B4D57FB007B7E49 /* Queue.swift */,
-				18EB4C401B4FD6C0003A55BC /* ConsoleLogger.swift */,
 			);
 			name = Internal;
 			sourceTree = "<group>";
@@ -158,9 +157,6 @@
 		188EA25B1B4D3BCF007B7E49 /* Lib Wrapper */ = {
 			isa = PBXGroup;
 			children = (
-				188EA2561B4D1E19007B7E49 /* Libssh2.swift */,
-				7D89F9CF1F535D7A00672446 /* Libssh2.h */,
-				7D89F9D01F535D7A00672446 /* Libssh2.m */,
 			);
 			name = "Lib Wrapper";
 			sourceTree = "<group>";
@@ -205,7 +201,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7D89F9D11F535D7A00672446 /* Libssh2.h in Headers */,
 				180BD2031B4C622D000DB241 /* SwiftSH.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -227,6 +222,9 @@
 			dependencies = (
 			);
 			name = SwiftSH;
+			packageProductDependencies = (
+				49176A3E2666C7E500D32353 /* CSwiftSH */,
+			);
 			productName = SwiftSH;
 			productReference = 180BD1FF1B4C622D000DB241 /* SwiftSH.framework */;
 			productType = "com.apple.product-type.framework";
@@ -280,6 +278,9 @@
 				Base,
 			);
 			mainGroup = 180BD1F51B4C622D000DB241;
+			packageReferences = (
+				49176A3D2666C7E500D32353 /* XCRemoteSwiftPackageReference "SwiftSh" */,
+			);
 			productRefGroup = 180BD2001B4C622D000DB241 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -313,21 +314,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				188EA2591B4D3B05007B7E49 /* SSHLibrary.swift in Sources */,
-				188EA25F1B4D57FB007B7E49 /* Queue.swift in Sources */,
-				180BD21A1B4C6910000DB241 /* Session.swift in Sources */,
-				18EB4C411B4FD6C0003A55BC /* ConsoleLogger.swift in Sources */,
-				186694781B5DBD7B004DE8A8 /* Error.swift in Sources */,
-				180BD2361B4C97E3000DB241 /* Extensions.swift in Sources */,
-				18B51C2E1B6D88440057BB2E /* SFTP.swift in Sources */,
-				1890C4F01B4EF68B008E89D0 /* Logger.swift in Sources */,
-				188EA2571B4D1E19007B7E49 /* Libssh2.swift in Sources */,
-				18EB4C431B534BA6003A55BC /* Shell.swift in Sources */,
-				7D89F9D21F535D7A00672446 /* Libssh2.m in Sources */,
-				18B51C2C1B6D88390057BB2E /* SCP.swift in Sources */,
-				188EA25D1B4D3C62007B7E49 /* DNS.swift in Sources */,
-				1890C4F41B4F5024008E89D0 /* Channel.swift in Sources */,
-				1890C4F21B4F4687008E89D0 /* Command.swift in Sources */,
+				49176A3C2666C72C00D32353 /* Shell.swift in Sources */,
+				49176A342666C72C00D32353 /* SSHLibrary.swift in Sources */,
+				49176A3A2666C72C00D32353 /* ConsoleLogger.swift in Sources */,
+				49176A312666C72C00D32353 /* Libssh2.swift in Sources */,
+				49176A3B2666C72C00D32353 /* Channel.swift in Sources */,
+				49176A352666C72C00D32353 /* Queue.swift in Sources */,
+				49176A322666C72C00D32353 /* SFTP.swift in Sources */,
+				49176A372666C72C00D32353 /* Session.swift in Sources */,
+				49176A2F2666C72C00D32353 /* Command.swift in Sources */,
+				49176A302666C72C00D32353 /* SCP.swift in Sources */,
+				49176A392666C72C00D32353 /* Extensions.swift in Sources */,
+				49176A362666C72C00D32353 /* DNS.swift in Sources */,
+				49176A382666C72C00D32353 /* Logger.swift in Sources */,
+				49176A332666C72C00D32353 /* Error.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,7 +400,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -455,10 +455,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				"VALID_ARCHS[sdk=iphonesimulator*]" = x86_64;
@@ -479,7 +480,11 @@
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/libssh2";
 				INFOPLIST_FILE = SwiftSH/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/libssh2";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tommasomadonia.SwiftSH;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -502,7 +507,11 @@
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/libssh2";
 				INFOPLIST_FILE = SwiftSH/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/libssh2";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tommasomadonia.SwiftSH;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -527,7 +536,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "SwiftSH Integration Tests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tommasomadonia.SwiftSH-Integration-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -551,7 +564,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "SwiftSH Integration Tests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tommasomadonia.SwiftSH-Integration-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -590,6 +607,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		49176A3D2666C7E500D32353 /* XCRemoteSwiftPackageReference "SwiftSh" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/migueldeicaza/SwiftSh";
+			requirement = {
+				branch = swiftpm;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		49176A3E2666C7E500D32353 /* CSwiftSH */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 49176A3D2666C7E500D32353 /* XCRemoteSwiftPackageReference "SwiftSh" */;
+			productName = CSwiftSH;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 180BD1F61B4C622D000DB241 /* Project object */;
 }

@@ -186,7 +186,6 @@ fileprivate extension Int32 {
 extension Libssh2 {
 
     fileprivate class Session: SSHLibrarySession {
-
         var session: OpaquePointer!
         var keyboardInteractiveCallback: ((String) -> String)?
         var lastError: Error {
@@ -362,6 +361,35 @@ extension Libssh2 {
                     } else {
                         return libssh2_userauth_publickey_frommemory(self.session, username, username.utf8.count, nil, 0, privateKey.baseAddress, privateKey.count, password)
                     }
+                }
+            }
+        }
+
+        class callbackData {
+            internal init(pub: Data) {
+                self.pub = pub
+            }
+            
+            var pub: Data
+        }
+        
+        var priv = Data (base64Encoded: "BH8XTNtz0gOYDp/GqWJLWh6erTPjdY0XSQkgRhz1jLe3WSvWha2nqQhBxUlvy2owpLtIq2RYaUtshxPZnzrn8xb0XMr7hcRLsX9zLspDDCSgfQSvd6oEP7ocStkgoEw7KA==")
+        func authenticateByCallback(_ username: String, publicKey: Data) throws {
+            try libssh2_function {
+                let cbData = callbackData (pub: publicKey)
+                let algorithm: SecKeyAlgorithm = .ecdsaSignatureDigestX962SHA256
+                
+                return publicKey.withUnsafeBytes {
+                    let publicKey = $0.bindMemory(to: UInt8.self)
+                    let ptr = UnsafeMutablePointer<UnsafeMutableRawPointer?>.allocate(capacity: 1)
+                    ptr.pointee = Unmanaged.passRetained(cbData).toOpaque()
+                    return libssh2_userauth_publickey(self.session, username, publicKey.baseAddress, publicKey.count, { session, sig, sig_len, data, data_len, cbData -> Int32 in
+                                                        let v = sig_len?.pointee
+                                                     abort ()
+                                                        print ("I got here")
+                                                        
+                                                        return 0 }, ptr)
+                    
                 }
             }
         }
