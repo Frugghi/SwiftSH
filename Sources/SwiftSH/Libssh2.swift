@@ -22,6 +22,8 @@
 // SOFTWARE.
 //
 import Foundation
+import CryptoKit
+
 @_implementationOnly import CSSH
 import CSwiftSH
 //@_implementationOnly import CSwiftSH
@@ -365,31 +367,16 @@ extension Libssh2 {
             }
         }
 
-        class callbackData {
-            internal init(pub: Data) {
-                self.pub = pub
-            }
-            
-            var pub: Data
-        }
-        
-        var priv = Data (base64Encoded: "BH8XTNtz0gOYDp/GqWJLWh6erTPjdY0XSQkgRhz1jLe3WSvWha2nqQhBxUlvy2owpLtIq2RYaUtshxPZnzrn8xb0XMr7hcRLsX9zLspDDCSgfQSvd6oEP7ocStkgoEw7KA==")
-        func authenticateByCallback(_ username: String, publicKey: Data) throws {
+        func authenticateByCallback(_ username: String, publicKey: Data, signCallback: @escaping (Data)->Data?) throws {
             try libssh2_function {
-                let cbData = callbackData (pub: publicKey)
-                let algorithm: SecKeyAlgorithm = .ecdsaSignatureDigestX962SHA256
+                let cbData = callbackData (pub: publicKey, signCallback: signCallback)
                 
                 return publicKey.withUnsafeBytes {
                     let publicKey = $0.bindMemory(to: UInt8.self)
                     let ptr = UnsafeMutablePointer<UnsafeMutableRawPointer?>.allocate(capacity: 1)
-                    ptr.pointee = Unmanaged.passRetained(cbData).toOpaque()
-                    return libssh2_userauth_publickey(self.session, username, publicKey.baseAddress, publicKey.count, { session, sig, sig_len, data, data_len, cbData -> Int32 in
-                                                        let v = sig_len?.pointee
-                                                     abort ()
-                                                        print ("I got here")
-                                                        
-                                                        return 0 }, ptr)
-                    
+                    ptr.pointee = Unmanaged.passUnretained(cbData).toOpaque()
+                    libssh2_session_set_timeout (self.session, 0)
+                    return libssh2_userauth_publickey(self.session, username, publicKey.baseAddress, publicKey.count, authenticateCallback, ptr)
                 }
             }
         }
@@ -401,7 +388,78 @@ extension Libssh2 {
         }
 
     }
+}
 
+class callbackData {
+    internal init(pub: Data, signCallback: @escaping (Data)->Data?) {
+        self.pub = pub
+        self.signCallback = signCallback
+    }
+    
+    var pub: Data
+    var signCallback: (_ data: Data) -> Data?
+}
+
+func authenticateCallback (session: OpaquePointer?,
+                           sig: UnsafeMutablePointer<UnsafeMutablePointer<UInt8>?>?,
+                           sig_len: UnsafeMutablePointer<Int>?,
+                           data: UnsafePointer<UInt8>?,
+                           data_len: Int,
+                           abstract: UnsafeMutablePointer<UnsafeMutableRawPointer?>?) -> Int32 {
+    
+    func encode (_ int: Int) -> Data {
+        var bigEndianInt = Int32 (int).bigEndian
+        return Data (bytes: &bigEndianInt, count: 4)
+    }
+
+    func encode (data: Data) -> Data {
+        return encode (data.count) + data
+    }
+
+    let cbData: callbackData = Unmanaged.fromOpaque (abstract!.pointee!).takeUnretainedValue()
+    
+    let data = Data(bytes: data!, count: data_len)
+    guard let signedData = cbData.signCallback (data) else {
+        return -1
+    }
+
+    // While malloc is technically correct, this is swappable by users of libssh2, since we
+    // own libssh2, we can use malloc.
+    guard let target = malloc (signedData.count) else {
+        print ("Not enough ram to allocate \(signedData.count)")
+        return -1
+    }
+    
+    guard let raw = try? CryptoKit.P256.Signing.ECDSASignature(derRepresentation: signedData).rawRepresentation else {
+        print ("Failed to get the raw representation")
+        return -1
+    }
+    
+    let rawLength = raw.count / 2
+    
+    // Check if we need to pad with 0x00 to prevent certain
+    // ssh servers from thinking r or s is negative
+    let paddingRange: ClosedRange<UInt8> = 0x80...0xFF
+    var r = Data(raw[0..<rawLength])
+    if paddingRange ~= r.first! {
+        r.insert(0x00, at: 0)
+    }
+    var s = Data(raw[rawLength...])
+    if paddingRange ~= s.first! {
+        s.insert(0x00, at: 0)
+    }
+    
+    let signature = encode(data: r) + encode(data: s)
+ 
+    let bound = target.bindMemory(to: UInt8.self, capacity: signature.count)
+    for x in 0..<signature.count {
+        bound [x] = signature [x]
+    }
+ 
+    sig?.pointee = bound
+    sig_len?.pointee = signature.count
+
+    return 0
 }
 
 extension Libssh2 {

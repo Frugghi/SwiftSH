@@ -59,7 +59,7 @@ public protocol SSHLibrarySession {
     func authenticateByKeyboardInteractive(_ username: String, callback: @escaping ((String) -> String)) throws
     func authenticateByPublicKeyFromFile(_ username: String, password: String, publicKey: String?, privateKey: String) throws
     func authenticateByPublicKeyFromMemory(_ username: String, password: String, publicKey: Data?, privateKey: Data) throws
-    func authenticateByCallback(_ username: String, publicKey: Data) throws
+    func authenticateByCallback(_ username: String, publicKey: Data, signCallback: @escaping (Data)->Data?) throws
     func disconnect() throws
     
 }
@@ -146,11 +146,13 @@ public enum AuthenticationChallenge {
     case byKeyboardInteractive(username: String, callback: ((String) -> String))
     case byPublicKeyFromFile(username: String, password: String, publicKey: String?, privateKey: String)
     case byPublicKeyFromMemory(username: String, password: String, publicKey: Data?, privateKey: Data)
-    case byCallback (username: String, publicKey: Data)
+    
+    // Takes a username, a public key to identify with, and a callback that will be invoked with a block of data to sign, and will return on success the signed data
+    case byCallback (username: String, publicKey: Data, signCallback: (Data)->Data?)
     
     var username: String {
         switch self {
-        case .byPassword(let username, _), .byKeyboardInteractive(let username, _), .byPublicKeyFromFile(let username, _, _, _), .byPublicKeyFromMemory(let username, _, _, _), .byCallback(username: let username, _):
+        case .byPassword(let username, _), .byKeyboardInteractive(let username, _), .byPublicKeyFromFile(let username, _, _, _), .byPublicKeyFromMemory(let username, _, _, _), .byCallback(username: let username, _, _):
                 return username
         }
     }

@@ -117,6 +117,7 @@
 				TargetAttributes = {
 					180BD2211B4C9268000DB241 = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = PJQC57N853;
 						LastSwiftMigration = 1020;
 					};
 				};
@@ -303,6 +304,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = PJQC57N853;
 				INFOPLIST_FILE = "SwiftSH Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tommasomadonia.SwiftSHExample;
@@ -315,6 +317,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = PJQC57N853;
 				INFOPLIST_FILE = "SwiftSH Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tommasomadonia.SwiftSHExample;

@@ -327,8 +327,8 @@ open class SSHSession {
                     // Public Key authentication
                     try self.session.authenticateByPublicKeyFromMemory(username, password: password, publicKey: publicKey, privateKey: privateKey)
                     
-            case .byCallback(username: let username, publicKey: let publicKey):
-                try self.session.authenticateByCallback(username, publicKey: publicKey)
+            case .byCallback(username: let username, publicKey: let publicKey, signCallback: let signCallback):
+                try self.session.authenticateByCallback(username, publicKey: publicKey, signCallback: signCallback)
             }
         }
     }

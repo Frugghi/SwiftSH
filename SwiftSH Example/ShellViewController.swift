@@ -40,25 +40,13 @@ class ShellViewController: UIViewController, SSHViewController {
     var port: UInt16?
     var username: String!
     var password: String?
-    var optPubKey: Data? = Data (base64Encoded: "AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBMbKg1AKKNrafUml2oRD+8ikICZ3DEBFOPL12gvTy0MVyx8g7MJVcCuQSX/gw985Ymy9he3FQAFu3Yr+qp6p8TU=")
     
-    func getKey (_ src: Data) -> Data {
-        func getInt (_ d: Data) -> Int {
-            
-            var v: Int32 = 0
-            Swift.withUnsafeMutableBytes(of: &v, { d.copyBytes(to: $0)} )
-            
-            return Int (v.bigEndian)
-        }
-        
-        var n = getInt (src) + 4
-        n += getInt (src [n...]) + 4
-        let rest = src [(n+4)...]
-        
-        assert (rest.count == 65)
-        return rest
-    }
-    
+    // This is an example showing how to use your own callback, and it is tightly coupled with your code
+    // when this is set, you should create your keys, and bring the .externalRepresentation() of those
+    // here, and then you can see how this is used with the signing code below
+    var optPubKey: Data? = Data (base64Encoded: "AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBJ2tKFedFj5BuevFKzyX4WsQCRdrywVX+w1xVcA5vaGXvn15wsKydh/yRp6FDqSsNfguWHgKOLy65FoH5ih794I=")
+    let privateKey = Data (base64Encoded: "BJ2tKFedFj5BuevFKzyX4WsQCRdrywVX+w1xVcA5vaGXvn15wsKydh/yRp6FDqSsNfguWHgKOLy65FoH5ih794LgJuzbVceIWIi+GMCuCkMKilM2Nq5DHQM626wYuzrTig==")!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -67,10 +55,26 @@ class ShellViewController: UIViewController, SSHViewController {
         self.textView.isSelectable = false
         
         if self.requiresAuthentication {
-            if let pubKey = optPubKey {
-                let justTheKey = getKey (pubKey);
-                let d = Data (base64Encoded: "AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBH8XTNtz0gOYDp/GqWJLWh6erTPjdY0XSQkgRhz1jLe3WSvWha2nqQhBxUlvy2owpLtIq2RYaUtshxPZnzrn8xY=")
-                self.authenticationChallenge = .byCallback(username: self.username, publicKey: d!)
+            if let publicKey = optPubKey {
+                
+                // Turn the nice privateKey above from the data blob into a SecKey
+                var error: Unmanaged<CFError>? = nil
+                guard let key = SecKeyCreateWithData (privateKey as NSData, [
+                    kSecAttrKeyType as String:            kSecAttrKeyTypeECSECPrimeRandom,
+                    kSecAttrKeyClass as String: kSecAttrKeyClassPrivate,
+                    kSecAttrKeySizeInBits as String:      256,
+                ] as NSDictionary, &error) else {
+                    let errMsg = error!.takeRetainedValue() as Error
+                    print ("This should really never happen, it should be able to create a SecKey from the above base64 encoded privateKey\(errMsg)")
+                    abort ()
+                }
+
+                self.authenticationChallenge = .byCallback(username: self.username, publicKey: publicKey, signCallback: { dataToSign in
+                    guard let signed = SecKeyCreateSignature(key, .ecdsaSignatureMessageX962SHA256, dataToSign as CFData, &error) else {
+                        return nil
+                    }
+                    return signed as NSData as Data
+                })
             } else if let password = self.password {
                 self.authenticationChallenge = .byPassword(username: self.username, password: password)
             } else {
