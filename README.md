@@ -6,8 +6,11 @@ fixes and changes that I wanted for my SwiftTerm emulator.   The upstream
 package does not seem active.
 
 While Carthage, Pods and other platforms were originally supported, I
-have not attempted to update those, and instead I am moving to use
-XCFrameworks.
+have not attempted to update those, I have now moved to SwiftPM for it,
+which solved various issues for me.
+
+Additionally, this add a callback-based authentication system, that you
+can now use for authenticating using the secure enclave.
 
 # Original Readme
 
