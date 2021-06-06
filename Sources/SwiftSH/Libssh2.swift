@@ -430,8 +430,12 @@ func authenticateCallback (session: OpaquePointer?,
         return -1
     }
     
-    guard let raw = try? CryptoKit.P256.Signing.ECDSASignature(derRepresentation: signedData).rawRepresentation else {
-        print ("Failed to get the raw representation")
+    var rawmaybe: Data? = nil
+    if #available(iOS 13.0, *) {
+        rawmaybe = try? CryptoKit.P256.Signing.ECDSASignature(derRepresentation: signedData).rawRepresentation
+    }
+    
+    guard let raw = rawmaybe else {
         return -1
     }
     
