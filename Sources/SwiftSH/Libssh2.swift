@@ -431,7 +431,7 @@ func authenticateCallback (session: OpaquePointer?,
     }
     
     var rawmaybe: Data? = nil
-    if #available(iOS 13.0, *) {
+    if #available(iOS 13.0, macOS 10.15, *) {
         rawmaybe = try? CryptoKit.P256.Signing.ECDSASignature(derRepresentation: signedData).rawRepresentation
     }
     
