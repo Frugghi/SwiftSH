@@ -23,6 +23,7 @@
 //
 import CFNetwork
 import Foundation
+import CoreText
 // MARK: - SSH Library
 
 /// A library that implements the SSH2 protocol.
@@ -61,7 +62,29 @@ public protocol SSHLibrarySession {
     func authenticateByPublicKeyFromMemory(_ username: String, password: String, publicKey: Data?, privateKey: Data) throws
     func authenticateByCallback(_ username: String, publicKey: Data, signCallback: @escaping (Data)->Data?) throws
     func disconnect() throws
-    
+    func makeKnownHost () -> SSHLibraryKnownHost
+    func hostKey () -> (key: [Int8], type: Int32)?
+}
+
+// MARK: - KnownHost
+public enum KnownHostStatus {
+    /// hosts and keys match.
+    case match
+    /// something prevented the check to be made
+    case failure
+    ///  host was found, but the keys didn't match
+    case keyMismatch
+    /// no host match was found
+    case notFound
+}
+
+public protocol SSHLibraryKnownHost {
+    // check a host+key against the list of known hosts
+    func check (hostName: String, port: Int32, key: [Int8]) -> (status: KnownHostStatus, key: String?)
+
+    func readFile (filename: String) throws
+    func writeFile (filename: String) throws
+    func add(hostname: String, port: Int32?, key: [Int8], keyType: String, comment: String) throws
 }
 
 // MARK: - Channel

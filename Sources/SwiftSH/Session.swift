@@ -30,7 +30,7 @@ open class SSHSession {
     // MARK: - Internal variables
 
     internal let queue: Queue
-    internal var session: SSHLibrarySession
+    public var session: SSHLibrarySession
     internal var socket: CFSocket?
     internal let sshLibrary: SSHLibrary.Type
 

@@ -386,7 +386,24 @@ extension Libssh2 {
                 libssh2_session_disconnect_ex(self.session, SSH_DISCONNECT_BY_APPLICATION, "SwiftSH: Disconnect", "")
             }
         }
-
+        
+        func makeKnownHost() -> SSHLibraryKnownHost {
+            let r = libssh2_knownhost_init(session)
+            
+            return Libssh2.KnownHost (knownHost: r!)
+        }
+        
+        func hostKey () -> (key: [Int8], type: Int32)? {
+            var len: Int = 0
+            var type: Int32 = 0
+            
+            let ptr = libssh2_session_hostkey(session, &len, &type)
+            if ptr == nil {
+                return nil
+            }
+            let data = UnsafeBufferPointer (start: ptr, count: len)
+            return (data.map { $0 }, type)
+        }
     }
 }
 
@@ -464,6 +481,84 @@ func authenticateCallback (session: OpaquePointer?,
     sig_len?.pointee = signature.count
 
     return 0
+}
+
+extension Libssh2 {
+    fileprivate class KnownHost: SSHLibraryKnownHost {
+        func check(hostName: String, port: Int32, key: [Int8]) -> (status: KnownHostStatus, key: String?) { // (status: KnownHostStatus, knownHost: libssh2_knownhost?) {
+            var ptr: UnsafeMutablePointer<libssh2_knownhost>? = UnsafeMutablePointer<libssh2_knownhost>.allocate(capacity: 1)
+            var kcopy = key
+            let r = libssh2_knownhost_checkp(khHandle, hostName, port, &kcopy, key.count, LIBSSH2_KNOWNHOST_TYPE_PLAIN | LIBSSH2_KNOWNHOST_KEYENC_RAW, &ptr)
+            switch r {
+                
+            case LIBSSH2_KNOWNHOST_CHECK_FAILURE:
+                return (.failure, nil)
+            case LIBSSH2_KNOWNHOST_CHECK_MATCH:
+                let x: libssh2_knownhost = ptr?.pointee ?? libssh2_knownhost()
+                let keyStr = String(cString: x.key)
+                return (.match, keyStr)
+            case LIBSSH2_KNOWNHOST_CHECK_MISMATCH:
+                let x: libssh2_knownhost = ptr?.pointee ?? libssh2_knownhost()
+                let keyStr = String(cString: x.key)
+                return (.keyMismatch, keyStr)
+            case LIBSSH2_KNOWNHOST_CHECK_NOTFOUND:
+                return (.notFound, nil)
+            default:
+                return (.failure, nil)
+            }
+        }
+        
+        var khHandle: OpaquePointer
+        
+        init (knownHost: OpaquePointer){
+            self.khHandle = knownHost
+        }
+        
+        func readFile (filename: String) throws {
+            try libssh2_function {
+                libssh2_knownhost_readfile(khHandle, filename, LIBSSH2_KNOWNHOST_FILE_OPENSSH)
+            }
+        }
+        
+        func writeFile (filename: String) throws {
+            try libssh2_function {
+                libssh2_knownhost_writefile(khHandle, filename, LIBSSH2_KNOWNHOST_FILE_OPENSSH)
+            }
+        }
+        
+        func add(hostname: String, port: Int32? = nil, key: [Int8], keyType: String, comment: String) throws {
+            let fullhostname: String
+            if let p = port {
+                fullhostname = "[\(hostname)]:\(p)"
+            } else {
+                fullhostname = hostname
+            }
+            
+            let keyTypeCode: Int32
+            switch keyType {
+            case "ssh-rsa":
+                keyTypeCode = LIBSSH2_KNOWNHOST_KEY_SSHRSA
+            case "ssh-dss":
+                keyTypeCode = LIBSSH2_KNOWNHOST_KEY_SSHDSS
+            case "ecdsa-sha2-nistp256":
+                keyTypeCode = LIBSSH2_KNOWNHOST_KEY_ECDSA_256
+            case "ecdsa-sha2-nistp384":
+                keyTypeCode = LIBSSH2_KNOWNHOST_KEY_ECDSA_384
+            case "ecdsa-sha2-nistp521":
+                keyTypeCode = LIBSSH2_KNOWNHOST_KEY_ECDSA_521
+            case "ssh-ed25519":
+                keyTypeCode = LIBSSH2_KNOWNHOST_KEY_ED25519
+            default:
+                throw SSHError.methodNotSupported
+            }
+            
+            let empty = ""
+            var kcopy = key
+            try libssh2_function {
+                libssh2_knownhost_addc(khHandle, fullhostname, empty, &kcopy, kcopy.count, comment, comment.utf8.count, LIBSSH2_KNOWNHOST_TYPE_PLAIN | LIBSSH2_KNOWNHOST_KEYENC_RAW | keyTypeCode, nil)
+            }
+        }
+    }
 }
 
 extension Libssh2 {
