@@ -55,6 +55,7 @@ public protocol SSHLibrarySession {
     func setBanner(_ banner: String) throws
     func handshake(_ socket: CFSocket) throws
     func fingerprint(_ hashType: FingerprintHashType) -> String?
+    func fingerprintBytes(_ hashType: FingerprintHashType) -> [UInt8]?
     func authenticationList(_ username: String) throws -> [String]
     func authenticateByPassword(_ username: String, password: String) throws
     func authenticateByKeyboardInteractive(_ username: String, callback: @escaping ((String) -> String)) throws

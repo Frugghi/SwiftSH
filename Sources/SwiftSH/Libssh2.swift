@@ -267,6 +267,31 @@ extension Libssh2 {
             }
         }
 
+        func fingerprintBytes(_ hashType: FingerprintHashType) -> [UInt8]? {
+            let type: Int32
+            let length: Int
+
+            switch hashType {
+                case .md5:
+                    type = LIBSSH2_HOSTKEY_HASH_MD5
+                    length = 16
+                case .sha1:
+                    type = LIBSSH2_HOSTKEY_HASH_SHA1
+                    length = 20
+                case .sha256:
+                    type = LIBSSH2_HOSTKEY_HASH_SHA256
+                    length = 32
+            }
+
+            guard let hashPointer = libssh2_hostkey_hash(self.session, type) else {
+                return nil
+            }
+            
+            let hash = UnsafeRawPointer(hashPointer).assumingMemoryBound(to: UInt8.self)
+            
+            return (0..<length).map({ UInt8(hash[$0]) })
+        }
+
         func fingerprint(_ hashType: FingerprintHashType) -> String? {
             let type: Int32
             let length: Int
