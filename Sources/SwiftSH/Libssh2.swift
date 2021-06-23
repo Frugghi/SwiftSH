@@ -279,7 +279,7 @@ extension Libssh2 {
                     type = LIBSSH2_HOSTKEY_HASH_SHA1
                     length = 20
                 case .sha256:
-                    type = LIBSSH2_HOSTKEY_HASH_SHA1
+                    type = LIBSSH2_HOSTKEY_HASH_SHA256
                     length = 32
             }
 
