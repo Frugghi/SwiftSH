@@ -278,6 +278,9 @@ extension Libssh2 {
                 case .sha1:
                     type = LIBSSH2_HOSTKEY_HASH_SHA1
                     length = 20
+                case .sha256:
+                    type = LIBSSH2_HOSTKEY_HASH_SHA1
+                    length = 32
             }
 
             guard let hashPointer = libssh2_hostkey_hash(self.session, type) else {

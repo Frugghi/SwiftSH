@@ -125,12 +125,13 @@ public protocol SSHLibrarySCP {
 
 public enum FingerprintHashType: CustomStringConvertible {
     
-    case md5, sha1
+    case md5, sha1, sha256
     
     public var description: String {
         switch self {
         case .md5:  return "MD5"
         case .sha1: return "SHA1"
+        case .sha256: return "SHA256"
         }
     }
     
