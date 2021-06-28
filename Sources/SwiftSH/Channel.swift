@@ -27,10 +27,10 @@ open class SSHChannel: SSHSession {
     // MARK: - Public variables
 
     public fileprivate(set) var terminal: Terminal?
+    public fileprivate(set) var channel: SSHLibraryChannel!
 
     // MARK: - Internal variables
 
-    internal var channel: SSHLibraryChannel!
     internal let environment: [Environment]
 
     // MARK: - Initialization
