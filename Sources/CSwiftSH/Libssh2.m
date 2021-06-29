@@ -22,7 +22,7 @@
 // SOFTWARE.
 //
 
-#import "Libssh2.h"
+#import "libssh2.h"
 
 @import Darwin;
 @import CSSH;
