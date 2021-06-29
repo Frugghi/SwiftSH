@@ -25,7 +25,7 @@
 open class SSHChannel: SSHSession {
 
     // MARK: - Public variables
-
+aaa
     public fileprivate(set) var terminal: Terminal?
     public fileprivate(set) var channel: SSHLibraryChannel!
 
