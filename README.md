@@ -1,5 +1,19 @@
+
 # SwiftSH
-[![Build Status](https://travis-ci.org/Frugghi/SwiftSH.svg?branch=master)](https://travis-ci.org/Frugghi/SwiftSH)
+
+This is a fork of the original SwiftSH module with a handful of bug
+fixes and changes that I wanted for my SwiftTerm emulator.   The upstream
+package does not seem active.
+
+While Carthage, Pods and other platforms were originally supported, I
+have not attempted to update those, I have now moved to SwiftPM for it,
+which solved various issues for me.
+
+Additionally, this add a callback-based authentication system, that you
+can now use for authenticating using the secure enclave.
+
+# Original Readme
+
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Pods](https://img.shields.io/cocoapods/v/SwiftSH.svg)](https://cocoapods.org/pods/SwiftSH)
 [![Pod platforms](https://img.shields.io/cocoapods/p/SwiftSH.svg)](https://cocoapods.org/pods/SwiftSH)

@@ -25,7 +25,7 @@
 import Foundation
 import UIKit
 
-protocol SSHViewController: class {
+protocol SSHViewController: AnyObject {
     
     var requiresAuthentication: Bool { get set }
     var hostname: String! { get set }
