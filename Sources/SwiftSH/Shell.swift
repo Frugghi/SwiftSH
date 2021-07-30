@@ -88,7 +88,7 @@ public class SSHShell: SSHChannel {
             // Read the received data
             self.readSource = DispatchSource.makeReadSource(fileDescriptor: CFSocketGetNative(self.socket), queue: self.queue.queue)
             guard let readSource = self.readSource else {
-                throw SSHError.allocation
+                throw SSHError.allocation(detail: "Could not create the read source on the socket")
             }
 
             readSource.setEventHandler { [weak self] in
@@ -159,7 +159,7 @@ public class SSHShell: SSHChannel {
             // Write the input data
             self.writeSource = DispatchSource.makeWriteSource(fileDescriptor: CFSocketGetNative(self.socket), queue: self.queue.queue)
             guard let writeSource = self.writeSource else {
-                throw SSHError.allocation
+                throw SSHError.allocation(detail: "Creating writing source for the socket")
             }
 
             writeSource.setEventHandler { [weak self] in
@@ -300,7 +300,7 @@ public class SSHShell: SSHChannel {
         guard let data = command.data(using: .utf8) else {
             if let completion = completion {
                 self.queue.callbackQueue.async {
-                    completion(SSHError.invalid)
+                    completion(SSHError.invalid (detail: "Could not encode the command as utf-8"))
                 }
             }
             return

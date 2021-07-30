@@ -66,7 +66,7 @@ public class SCPSession: SSHChannel {
             if let data = stream.property(forKey: Stream.PropertyKey.dataWrittenToMemoryStreamKey) as? Data {
                 completion(data, error)
             } else {
-                completion(nil, error ?? SSHError.unknown)
+                completion(nil, error ?? SSHError.unknown (detail: "Download lacks the data"))
             }
         }
     }

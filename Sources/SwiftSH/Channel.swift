@@ -51,7 +51,7 @@ open class SSHChannel: SSHSession {
         
         // Check if we are authenticated
         guard self.authenticated else {
-            throw SSHError.authenticationFailed
+            throw SSHError.authenticationFailed(detail: "Open attempted, but we are not authenticated")
         }
         
         // Check if the channel is already open
@@ -120,7 +120,8 @@ open class SSHChannel: SSHSession {
     public func setTerminalSize(width: UInt, height: UInt, completion: SSHCompletionBlock?) {
         self.queue.async(completion: completion) {
             guard let terminal = self.terminal else {
-                throw SSHError.badUse
+                throw SSHError.badUse(detail:"Terminal set size attempted, but the terminal has not been created yet"
+                )
             }
 
             // Check if the new size is different from the old one

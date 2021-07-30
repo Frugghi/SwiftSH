@@ -25,41 +25,42 @@
 import Foundation
 
 public enum SSHError: Error {
-    case unknown
+    case unknown(detail:String)
 
     case bannerReceive
     case bannerSend
     case invalidMessageAuthenticationCode
     case decrypt
-    case methodNone
-    case requestDenied
-    case methodNotSupported
-    case invalid
-    case agentProtocol
+    case methodNone(detail:String)
+    case requestDenied(detail:String)
+    case methodNotSupported(detail:String)
+    case invalid(detail:String)
+    case agentProtocol(detail:String)
     case encrypt
 
     // Common
-    case allocation
-    case timeout
-    case `protocol`
+    case allocation(detail:String)
+    case timeout(detail:String)
+    case `protocol`(detail:String)
     case again
-    case bufferTooSmall
-    case badUse
+    case bufferTooSmall(detail:String)
+    case badUse(detail:String)
     case compress
-    case outOfBoundary
+    case outOfBoundary(detail:String)
 
     // Connection
     case alreadyConnected
     case hostResolutionFailed
-    case keyExchangeFailure
-    case hostkey
+    case keyExchangeFailure(detail:String)
+    case hostkey(detail:String)
+    case hostkeySign(detail:String)
 
     // Authentication
-    case authenticationFailed
+    case authenticationFailed(detail:String)
     case passwordExpired
-    case publicKeyUnverified
-    case publicKeyProtocol
-    case publicKeyFile
+    case publicKeyUnverified(detail:String)
+    case publicKeyProtocol(detail:String)
+    case publicKeyFile(detail:String)
     case unsupportedAuthenticationMethod
     case knownHosts
 

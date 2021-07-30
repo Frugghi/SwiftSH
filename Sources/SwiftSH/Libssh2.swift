@@ -66,7 +66,7 @@ fileprivate extension Int32 {
         return self.error(sftp: nil)
     }
     
-    func error(sftp: OpaquePointer?) -> Error {
+    func error(detail: String = "", sftp: OpaquePointer? = nil) -> Error {
         if let error = self.soketError() {
             return error
         } else if let error = self.channelError() {
@@ -77,42 +77,42 @@ fileprivate extension Int32 {
             return error
         }
         
-        return self.genericSSHError()
+        return self.genericSSHError(detail: detail)
     }
     
-    private func genericSSHError() -> SSHError {
+    private func genericSSHError(detail: String = "") -> SSHError {
         switch self {
         case LIBSSH2_ERROR_BANNER_RECV: return .bannerReceive
         case LIBSSH2_ERROR_BANNER_SEND: return .bannerSend
         case LIBSSH2_ERROR_INVALID_MAC: return .invalidMessageAuthenticationCode
-        case LIBSSH2_ERROR_KEX_FAILURE: return .keyExchangeFailure
-        case LIBSSH2_ERROR_ALLOC: return .allocation
-        case LIBSSH2_ERROR_KEY_EXCHANGE_FAILURE: return .keyExchangeFailure
-        case LIBSSH2_ERROR_TIMEOUT: return .timeout
-        case LIBSSH2_ERROR_HOSTKEY_INIT: return .hostkey
-        case LIBSSH2_ERROR_HOSTKEY_SIGN: return .hostkey
+        case LIBSSH2_ERROR_KEX_FAILURE: return .keyExchangeFailure(detail: detail)
+        case LIBSSH2_ERROR_ALLOC: return .allocation(detail: detail)
+        case LIBSSH2_ERROR_KEY_EXCHANGE_FAILURE: return .keyExchangeFailure(detail: detail)
+        case LIBSSH2_ERROR_TIMEOUT: return .timeout(detail: detail)
+        case LIBSSH2_ERROR_HOSTKEY_INIT: return .hostkey(detail: detail)
+        case LIBSSH2_ERROR_HOSTKEY_SIGN: return .hostkeySign(detail:detail)
         case LIBSSH2_ERROR_DECRYPT: return .decrypt
-        case LIBSSH2_ERROR_PROTO: return .protocol
+        case LIBSSH2_ERROR_PROTO: return .protocol(detail:detail)
         case LIBSSH2_ERROR_PASSWORD_EXPIRED: return .passwordExpired
-        case LIBSSH2_ERROR_FILE: return .publicKeyFile
-        case LIBSSH2_ERROR_METHOD_NONE: return .methodNone
-        case LIBSSH2_ERROR_AUTHENTICATION_FAILED: return .authenticationFailed
-        case LIBSSH2_ERROR_PUBLICKEY_UNVERIFIED: return .publicKeyUnverified
-        case LIBSSH2_ERROR_ZLIB: return .unknown
-        case LIBSSH2_ERROR_REQUEST_DENIED: return .requestDenied
-        case LIBSSH2_ERROR_METHOD_NOT_SUPPORTED: return .methodNotSupported
-        case LIBSSH2_ERROR_INVAL: return .invalid
-        case LIBSSH2_ERROR_INVALID_POLL_TYPE: return .unknown
-        case LIBSSH2_ERROR_PUBLICKEY_PROTOCOL: return .publicKeyProtocol
+        case LIBSSH2_ERROR_FILE: return .publicKeyFile(detail:detail)
+        case LIBSSH2_ERROR_METHOD_NONE: return .methodNone(detail:detail)
+        case LIBSSH2_ERROR_AUTHENTICATION_FAILED: return .authenticationFailed(detail: detail)
+        case LIBSSH2_ERROR_PUBLICKEY_UNVERIFIED: return .publicKeyUnverified(detail:detail)
+        case LIBSSH2_ERROR_ZLIB: return .unknown(detail:detail)
+        case LIBSSH2_ERROR_REQUEST_DENIED: return .requestDenied(detail:detail)
+        case LIBSSH2_ERROR_METHOD_NOT_SUPPORTED: return .methodNotSupported(detail:detail)
+        case LIBSSH2_ERROR_INVAL: return .invalid(detail:detail)
+        case LIBSSH2_ERROR_INVALID_POLL_TYPE: return .unknown(detail: detail)
+        case LIBSSH2_ERROR_PUBLICKEY_PROTOCOL: return .publicKeyProtocol(detail:detail)
         case LIBSSH2_ERROR_EAGAIN: return .again
-        case LIBSSH2_ERROR_BUFFER_TOO_SMALL: return .bufferTooSmall
-        case LIBSSH2_ERROR_BAD_USE: return .badUse
+        case LIBSSH2_ERROR_BUFFER_TOO_SMALL: return .bufferTooSmall(detail:detail)
+        case LIBSSH2_ERROR_BAD_USE: return .badUse(detail:detail)
         case LIBSSH2_ERROR_COMPRESS: return .compress
-        case LIBSSH2_ERROR_OUT_OF_BOUNDARY: return .outOfBoundary
-        case LIBSSH2_ERROR_AGENT_PROTOCOL: return .agentProtocol
+        case LIBSSH2_ERROR_OUT_OF_BOUNDARY: return .outOfBoundary(detail:detail)
+        case LIBSSH2_ERROR_AGENT_PROTOCOL: return .agentProtocol(detail:detail)
         case LIBSSH2_ERROR_ENCRYPT: return .encrypt
         case LIBSSH2_ERROR_KNOWN_HOSTS: return .knownHosts
-        default: return .unknown
+        default: return .unknown(detail: detail)
         }
     }
     
@@ -256,13 +256,13 @@ extension Libssh2 {
         }
 
         func setBanner(_ banner: String) throws {
-            try libssh2_function {
+            try libssh2_session_function (session) {
                 banner.withCString({ libssh2_session_banner_set(self.session, $0) })
             }
         }
 
         func handshake(_ socket: CFSocket) throws {
-            try libssh2_function {
+            try libssh2_session_function (session) {
                 libssh2_session_handshake(self.session, CFSocketGetNative(socket))
             }
         }
@@ -333,7 +333,7 @@ extension Libssh2 {
         }
 
         func authenticateByPassword(_ username: String, password: String) throws {
-            try libssh2_function {
+            try libssh2_session_function (session) {
                 libssh2_userauth_password_ex(self.session, username, UInt32(username.utf8.count), password, UInt32(password.utf8.count), nil)
             }
         }
@@ -341,7 +341,7 @@ extension Libssh2 {
         func authenticateByKeyboardInteractive(_ username: String, callback: @escaping ((String) -> String)) throws {
             self.keyboardInteractiveCallback = callback
 
-            try libssh2_function {
+            try libssh2_session_function (session) {
                 libssh2_userauth_keyboard_interactive_ex(self.session, username, UInt32(username.utf8.count), { (name, nameLength, instruction, instructionLength, numberOfPrompts, prompts, responses, abstract) in
                     for i in 0..<Int(numberOfPrompts) {
                         guard let prompt = prompts?[i], let text = prompt.text else {
@@ -372,13 +372,13 @@ extension Libssh2 {
         }
 
         func authenticateByPublicKeyFromFile(_ username: String, password: String, publicKey: String?, privateKey: String) throws {
-            try libssh2_function {
+            try libssh2_session_function (session) {
                 libssh2_userauth_publickey_fromfile_ex(self.session, username, UInt32(username.utf8.count), publicKey, privateKey, password)
             }
         }
         
         func authenticateByPublicKeyFromMemory(_ username: String, password: String, publicKey: Data?, privateKey: Data) throws {
-            try libssh2_function {
+            try libssh2_session_function (session) {
                 privateKey.withUnsafeBytes {
                     let privateKey = $0.bindMemory(to: Int8.self)
 
@@ -396,7 +396,7 @@ extension Libssh2 {
         }
 
         func authenticateByCallback(_ username: String, publicKey: Data, signCallback: @escaping (Data)->Data?) throws {
-            try libssh2_function {
+            try libssh2_session_function (session) {
                 let cbData = callbackData (pub: publicKey, signCallback: signCallback)
                 
                 return publicKey.withUnsafeBytes {
@@ -410,7 +410,7 @@ extension Libssh2 {
         }
 
         func disconnect() throws {
-            try libssh2_function {
+            try libssh2_session_function (session) {
                 libssh2_session_disconnect_ex(self.session, SSH_DISCONNECT_BY_APPLICATION, "SwiftSH: Disconnect", "")
             }
         }
@@ -577,7 +577,7 @@ extension Libssh2 {
             case "ssh-ed25519":
                 keyTypeCode = LIBSSH2_KNOWNHOST_KEY_ED25519
             default:
-                throw SSHError.methodNotSupported
+                throw SSHError.methodNotSupported (detail: "knownHost.add: the provided key type is \(keyType) which is not currently supported")
             }
             
             let empty = ""
@@ -816,6 +816,27 @@ private func libssh2_function(_ function: () -> Int32) throws {
     }
 }
 
+private func getSessionErrorDetail (_ session: OpaquePointer) -> String {
+    var str: UnsafeMutablePointer<CChar>?
+    libssh2_session_last_error(session, &str, nil, 0)
+    if let cstrptr = str {
+        return String (cString: cstrptr)
+    } else {
+        return "<no details>"
+    }
+}
+
+private func libssh2_session_function(_ session: OpaquePointer, _ function: () -> Int32) throws {
+    var returnCode: Int32
+    repeat {
+        returnCode = function()
+    } while returnCode == LIBSSH2_ERROR_EAGAIN
+
+    guard returnCode == 0 else {
+        throw returnCode.error (detail: getSessionErrorDetail(session), sftp: nil)
+    }
+}
+
 private func libssh2_function<T>(_ session: OpaquePointer, function: (OpaquePointer) -> T?) throws -> T {
     var result: T?
     var returnCode: Int32
@@ -825,7 +846,7 @@ private func libssh2_function<T>(_ session: OpaquePointer, function: (OpaquePoin
     } while returnCode == LIBSSH2_ERROR_EAGAIN
 
     guard result != nil else {
-        throw returnCode.error
+        throw returnCode.error (detail: getSessionErrorDetail(session), sftp: nil)
     }
 
     return result!

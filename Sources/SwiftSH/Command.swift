@@ -82,7 +82,7 @@ public class SSHCommand: SSHChannel {
             // Read the received data
             self.socketSource = DispatchSource.makeReadSource(fileDescriptor: CFSocketGetNative(self.socket), queue: self.queue.queue)
             guard let socketSource = self.socketSource else {
-                throw SSHError.allocation
+                throw SSHError.allocation(detail: "")
             }
 
             socketSource.setEventHandler { [weak self] in
@@ -156,7 +156,7 @@ public class SSHCommand: SSHChannel {
             // Create the timeout handler
             self.timeoutSource = DispatchSource.makeTimerSource(queue: self.queue.queue)
             guard let timeoutSource = self.timeoutSource else {
-                throw SSHError.allocation
+                throw SSHError.allocation(detail:"")
             }
 
             timeoutSource.setEventHandler { [weak self] in
@@ -170,7 +170,7 @@ public class SSHCommand: SSHChannel {
                     let result = self.response
                     
                     self.queue.callbackQueue.async {
-                        completion(command, result, SSHError.timeout)
+                        completion(command, result, SSHError.timeout(detail:"timeout DispatchSource"))
                     }
                 }
             }
