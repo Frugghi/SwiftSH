@@ -36,6 +36,10 @@ public class SSHCommand: SSHChannel {
         try super.init(sshLibrary: sshLibrary, host: host, port: port, environment: environment, terminal: terminal)
     }
 
+    public override init(sshLibrary: SSHLibrary.Type = Libssh2.self, session: SSHSession, environment: [Environment] = [], terminal: Terminal? = nil) throws {
+        try super.init(sshLibrary: sshLibrary, session: session, environment: environment, terminal: terminal)
+    }
+
     deinit {
         self.cancelSources()
     }
@@ -43,7 +47,7 @@ public class SSHCommand: SSHChannel {
     public override func close() {
         self.cancelSources()
 
-        self.queue.async {
+        session.queue.async {
             super.close()
         }
     }
@@ -64,7 +68,7 @@ public class SSHCommand: SSHChannel {
     private var error: Data?
 
     public func execute(_ command: String, completion: ((String, Data?, Error?) -> Void)?) {
-        self.queue.async(completion: { (error: Error?) in
+        session.queue.async(completion: { (error: Error?) in
             if let error = error {
                 self.close()
 
@@ -80,7 +84,7 @@ public class SSHCommand: SSHChannel {
             try self.open()
 
             // Read the received data
-            self.socketSource = DispatchSource.makeReadSource(fileDescriptor: CFSocketGetNative(self.socket), queue: self.queue.queue)
+            self.socketSource = DispatchSource.makeReadSource(fileDescriptor: CFSocketGetNative(self.session.socket), queue: self.session.queue.queue)
             guard let socketSource = self.socketSource else {
                 throw SSHError.allocation(detail: "")
             }
@@ -97,7 +101,7 @@ public class SSHCommand: SSHChannel {
                 }
 
                 // Set non-blocking mode
-                self.session.blocking = false
+                self.session.session.blocking = false
 
                 // Read the result
                 var socketClosed = true
@@ -111,7 +115,7 @@ public class SSHCommand: SSHChannel {
                     
                     socketClosed = false
                 } catch let error {
-                    self.log.error("[STD] \(error)")
+                    self.session.log.error("[STD] \(error)")
                 }
 
                 // Read the error
@@ -127,7 +131,7 @@ public class SSHCommand: SSHChannel {
                     
                     socketClosed = false
                 } catch let error {
-                    self.log.error("[ERR] \(error)")
+                    self.session.log.error("[ERR] \(error)")
                 }
 
                 // Check if we can return the response
@@ -143,7 +147,7 @@ public class SSHCommand: SSHChannel {
                             error = SSHError.Command.execError(String(data: message, encoding: .utf8), message)
                         }
 
-                        self.queue.callbackQueue.async {
+                        self.session.queue.callbackQueue.async {
                             completion(command, result, error)
                         }
                     }
@@ -154,7 +158,7 @@ public class SSHCommand: SSHChannel {
             }
 
             // Create the timeout handler
-            self.timeoutSource = DispatchSource.makeTimerSource(queue: self.queue.queue)
+            self.timeoutSource = DispatchSource.makeTimerSource(queue: self.session.queue.queue)
             guard let timeoutSource = self.timeoutSource else {
                 throw SSHError.allocation(detail:"")
             }
@@ -169,21 +173,21 @@ public class SSHCommand: SSHChannel {
                 if let completion = completion {
                     let result = self.response
                     
-                    self.queue.callbackQueue.async {
+                    self.session.queue.callbackQueue.async {
                         completion(command, result, SSHError.timeout(detail:"timeout DispatchSource"))
                     }
                 }
             }
-            timeoutSource.schedule(deadline: .now() + self.timeout, repeating: self.timeout, leeway: .seconds(10))
+            timeoutSource.schedule(deadline: .now() + self.session.timeout, repeating: self.session.timeout, leeway: .seconds(10))
             
             // Set blocking mode
-            self.session.blocking = true
+            self.session.session.blocking = true
             
             // Execute the command
             try self.channel.exec(command)
             
             // Set non-blocking mode
-            self.session.blocking = false
+            self.session.session.blocking = false
             
             // Start listening for new data
             timeoutSource.resume()
@@ -206,4 +210,13 @@ public class SSHCommand: SSHChannel {
         }
     }
 
+    public func connect () -> Self {
+        session.connect()
+        return self
+    }
+    
+    public func authenticate (_ challenge: AuthenticationChallenge?) -> Self {
+        session.authenticate(challenge)
+        return self
+    }
 }

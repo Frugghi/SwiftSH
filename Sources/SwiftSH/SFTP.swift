@@ -23,6 +23,6 @@
 //
 
 @available(*, unavailable)
-public class SFTPSession: SSHSession {
+public class SFTPSession {
 
 }

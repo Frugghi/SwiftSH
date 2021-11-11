@@ -38,7 +38,7 @@ public class SCPSession: SSHChannel {
         if let stream = OutputStream(toFileAtPath: path, append: false) {
             self.download(from, to: stream, completion: completion)
         } else if let completion = completion {
-            self.queue.callbackQueue.async {
+            session.queue.callbackQueue.async {
                 completion(SSHError.SCP.invalidPath)
             }
         }
@@ -52,7 +52,7 @@ public class SCPSession: SSHChannel {
     }
 
     public func download(_ from: String, to stream: OutputStream, completion: SSHCompletionBlock?) {
-        self.queue.async(completion: completion) {
+        session.queue.async(completion: completion) {
             stream.open()
             do {
                 stream.close()

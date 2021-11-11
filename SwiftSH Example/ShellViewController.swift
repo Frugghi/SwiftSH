@@ -44,7 +44,8 @@ class ShellViewController: UIViewController, SSHViewController {
     // This is an example showing how to use your own callback, and it is tightly coupled with your code
     // when this is set, you should create your keys, and bring the .externalRepresentation() of those
     // here, and then you can see how this is used with the signing code below
-    var optPubKey: Data? = Data (base64Encoded: "AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBJ2tKFedFj5BuevFKzyX4WsQCRdrywVX+w1xVcA5vaGXvn15wsKydh/yRp6FDqSsNfguWHgKOLy65FoH5ih794I=")
+    //var optPubKey: Data? = Data (base64Encoded: "AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBJ2tKFedFj5BuevFKzyX4WsQCRdrywVX+w1xVcA5vaGXvn15wsKydh/yRp6FDqSsNfguWHgKOLy65FoH5ih794I=")
+    var optPubKey: Data? = nil
     let privateKey = Data (base64Encoded: "BJ2tKFedFj5BuevFKzyX4WsQCRdrywVX+w1xVcA5vaGXvn15wsKydh/yRp6FDqSsNfguWHgKOLy65FoH5ih794LgJuzbVceIWIi+GMCuCkMKilM2Nq5DHQM626wYuzrTig==")!
 
     override func viewDidLoad() {
@@ -53,6 +54,7 @@ class ShellViewController: UIViewController, SSHViewController {
         self.textView.text = ""
         self.textView.isEditable = false
         self.textView.isSelectable = false
+        optPubKey = nil
         
         if self.requiresAuthentication {
             if let publicKey = optPubKey {
@@ -108,6 +110,7 @@ class ShellViewController: UIViewController, SSHViewController {
         self.disconnect()
     }
     
+    var cmd: SSHCommand!
     @IBAction func connect() {
         self.shell
             .withCallback { [unowned self] (string: String?, error: String?) in
@@ -128,6 +131,10 @@ class ShellViewController: UIViewController, SSHViewController {
                     self.textView.isEditable = false
                 } else {
                     self.textView.isEditable = true
+                    cmd = try! SSHCommand(session: self.shell.session)
+                    cmd.execute("echo hello > /tmp/i-was-here") { (str: String, dat:String?, err: Error?) in
+                            print ("Got \(str) \(dat) and \(err)")
+                    }
                 }                
             }
     }

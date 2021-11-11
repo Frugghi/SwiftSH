@@ -22,13 +22,15 @@
 // SOFTWARE.
 //
 
-open class SSHChannel: SSHSession {
+open class SSHChannel {
 
     // MARK: - Public variables
 
     public fileprivate(set) var terminal: Terminal?
     public fileprivate(set) var channel: SSHLibraryChannel!
 
+    public private(set) var session: SSHSession
+    
     // MARK: - Internal variables
 
     internal let environment: [Environment]
@@ -39,18 +41,27 @@ open class SSHChannel: SSHSession {
         self.environment = environment
         self.terminal = terminal
 
-        try super.init(sshLibrary: sshLibrary, host: host, port: port)
+        self.session = try SSHSession(sshLibrary: sshLibrary, host: host, port: port)
 
-        self.channel = self.session.makeChannel()
+        self.channel = session.session.makeChannel()
+    }
+
+    internal init(sshLibrary: SSHLibrary.Type = Libssh2.self, session: SSHSession, environment: [Environment] = [], terminal: Terminal? = nil) throws {
+        self.environment = environment
+        self.terminal = terminal
+
+        self.session = session
+
+        self.channel = session.session.makeChannel()
     }
 
     // MARK: - Open/Close
 
     internal func open() throws {
-        assert(self.queue.current)
+        assert(session.queue.current)
         
         // Check if we are authenticated
-        guard self.authenticated else {
+        guard session.authenticated else {
             throw SSHError.authenticationFailed(detail: "Open attempted, but we are not authenticated")
         }
         
@@ -59,24 +70,24 @@ open class SSHChannel: SSHSession {
             throw SSHError.Channel.alreadyOpen
         }
         
-        self.log.debug("Opening the channel...")
+        session.log.debug("Opening the channel...")
         
         // Set blocking mode
-        self.session.blocking = true
+        session.session.blocking = true
         
         // Opening the channel
         try self.channel.openChannel()
         
         do {
             // Set the environment's variables
-            self.log.debug("Environment: \(self.environment)")
+            session.log.debug("Environment: \(self.environment)")
             for variable in self.environment {
                 try self.channel.setEnvironment(variable)
             }
             
             // Request the pseudo terminal
             if let terminal = self.terminal {
-                self.log.debug("\(terminal) pseudo terminal requested")
+                session.log.debug("\(terminal) pseudo terminal requested")
                 try self.channel.requestPseudoTerminal(terminal)
             }
         } catch {
@@ -86,26 +97,26 @@ open class SSHChannel: SSHSession {
     }
 
     internal func close() {
-        assert(self.queue.current)
+        assert(session.queue.current)
         
-        self.log.debug("Closing the channel...")
+        session.log.debug("Closing the channel...")
         
         // Set blocking mode
-        self.session.blocking = true
+        session.session.blocking = true
 
         // Close the channel
         do {
             try self.channel.closeChannel()
         } catch {
-            self.log.error("\(error)")
+            session.log.error("\(error)")
         }
     }
     
-    public override func disconnect(_ completion: (() -> Void)?) {
-        self.queue.async {
+    public func disconnect(_ completion: (() -> Void)?) {
+        session.queue.async {
             self.close()
             
-            super.disconnect(completion)
+            self.session.disconnect(completion)
         }
     }
 
@@ -118,7 +129,7 @@ open class SSHChannel: SSHSession {
     }
 
     public func setTerminalSize(width: UInt, height: UInt, completion: SSHCompletionBlock?) {
-        self.queue.async(completion: completion) {
+        session.queue.async(completion: completion) {
             guard let terminal = self.terminal else {
                 throw SSHError.badUse(detail:"Terminal set size attempted, but the terminal has not been created yet"
                 )
