@@ -41,15 +41,43 @@ class ShellViewController: UIViewController, SSHViewController {
     var username: String!
     var password: String?
     
+    // This is an example showing how to use your own callback, and it is tightly coupled with your code
+    // when this is set, you should create your keys, and bring the .externalRepresentation() of those
+    // here, and then you can see how this is used with the signing code below
+    //var optPubKey: Data? = Data (base64Encoded: "AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBJ2tKFedFj5BuevFKzyX4WsQCRdrywVX+w1xVcA5vaGXvn15wsKydh/yRp6FDqSsNfguWHgKOLy65FoH5ih794I=")
+    var optPubKey: Data? = nil
+    let privateKey = Data (base64Encoded: "BJ2tKFedFj5BuevFKzyX4WsQCRdrywVX+w1xVcA5vaGXvn15wsKydh/yRp6FDqSsNfguWHgKOLy65FoH5ih794LgJuzbVceIWIi+GMCuCkMKilM2Nq5DHQM626wYuzrTig==")!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.textView.text = ""
         self.textView.isEditable = false
         self.textView.isSelectable = false
+        optPubKey = nil
         
         if self.requiresAuthentication {
-            if let password = self.password {
+            if let publicKey = optPubKey {
+                
+                // Turn the nice privateKey above from the data blob into a SecKey
+                var error: Unmanaged<CFError>? = nil
+                guard let key = SecKeyCreateWithData (privateKey as NSData, [
+                    kSecAttrKeyType as String:            kSecAttrKeyTypeECSECPrimeRandom,
+                    kSecAttrKeyClass as String: kSecAttrKeyClassPrivate,
+                    kSecAttrKeySizeInBits as String:      256,
+                ] as NSDictionary, &error) else {
+                    let errMsg = error!.takeRetainedValue() as Error
+                    print ("This should really never happen, it should be able to create a SecKey from the above base64 encoded privateKey\(errMsg)")
+                    abort ()
+                }
+
+                self.authenticationChallenge = .byCallback(username: self.username, publicKey: publicKey, signCallback: { dataToSign in
+                    guard let signed = SecKeyCreateSignature(key, .ecdsaSignatureMessageX962SHA256, dataToSign as CFData, &error) else {
+                        return nil
+                    }
+                    return signed as NSData as Data
+                })
+            } else if let password = self.password {
                 self.authenticationChallenge = .byPassword(username: self.username, password: password)
             } else {
                 self.authenticationChallenge = .byKeyboardInteractive(username: self.username) { [unowned self] challenge in
@@ -82,6 +110,7 @@ class ShellViewController: UIViewController, SSHViewController {
         self.disconnect()
     }
     
+    var cmd: SSHCommand!
     @IBAction func connect() {
         self.shell
             .withCallback { [unowned self] (string: String?, error: String?) in
@@ -102,6 +131,10 @@ class ShellViewController: UIViewController, SSHViewController {
                     self.textView.isEditable = false
                 } else {
                     self.textView.isEditable = true
+                    cmd = try! SSHCommand(session: self.shell.session)
+                    cmd.execute("echo hello > /tmp/i-was-here") { (str: String, dat:String?, err: Error?) in
+                            print ("Got \(str) \(dat) and \(err)")
+                    }
                 }                
             }
     }

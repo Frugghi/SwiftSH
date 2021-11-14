@@ -15,8 +15,23 @@
 		180BD22A1B4C9268000DB241 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 180BD2281B4C9268000DB241 /* Main.storyboard */; };
 		180BD22C1B4C9268000DB241 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 180BD22B1B4C9268000DB241 /* Assets.xcassets */; };
 		180BD22F1B4C9268000DB241 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 180BD22D1B4C9268000DB241 /* LaunchScreen.storyboard */; };
-		7DF4E92A2066CC0C00D34C7F /* SwiftSH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DF4E9292066CC0C00D34C7F /* SwiftSH.framework */; };
+		49BA35E9267AE6D500B63510 /* SwiftSH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49BA35E8267AE6D500B63510 /* SwiftSH.framework */; };
+		49BA35EA267AE6D500B63510 /* SwiftSH.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 49BA35E8267AE6D500B63510 /* SwiftSH.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		49BA35E7267AE6C300B63510 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				49BA35EA267AE6D500B63510 /* SwiftSH.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1805B2721CCE7EC20009E4C9 /* ShellViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShellViewController.swift; sourceTree = "<group>"; };
@@ -29,7 +44,7 @@
 		180BD22B1B4C9268000DB241 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		180BD22E1B4C9268000DB241 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		180BD2301B4C9268000DB241 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7DF4E9292066CC0C00D34C7F /* SwiftSH.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftSH.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		49BA35E8267AE6D500B63510 /* SwiftSH.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftSH.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,7 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7DF4E92A2066CC0C00D34C7F /* SwiftSH.framework in Frameworks */,
+				49BA35E9267AE6D500B63510 /* SwiftSH.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,7 +95,7 @@
 		7DF4E9282066CC0B00D34C7F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7DF4E9292066CC0C00D34C7F /* SwiftSH.framework */,
+				49BA35E8267AE6D500B63510 /* SwiftSH.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -95,6 +110,7 @@
 				180BD21E1B4C9268000DB241 /* Sources */,
 				180BD21F1B4C9268000DB241 /* Frameworks */,
 				180BD2201B4C9268000DB241 /* Resources */,
+				49BA35E7267AE6C300B63510 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -112,11 +128,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1300;
 				ORGANIZATIONNAME = "Tommaso Madonia";
 				TargetAttributes = {
 					180BD2211B4C9268000DB241 = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = PJQC57N853;
 						LastSwiftMigration = 1020;
 					};
 				};
@@ -209,6 +226,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -218,6 +236,7 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -234,7 +253,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -268,6 +287,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -277,6 +297,7 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -287,7 +308,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -303,6 +324,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = PJQC57N853;
 				INFOPLIST_FILE = "SwiftSH Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tommasomadonia.SwiftSHExample;
@@ -315,6 +337,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = PJQC57N853;
 				INFOPLIST_FILE = "SwiftSH Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tommasomadonia.SwiftSHExample;
